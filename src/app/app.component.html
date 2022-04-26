@@ -1,3 +1,31 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
+<ion-app>  
+  <ion-menu menuId="main-menu" content-id="main" class="menu-container">
+    <ion-header>
+      <ion-toolbar id="menu-header">
+        <ion-title>Menú</ion-title>    
+      </ion-toolbar>      
+    </ion-header>
+    <ion-content class="menu-container">
+      <ion-list class="menu-list">
+        <ion-item routerLink='/home' class="menu-items current">
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label>Inicio</ion-label>
+        </ion-item>
+        <ion-item routerLink='./report/gral-report' class="menu-items">
+          <ion-icon name="alert-circle-outline" slot="start"></ion-icon>
+          <ion-label>Denunciar</ion-label>
+        </ion-item>        
+        <ion-item routerLink='/about' class="menu-items">
+          <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+          <ion-label>Quienes somos</ion-label>
+        </ion-item>
+        <ion-item routerLink='/login' class="menu-items">
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label>Ingresar</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>    
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>
+

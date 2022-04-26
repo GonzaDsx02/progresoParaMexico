@@ -1,20 +1,68 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+<ion-header class="ion-no-border">
+  <ion-toolbar class="menu-bar">
+    <ion-buttons slot="start" class="menu-button">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>    
+    <ion-buttons slot="end" class="menu-container">
+      <button class="menu-items current">
+        <!-- <ion-icon slot="icon-only" name="person-circle"></ion-icon> -->
+        Inicio
+      </button>
+      <button class="menu-items">
+        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
+        Denunciar
+      </button>
+      <button class="menu-items">
+        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
+        Nosotros
+      </button>    
+      <button class="menu-items">
+        <!-- <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon> -->
+        Ingresar
+      </button>
+    </ion-buttons>
+    <ion-title>      
+      <img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México">            
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <article id="index-container">
+    <ion-slides pager="true" class="slides" >
+      <ion-slide>
+        <ion-avatar class="carousel">
+          <img id="img-car" src="../assets/img/carousel.png" alt="Carrusel">    
+        </ion-avatar>
+      </ion-slide>    
+      <ion-slide>
+        <ion-avatar class="carousel">
+          <img id="img-car" src="../assets/img/brazo.png" alt="Carrusel">    
+        </ion-avatar>
+      </ion-slide>    
+      <ion-slide>
+        <ion-avatar class="carousel">
+          <img id="img-car" src="../assets/img/freedom.png" alt="Carrusel">    
+        </ion-avatar>
+      </ion-slide>    
+      <ion-slide>
+        <ion-avatar class="carousel">
+          <img id="img-car" src="../assets/img/friends.png" alt="Carrusel">    
+        </ion-avatar>
+      </ion-slide>   
+      <ion-slide>
+        <ion-avatar class="carousel">
+          <img id="img-car" src="../assets/img/team.png" alt="Carrusel">    
+        </ion-avatar>
+      </ion-slide>   
+    </ion-slides>
+
+    <section class="report">
+      <p align="center">Todas las denuncias son anónimas</p>
+      <ion-button id="report-btn">Realizar una denuncia</ion-button>
+    </section>
+  </article>
+  
+  <div class="div2"></div>
+  <div class="div3"></div>
 </ion-content>
