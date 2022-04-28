@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   
   constructor() {}
+  ngOnInit(): void {
+    var slides = document.querySelector('ion-slides');
 
-  insert(){    
-    var div = document.getElementById("contenedor")
-    div.innerHTML = "<ion-label (click)='insert2()' style='color:black;'>Insertar elementos 5</ion-label>"
-  }
-
-  insert2(){
-    var div = document.getElementById("contenedor")
-    div.innerHTML = "<ion-button (click)='insert()' style='color:black;'>Insertar elementos</ion-button>"
-  }
+    // Optional parameters to pass to the swiper instance.
+    // See https://swiperjs.com/swiper-api for valid options.
+    slides.options = {
+      initialSlide: 0,
+      speed: 400,
+      autoplay: true
+    }    
+  }      
 }

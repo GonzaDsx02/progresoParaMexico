@@ -14,7 +14,7 @@
       </button>
       <button class="menu-items">
         <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
-        Nosotros
+        ¿Quienes somos?
       </button>    
       <button class="menu-items">
         <!-- <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon> -->
@@ -26,43 +26,138 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true">
 
   <article id="index-container">
-    <ion-slides pager="true" class="slides" >
-      <ion-slide>
-        <ion-avatar class="carousel">
-          <img id="img-car" src="../assets/img/carousel.png" alt="Carrusel">    
+    <ion-slides pager="true" class="slides">
+      <ion-slide>  
+        <ion-avatar class="carousel">          
+          <img src="../assets/img/carousel.png" alt="img1" class="img-carousel">
         </ion-avatar>
       </ion-slide>    
       <ion-slide>
         <ion-avatar class="carousel">
-          <img id="img-car" src="../assets/img/brazo.png" alt="Carrusel">    
+          <img src="../assets/img/brazo.png" alt="img2" class="img-carousel">    
         </ion-avatar>
       </ion-slide>    
       <ion-slide>
         <ion-avatar class="carousel">
-          <img id="img-car" src="../assets/img/freedom.png" alt="Carrusel">    
+          <img src="../assets/img/freedom.png" alt="img3" class="img-carousel">    
         </ion-avatar>
       </ion-slide>    
       <ion-slide>
         <ion-avatar class="carousel">
-          <img id="img-car" src="../assets/img/friends.png" alt="Carrusel">    
+          <img src="../assets/img/friends.png" alt="img4" class="img-carousel">    
         </ion-avatar>
       </ion-slide>   
       <ion-slide>
         <ion-avatar class="carousel">
-          <img id="img-car" src="../assets/img/team.png" alt="Carrusel">    
+          <img src="../assets/img/team.png" alt="img5" class="img-carousel">    
         </ion-avatar>
-      </ion-slide>   
+      </ion-slide>         
     </ion-slides>
 
-    <section class="report">
-      <p align="center">Todas las denuncias son anónimas</p>
-      <ion-button id="report-btn">Realizar una denuncia</ion-button>
-    </section>
+    <section class="report">      
+      <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
+      <ion-button id="report-btn">        
+        Realizar una denuncia
+      </ion-button>
+    </section>      
+  </article>
+
+  <article id="info">        
+    <h1 align="center" class="info-items">PROMEX nace en el año 2013</h1>
+    <img src="../assets/img/logo.png" alt="logo">      
+    <h4 align="center" class="info-items">Preocupadas por trabajar para lograr una <b>equidad y justicia social</b>.</h4>        
+    <p align="center" class="info-items">Somos un equipo multidisciplinario trabajando en conjunto por un objetivo en común.</p>          
   </article>
   
-  <div class="div2"></div>
-  <div class="div3"></div>
+  <article id="introduction">
+    <section>
+      <h3 align="center" class="title"><b>Tienes derecho a vivir sin violencia. ¡Denuncia!</b></h3>
+      <p align="center">Las violencias contra las mujeres son acciones negativas sobre nosotras, causan daño físico, psicológico, patrimonial, económico, sexual y pueden llegar al feminicidio.</p>
+      <!-- <div class="div2"></div> -->
+    </section>
+
+    <section class="intro-sections">
+      <h4 align="center" class="subtitle">¿Qué tipo de violencia debo denunciar?</h4>
+      <p align="center">Nuestro objetivo fundamental es promover el desarrollo e inclusión de las personas; esto lo conseguimos con diversas actividades que nos permiten acercarnos a la gente, convivir, aprender y sembrar en ellas la semilla del cambio personal y comunitario; a través de talleres, cursos, gestiones, seguimientos, entre muchas cosas.</p>
+    </section>
+
+    <section class="intro-sections">
+      <p align="center" id="focused-intro-sec"><b>Queremos un mejor país para vivir y sabemos que para lograrlo debemos ser conscientes de nuestro papel fundamental en la transformación.</b></p>
+    </section>
+
+    <section align="center" class="intro-sections">
+      <p>Tenemos la convicción, las ganas y el entusiasmo por lograrlo. En colaboración con la sociedad civil, los sectores gubernamentales, privados y personas comprometidas con nuestros objetivos; haciendo acciones coordinadas para alcanzar un mismo fin.</p>
+    </section>
+  </article>  
+
+  <article id="v-types">
+    <h2 align="center" class="title"><b>Tipos de violencia</b></h2>
+    <div class="v-content"> 
+      <div class="v-item first-row">
+        <div class="v-title">
+          <ion-avatar>
+            <img src="../assets/img/v-fisica.png">
+          </ion-avatar>
+        </div>
+        <div class="v-text">
+          <div>
+            <h1>Física</h1>
+            <p>Todas las agresiones que atentan contra el cuerpo de una persona, ya sea a través de golpes, lanzamiento de objetos, encierro, sacudidas o estrujones, entre otras conductas que puedan ocasionar daños físicos.</p>
+          </div>          
+        </div>
+      </div>
+      <div class="v-item first-row">
+        <div class="v-title">
+          <ion-avatar>
+            <img src="../assets/img/v-sexual.png">
+          </ion-avatar>          
+        </div>
+        <div class="v-text">
+          <div>
+            <h1>Sexual</h1>
+            <p>Todas las relaciones o actos sexuales, físicos o verbales, no deseados ni aceptados por la otra persona. Puede presentarse hacia hombres o mujeres utilizando la fuerza o la coacción física, psicológica o cualquier otro mecanismo que anule o limite la voluntad personal. </p>
+          </div>          
+        </div>
+      </div>
+      <div class="v-item">
+        <div class="v-title">
+          <ion-avatar>
+            <img src="../assets/img/v-psico.png">
+          </ion-avatar>
+        </div>
+        <div class="v-text">
+          <div>
+            <h1>Psicológica ó emocional</h1>
+          <p>Toda acción u omisión destinada a degradar o controlar las acciones, comportamientos, creencias y decisiones de otras personas por medio de intimidación, manipulación, amenaza, humillación, aislamiento, o cualquier conducta que implique un perjuicio en la salud psicológica.</p>
+          </div>          
+        </div>
+      </div>      
+      <div class="v-item">
+        <div class="v-title">
+          <ion-avatar>
+            <img src="../assets/img/v-economica.png">
+          </ion-avatar>
+        </div>
+        <div class="v-text">
+          <div>
+            <h1>Económica</h1>
+            <p>El dinero como un factor para dominar o establecer relaciones de poder perjudiciales. Se puede manifestar cuando a la persona se le quita el dinero que gana, se le impide gastarlo en beneficio suyo o de su familia, o se le niega el dinero para controlar su independencia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <aside class="div3">    
+    <!-- <div class="div3"></div>     -->
+  </aside>
+
+  <article class="div2">
+    <!-- <div class="div2"></div> -->
+  </article>  
+
 </ion-content>
