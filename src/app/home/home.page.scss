@@ -23,6 +23,10 @@ ion-item.footer-item > p,
   position:relative;            
 }
 
+#logo{
+  width: 90px;    
+}
+
 .green-title{
   color:#39b54a;    
 }
@@ -62,7 +66,7 @@ p{
   text-align: justify;
 }
 
-@media only screen and (min-width: 0px) and (max-width: 599px){
+@media only screen and (min-width: 100px) and (max-width: 599px){
   .menu-bar{    
     padding:10px;
   }            
@@ -71,9 +75,9 @@ p{
     display: none;
   }    
 
-  #logo{
-    width: 90px;    
-  }
+  .purple{
+    color: #331832;
+  }  
 
   #index-container{    
     height: 70%;      
@@ -165,12 +169,8 @@ p{
 
   #index-container{    
     height: 100%;              
-  }  
-
-  #logo{
-    width:90px;
   }    
-  
+
   .menu-items{          
     color: #999;    
     margin-left: 10px;
@@ -305,12 +305,8 @@ p{
 
   .menu-button{
     display: none;
-  }
+  }  
 
-  #logo{
-    width:90px;
-  }    
-  
   .menu-items{          
     color: #999;    
     margin-left: 10px;

@@ -1,0 +1,107 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="light-bg">
+    <ion-buttons slot="start" class="menu-button">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>    
+    <ion-buttons slot="end" class="menu-container">
+      <button class="menu-items" [routerLink]="['/home']">
+        <!-- <ion-icon slot="icon-only" name="person-circle"></ion-icon> -->
+        Inicio
+      </button>
+      <button class="menu-items current">
+        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
+        Denunciar
+      </button>
+      <button class="menu-items">
+        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
+        ¿Quienes somos?
+      </button>    
+      <button class="menu-items">
+        <!-- <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon> -->
+        Ingresar
+      </button>
+    </ion-buttons>
+    <ion-title>      
+      <img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México">                  
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="send( f )"
+  #f = "ngForm">
+    <div id="container">
+      <h1 align="center">Formulario de denuncias</h1>
+      <div id="form-items">        
+        <ion-item class="item">
+          <ion-label>Tipo de violencia</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover" [(ngModel)]="violence_type" name="violence_type">
+            <ion-select-option value="physical">Física</ion-select-option>
+            <ion-select-option value="sexual">Sexual</ion-select-option>
+            <ion-select-option value="economic">Económica</ion-select-option>
+            <ion-select-option value="psycho">Psicológica/Emocional</ion-select-option>            
+            <ion-select-option value="any">Otra</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+        <ion-item class="item">
+          <ion-label>Tu género/Género de la victima</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover" [(ngModel)]="victim_gen" name="victim_gen">
+            <ion-select-option value="m">Masculino</ion-select-option>
+            <ion-select-option value="f">Femenino</ion-select-option>
+            <ion-select-option value="any">Prefiero no decirlo</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="item">
+          <ion-label>Género del agresor</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover" [(ngModel)]="aggressor_gen" name="aggressor_gen">
+            <ion-select-option value="m">Masculino</ion-select-option>
+            <ion-select-option value="f">Femenino</ion-select-option>
+            <ion-select-option value="any">Prefiero no decirlo</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="item">
+          <ion-label position="floating">Nombre del agresor</ion-label>
+          <ion-input [(ngModel)]="aggressor_name" name="aggressor_name"></ion-input>
+        </ion-item>
+
+        <ion-item class="item">
+          <ion-label>Tu rol</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover" [(ngModel)]="victim_role" name="victim_role">
+            <ion-select-option value="student">Estudiante</ion-select-option>
+            <ion-select-option value="teacher">Docente</ion-select-option>
+            <ion-select-option value="other">Otro</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="item">
+          <ion-label>El rol del agresor</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover" [(ngModel)]="aggressor_role" name="aggressor_role">
+            <ion-select-option value="student">Estudiante</ion-select-option>
+            <ion-select-option value="teacher">Docente</ion-select-option>
+            <ion-select-option value="other">Otro</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="item">
+          <ion-label>Institución donde sucedió</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover" [(ngModel)]="school" name="school">
+            <ion-select-option value="itt">ITT</ion-select-option>
+            <ion-select-option value="uan">UAN</ion-select-option>
+            <ion-select-option value="ut">UT</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="item">
+          <ion-label position="floating">Area del suceso</ion-label>
+          <ion-textarea [(ngModel)]="school_place" name="school_place"></ion-textarea>
+        </ion-item>
+      </div>
+      <ion-button type="submit" id="submit-button">
+        Enviar
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

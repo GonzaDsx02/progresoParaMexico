@@ -1,0 +1,76 @@
+  *{
+    font-family: 'Roboto', sans-serif;
+  }
+
+  div#container > h1{
+    color: #262262;
+  }
+
+  .light-bg{
+    --background: #fff;    
+  }
+
+  @media screen and (min-width: 1121px){ 
+    .menu-button{
+      display: none;
+    }
+  
+    .menu-container{
+      margin-right:5%;
+    }
+  
+    .menu-items{          
+      color: #999;    
+      margin-left: 10px;
+      font-size: 1.2em;    
+      background: none;    
+      cursor:pointer;
+    }
+  
+    .current{
+      color: #262262;
+    }
+  
+    .menu-items:hover{
+      color: #39b54a;
+    }    
+  
+    #logo{
+      width:90px;
+    }      
+
+    #container{
+      width:50%;
+      height: 800px;      
+      border-top: 3px solid #39b54a;
+      margin-left:25%;   
+      margin-top:5%;
+      margin-bottom:5%;
+      box-shadow: 2px 3px 10px 3px #888888;   
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    #form-items{
+      padding:20px 10px 10px 10px;
+    }
+
+    .item{
+      padding:10px;
+    }    
+
+    #submit-button{
+      width:100px;      
+      --border-radius: 50px;      
+      --background: #fff;
+      border: 2px solid #331832;
+      --color: #331832;
+      border-radius: 50px;
+      margin-top: 50px;
+    }
+
+    #submit-button:hover{
+      border: 2px solid #39b54a;
+      --color: #39b54a;
+    }
+  }  
