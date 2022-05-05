@@ -1,9 +1,46 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+<ion-header class="">
+  <ion-toolbar class="light-bg">
+    <ion-buttons slot="start" class="menu-button">
+      <ion-menu-button menu="main-menu" class="purple"></ion-menu-button>
+    </ion-buttons>    
+    <ion-buttons slot="end" class="menu-container">
+      <button class="menu-items" [routerLink]="['/home']">
+        Inicio
+      </button>
+      <button class="menu-items" [routerLink]="['/report']">
+        Denunciar
+      </button>
+      <button class="menu-items">
+        ¿Quienes somos?
+      </button>    
+      <button class="menu-items current" [routerLink]="['/login']">
+        Ingresar
+      </button>
+    </ion-buttons>
+    <ion-title>      
+      <img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México">                  
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form (ngSubmit)="login( f )"
+  #f = "ngForm">
+    <div id="container">
+      <h1 align="center">Ingresa a tu cuenta</h1>
+      <div id="form-items">
+        <ion-item class="item">
+          <ion-label position="floating">Correo electrónico</ion-label>
+          <ion-input [(ngModel)]="username" name="username"></ion-input>
+        </ion-item>
+        <ion-item class="item">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+        </ion-item>
+      </div>
+      <ion-button type="submit" id="submit-button">
+        Ingresar
+      </ion-button>
+    </div>
+  </form>
 </ion-content>
