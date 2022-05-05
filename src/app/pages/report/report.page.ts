@@ -12,6 +12,7 @@ export class ReportPage implements OnInit {
   victim_gen: string;
   aggressor_gen: string;
   aggressor_name: string;
+  place: string;
   victim_role: string;
   aggressor_role: string;
   school: string;
@@ -21,6 +22,7 @@ export class ReportPage implements OnInit {
     this.violence_type = "";
     this.victim_gen = ""
     this.aggressor_gen = "";
+    this.place = "";
     this.victim_role = "";
     this.aggressor_role = "";
     this.school = "";

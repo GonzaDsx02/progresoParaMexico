@@ -64,6 +64,11 @@
         </ion-item>
 
         <ion-item class="item">
+          <ion-label position="floating">Lugar</ion-label>
+          <ion-input [(ngModel)]="place" name="place"></ion-input>
+        </ion-item>
+
+        <ion-item class="item">
           <ion-label>Tu rol</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" [(ngModel)]="victim_role" name="victim_role">
             <ion-select-option value="student">Estudiante</ion-select-option>
