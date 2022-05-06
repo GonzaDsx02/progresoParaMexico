@@ -128,6 +128,17 @@
     .current{
       color: #262262;
     }
+
+    .current:before{ 
+      content:'';
+      position:absolute;       
+      top:30px;
+      transform: translateX(-3px);
+      width:75px;
+      height:3px;
+      background:#39b54a;
+      border-radius:3px;
+  }
   
     .menu-items:hover{
       color: #39b54a;
@@ -219,6 +230,17 @@
     .current{
       color: #262262;
     }
+
+    .current:before{ 
+      content:'';
+      position:absolute;       
+      top:30px;
+      transform: translateX(-3px);
+      width:93px;
+      height:3px;
+      background:#39b54a;
+      border-radius:3px;
+  }
 
     .menu-items:hover{
       color: #39b54a;

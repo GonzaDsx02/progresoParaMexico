@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +8,29 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginPage implements OnInit {
 
+  //variables para la validacion del formulario. **** No tocar plis ****
+  public formLogin: FormGroup;
+  public validationMessages: object;
+
   username: string;
   password: string;
 
-  constructor() { 
+  constructor(private fb: FormBuilder) { 
+
+    this.formLogin = this.fb.group({
+      us_name: ['', Validators.required],
+      pass: ['', Validators.required]
+    });
+
+    this.validationMessages = {
+      us_name: [
+        { type: 'required', message: "Obligatorio!" }
+      ],      
+      pass: [
+        { type: 'required', message: "Obligatorio!" }
+      ]
+    }
+
     this.username = "";
     this.password = "";
   }
@@ -19,8 +38,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login(form: NgForm) {
-    alert("Sesión iniciada")
+  login() {
+    //Aqui va todo el guateque
   }
 
 }

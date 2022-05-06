@@ -1,9 +1,47 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>about</ion-title>
+<ion-header class="">
+  <ion-toolbar class="light-bg">
+    <ion-buttons slot="start" class="menu-button">
+      <ion-menu-button menu="main-menu" class="purple"></ion-menu-button>
+    </ion-buttons>    
+    <ion-buttons slot="end" class="menu-container">
+      <button class="menu-items" [routerLink]="['/home']">
+        Inicio
+      </button>
+      <button class="menu-items" [routerLink]="['/report']">
+        Denunciar
+      </button>
+      <button class="menu-items current" [routerLink]="['/about']">
+        ¿Quienes somos?
+      </button>    
+      <button class="menu-items" [routerLink]="['/login']">
+        Ingresar
+      </button>
+    </ion-buttons>
+    <ion-title>      
+      <a href="/home"><img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México"></a>                        
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  
+  <ion-footer>
+    <div class="footer">
+      <div class="footer-content">
+        <h4 class="green-title">Contacto</h4>      
+        <ion-item lines="none" class="footer-item">
+          <ion-icon name="call-outline"></ion-icon>
+          <p>311 264 0466</p>
+        </ion-item>        
+        <ion-item lines="none" class="footer-item">
+          <ion-icon name="logo-facebook"></ion-icon>
+          <p>/promexac</p>
+        </ion-item>        
+        <ion-item lines="none" class="footer-item">
+          <ion-icon name="mail-outline"></ion-icon>
+          <p>contacto@progresoparamexico.org</p>        
+        </ion-item>
+      </div>      
+    </div>    
+  </ion-footer>
 </ion-content>

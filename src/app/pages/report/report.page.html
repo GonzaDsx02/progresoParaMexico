@@ -10,7 +10,7 @@
       <button class="menu-items current" [routerLink]="['/report']">
         Denunciar
       </button>
-      <button class="menu-items">
+      <button class="menu-items" [routerLink]="['/about']">
         ¿Quienes somos?
       </button>    
       <button class="menu-items" [routerLink]="['/login']">
@@ -18,13 +18,13 @@
       </button>
     </ion-buttons>
     <ion-title>            
-      <img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México">                          
+      <a href="/home"><img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México"></a>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="formLogin">
+  <form [formGroup]="formReports">
     <div id="container">
       <h1 align="center">Formulario de denuncias</h1>
       <div id="form-items">        
@@ -41,7 +41,7 @@
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['v_type']">
             <div
-              *ngIf="formLogin.get('v_type').hasError(val.type) && (formLogin.get('v_type').dirty || formLogin.get('v_type').touched)"
+              *ngIf="formReports.get('v_type').hasError(val.type) && (formReports.get('v_type').dirty || formReports.get('v_type').touched)"
             >
               {{val.message}}
             </div>
@@ -59,7 +59,7 @@
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['vic_gen']">
             <div
-              *ngIf="formLogin.get('vic_gen').hasError(val.type) && (formLogin.get('vic_gen').dirty || formLogin.get('vic_gen').touched)"
+              *ngIf="formReports.get('vic_gen').hasError(val.type) && (formReports.get('vic_gen').dirty || formReports.get('vic_gen').touched)"
             >
               {{val.message}}
             </div>
@@ -77,7 +77,7 @@
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['ag_gen']">
             <div
-              *ngIf="formLogin.get('ag_gen').hasError(val.type) && (formLogin.get('ag_gen').dirty || formLogin.get('ag_gen').touched)"
+              *ngIf="formReports.get('ag_gen').hasError(val.type) && (formReports.get('ag_gen').dirty || formReports.get('ag_gen').touched)"
             >
               {{val.message}}
             </div>
@@ -91,7 +91,7 @@
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['ag_name']">
             <div
-              *ngIf="formLogin.get('ag_name').hasError(val.type) && (formLogin.get('ag_name').dirty || formLogin.get('ag_name').touched)"
+              *ngIf="formReports.get('ag_name').hasError(val.type) && (formReports.get('ag_name').dirty || formReports.get('ag_name').touched)"
             >
               {{val.message}}
             </div>
@@ -105,7 +105,7 @@
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['place_form']">
             <div
-              *ngIf="formLogin.get('place_form').hasError(val.type) && (formLogin.get('place_form').dirty || formLogin.get('place_form').touched)"
+              *ngIf="formReports.get('place_form').hasError(val.type) && (formReports.get('place_form').dirty || formReports.get('place_form').touched)"
             >
               {{val.message}}
             </div>
@@ -123,7 +123,7 @@
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['vic_role']">
             <div
-              *ngIf="formLogin.get('vic_role').hasError(val.type) && (formLogin.get('vic_role').dirty || formLogin.get('vic_role').touched)"
+              *ngIf="formReports.get('vic_role').hasError(val.type) && (formReports.get('vic_role').dirty || formReports.get('vic_role').touched)"
             >
               {{val.message}}
             </div>
@@ -141,7 +141,7 @@
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['ag_role']">
             <div
-              *ngIf="formLogin.get('ag_role').hasError(val.type) && (formLogin.get('ag_role').dirty || formLogin.get('ag_role').touched)"
+              *ngIf="formReports.get('ag_role').hasError(val.type) && (formReports.get('ag_role').dirty || formReports.get('ag_role').touched)"
             >
               {{val.message}}
             </div>
@@ -159,7 +159,7 @@
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['school_form']">
             <div
-              *ngIf="formLogin.get('school_form').hasError(val.type) && (formLogin.get('school_form').dirty || formLogin.get('school_form').touched)"
+              *ngIf="formReports.get('school_form').hasError(val.type) && (formReports.get('school_form').dirty || formReports.get('school_form').touched)"
             >
               {{val.message}}
             </div>
@@ -173,7 +173,7 @@
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['sc_place_form']">
             <div
-              *ngIf="formLogin.get('sc_place_form').hasError(val.type) && (formLogin.get('sc_place_form').dirty || formLogin.get('sc_place_form').touched)"
+              *ngIf="formReports.get('sc_place_form').hasError(val.type) && (formReports.get('sc_place_form').dirty || formReports.get('sc_place_form').touched)"
             >
               {{val.message}}
             </div>

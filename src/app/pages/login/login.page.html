@@ -10,7 +10,7 @@
       <button class="menu-items" [routerLink]="['/report']">
         Denunciar
       </button>
-      <button class="menu-items">
+      <button class="menu-items" [routerLink]="['/about']">
         ¿Quienes somos?
       </button>    
       <button class="menu-items current" [routerLink]="['/login']">
@@ -18,29 +18,52 @@
       </button>
     </ion-buttons>
     <ion-title>      
-      <img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México">                  
+      <a href="/home"><img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México"></a>                        
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="login( f )"
-  #f = "ngForm">
+  <form [formGroup]="formLogin">
     <div id="container">
       <h1 align="center">Ingresa a tu cuenta</h1>
       <div id="form-items">
         <ion-item class="item">
           <ion-label position="floating">Correo electrónico</ion-label>
-          <ion-input [(ngModel)]="username" name="username"></ion-input>
+          <ion-input [(ngModel)]="username" formControlName="us_name"></ion-input>
         </ion-item>
+        <div class="form_error">
+          <ng-container *ngFor="let val of validationMessages['us_name']">
+            <div
+              *ngIf="formLogin.get('us_name').hasError(val.type) && (formLogin.get('us_name').dirty || formLogin.get('us_name').touched)"
+            >
+              {{val.message}}
+            </div>
+          </ng-container>
+        </div>
+
         <ion-item class="item">
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+          <ion-input type="password" [(ngModel)]="password" formControlName="pass"></ion-input>
         </ion-item>
-      </div>
-      <ion-button type="submit" id="submit-button">
+        <div class="form_error">
+          <ng-container *ngFor="let val of validationMessages['pass']">
+            <div
+              *ngIf="formLogin.get('pass').hasError(val.type) && (formLogin.get('pass').dirty || formLogin.get('pass').touched)"
+            >
+              {{val.message}}
+            </div>
+          </ng-container>
+        </div>        
+      </div>      
+      <ion-button type="submit" id="submit-button" (click)="login()">
         Ingresar
       </ion-button>
+      <ion-item class="register">
+        <ion-label>
+          ¿Aun no tienes cuenta? <a href="#" class="reg-link">Registrate</a>
+        </ion-label>
+      </ion-item>
     </div>
   </form>
 </ion-content>

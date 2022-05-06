@@ -55,6 +55,7 @@ div#container > h1{
 }    
 
 #submit-button{
+    transition-duration:0.3s;
     width:100px;      
     --border-radius: 50px;      
     --background: #fff;
@@ -66,11 +67,25 @@ div#container > h1{
     --color-activated: #39b54a;
 }
 
-#submit-button:active{
+#submit-button:hover{
+    transition-duration:0.3s;
     --background-activated: #fff;
     --background-focused: #fff;
     border: 2px solid #39b54a;
     --color: #39b54a;
+}
+
+#submit-button:active{
+    --background-activated: #fff;
+    --background-focused: #fff;
+    border: 2px solid #331832;
+    --color: #331832;
+}
+
+.form_error{
+    text-align: left; 
+    margin-left: 20px;
+    color:red;
 }
 
 @media screen and (min-width:600px){
@@ -87,7 +102,18 @@ div#container > h1{
     }
     
     .current{
-        color: #262262;
+        color: #262262;                
+    }
+
+    .current:before{ 
+        content:'';
+        position:absolute;       
+        top:30px;
+        transform: translateX(-3px);
+        width:75px;
+        height:3px;
+        background:#39b54a;
+        border-radius:3px;
     }
     
     .menu-items:hover{
@@ -101,12 +127,31 @@ div#container > h1{
 
     #container{       
         width:50%;
-        height: 400px;      
+        height: 450px;      
         border-top: 3px solid #39b54a;
         margin-left:25%;   
         margin-top:5%;    
         box-shadow: 2px 3px 10px 3px #888888;   
         border-radius: 3px;
         text-align: center;
+    }
+
+    #form-items{
+        margin-top:5%;
+        margin-left:5%;
+        margin-right:5%;
+    }
+
+    .register{
+        width:45%;
+        margin-left:30%;
+    }
+
+    .reg-link{
+        text-decoration:none;
+    }
+
+    .reg-link:hover{        
+        color: #39b54a;
     }
 }

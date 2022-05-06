@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-report',
@@ -8,7 +8,8 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 })
 export class ReportPage implements OnInit {
 
-  public formLogin: FormGroup;
+  //variables para la validacion del formulario. **** No tocar plis ****
+  public formReports: FormGroup;
   public validationMessages: object;
 
 
@@ -28,7 +29,7 @@ export class ReportPage implements OnInit {
   //----------------------------------------------------------
 
   constructor(private fb: FormBuilder) { 
-    this.formLogin = this.fb.group({
+    this.formReports = this.fb.group({
       v_type: ['', Validators.required],
       vic_gen: ['', Validators.required],
       ag_gen:['', Validators.required],
