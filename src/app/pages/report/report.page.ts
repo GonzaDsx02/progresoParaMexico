@@ -11,6 +11,10 @@ export class ReportPage implements OnInit {
   public formLogin: FormGroup;
   public validationMessages: object;
 
+
+  //VARIABLES QUE GUARDAN LA INFORMACIÓN PROVENIENTE DEL HTML. 
+  //---------------YA ESTAN LISTAS PARA USARSE----------------
+
   violence_type: string;
   victim_gen: string;
   aggressor_gen: string;
@@ -20,6 +24,8 @@ export class ReportPage implements OnInit {
   aggressor_role: string;
   school: string;
   school_place: string;  
+
+  //----------------------------------------------------------
 
   constructor(private fb: FormBuilder) { 
     this.formLogin = this.fb.group({
@@ -79,7 +85,15 @@ export class ReportPage implements OnInit {
 
   send(){
     //Aqui van los codigos que envían el formulario a la base de datos
-    alert(this.victim_gen);
+    alert(this.violence_type
+      +"\n"+this.victim_gen
+      +"\n"+this.aggressor_gen
+      +"\n"+this.aggressor_name
+      +"\n"+this.place
+      +"\n"+this.victim_role
+      +"\n"+this.aggressor_role
+      +"\n"+this.school
+      +"\n"+this.school_place);
   }
 
 }
