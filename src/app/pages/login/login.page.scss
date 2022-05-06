@@ -88,6 +88,18 @@ div#container > h1{
     color:red;
 }
 
+.reg-link{
+    text-decoration:none;
+}
+
+.reg-link:hover{        
+    color: #39b54a;
+}
+
+.register{
+    width:90%;
+    margin-left:5%;
+}    
 @media screen and (min-width:600px){
     .menu-button{
         display: none;
@@ -145,13 +157,5 @@ div#container > h1{
     .register{
         width:45%;
         margin-left:30%;
-    }
-
-    .reg-link{
-        text-decoration:none;
-    }
-
-    .reg-link:hover{        
-        color: #39b54a;
-    }
+    }    
 }
