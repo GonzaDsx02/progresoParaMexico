@@ -8,13 +8,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginPage implements OnInit {
 
-  //variables para la validacion del formulario. **** No tocar plis ****
+  /**
+  * Variables para la validación del formulario de login (No alterar)
+  * @var formLogin Formulario para iniciar sesión
+  * @var validationMessages Mensajes de validación
+  */
   public formLogin: FormGroup;
   public validationMessages: object;
 
   username: string;
   password: string;
-
+  /**
+   * Constructor de la clase
+   * @param formBuilder para crear el formulario
+   * @param validationMessages para crear el mensaje de validacion (Para requerir el campo de usuario y contraseña)
+   */
   constructor(private fb: FormBuilder) { 
 
     this.formLogin = this.fb.group({
@@ -38,6 +46,9 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Funcion para inicio de sesion
+  */
   login() {
     //Aqui va todo el guateque
   }
