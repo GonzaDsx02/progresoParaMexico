@@ -23,6 +23,26 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'violence-type/institucional',
+    loadChildren: () => import('./pages/violence/institucional/institucional.module').then( m => m.InstitucionalPageModule)
+  },
+  {
+    path: 'violence-type/sexual',
+    loadChildren: () => import('./pages/violence/sexual/sexual.module').then( m => m.SexualPageModule)
+  },
+  {
+    path: 'violence-type/laboral',
+    loadChildren: () => import('./pages/violence/laboral/laboral.module').then( m => m.LaboralPageModule)
+  },
+  {
+    path: 'violence-type/familiar',
+    loadChildren: () => import('./pages/violence/familiar/familiar.module').then( m => m.FamiliarPageModule)
+  },
+  {
+    path: 'violence-type/feminicidio',
+    loadChildren: () => import('./pages/violence/feminicidio/feminicidio.module').then( m => m.FeminicidioPageModule)
+  }
 ];
 
 @NgModule({
