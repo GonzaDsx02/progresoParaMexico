@@ -78,7 +78,36 @@ ion-item.footer-item > ion-icon{
     color: #fff; 
 }
 
-@media screen and (min-width:600px){
+@media screen and (min-width:672px){    
+    div{
+        background: red;
+    }
+
+    .card-obj{
+        width:70%;   
+        margin-left: 15%;                        
+    }
+}
+
+@media screen and (min-width:768px){    
+    div{
+        background: yellow;
+    }
+
+    .card-obj{        
+        margin-left:0px;     
+        width:45%;          
+        height: 450px;           
+        display: inline-block;  
+        vertical-align: middle;        
+    }
+
+    div.cards > div.card-obj:nth-child(even){                
+        margin-left: 5%;                
+    }
+}
+
+@media screen and (min-width:1200px){
     .menu-button{
         display: none;
     }

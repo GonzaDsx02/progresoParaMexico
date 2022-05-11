@@ -15,7 +15,8 @@ const routes: Routes = [
   {
     path: 'institucional',
     loadChildren: () => import('./pages/violence/institucional/institucional.module').then( m => m.InstitucionalPageModule)
-  },  {
+  },
+  {
     path: 'sexual',
     loadChildren: () => import('./pages/violence/sexual/sexual.module').then( m => m.SexualPageModule)
   },
@@ -31,8 +32,6 @@ const routes: Routes = [
     path: 'feminicidio',
     loadChildren: () => import('./pages/violence/feminicidio/feminicidio.module').then( m => m.FeminicidioPageModule)
   },
-<<<<<<< HEAD
-=======
   {
     path: 'report',
     loadChildren: () => import('./pages/report/report.module').then( m => m.ReportPageModule)
@@ -45,10 +44,6 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
-];
->>>>>>> d4bfb76777a04c9def913a91dc9cdb98f7519dea
-
-
 ];
 
 @NgModule({
