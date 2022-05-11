@@ -78,36 +78,14 @@ ion-item.footer-item > ion-icon{
     color: #fff; 
 }
 
-@media screen and (min-width:672px){    
-    div{
-        background: red;
-    }
-
+@media screen and (min-width:672px){        
     .card-obj{
         width:70%;   
         margin-left: 15%;                        
     }
 }
 
-@media screen and (min-width:768px){    
-    div{
-        background: yellow;
-    }
-
-    .card-obj{        
-        margin-left:0px;     
-        width:45%;          
-        height: 450px;           
-        display: inline-block;  
-        vertical-align: middle;        
-    }
-
-    div.cards > div.card-obj:nth-child(even){                
-        margin-left: 5%;                
-    }
-}
-
-@media screen and (min-width:1200px){
+@media screen and (min-width:768px){  
     .menu-button{
         display: none;
     }
@@ -142,9 +120,29 @@ ion-item.footer-item > ion-icon{
     .menu-container{
         display:flex;
         margin-right:5%;
-    }    
+    }        
+    
+    .card-obj{        
+        margin-left:0px;     
+        width:45%;          
+        height: 450px;           
+        display: inline-block;  
+        vertical-align: middle;        
+    }
+
+    div.cards > div.card-obj:nth-child(even){                
+        margin-left: 5%;                
+    }
+}
+
+@media screen and (min-width:1200px){    
+
+    div.cards > div.card-obj:nth-child(even){                
+        margin-left: 0%;                
+    }
 
     .card-obj{
+        margin-left:0px;
         width:30%;  
         height: 450px;        
         display: inline-block;  
@@ -152,11 +150,11 @@ ion-item.footer-item > ion-icon{
     }
 
     .centralized{
-        margin-left:5%;
+        margin-left:5% !important;
     }
 
     .last-row{
-        margin-left:20%;
+        margin-left:20% !important;
     }
 
     .footer{    
