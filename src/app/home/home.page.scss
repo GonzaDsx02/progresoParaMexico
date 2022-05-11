@@ -3,8 +3,15 @@
 }
 
 div > ion-button{
+  transition-duration: 1.0s;
   --border-color: #331832;
   --color: #331832;  
+}
+
+div > ion-button:hover{
+  transition-duration: 0.3s;
+  --border-color: #39b54a;
+  --color: #39b54a;  
 }
 
 ion-item.footer-item > p, 
