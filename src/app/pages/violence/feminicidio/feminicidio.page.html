@@ -4,7 +4,7 @@
       <ion-menu-button menu="main-menu" class="purple"></ion-menu-button>
     </ion-buttons>    
     <ion-buttons slot="end" class="menu-container">
-      <button class="menu-items current">
+      <button class="menu-items current" [routerLink]="['/home']">
         <!-- <ion-icon slot="icon-only" name="person-circle"></ion-icon> -->
         Inicio
       </button>
@@ -52,7 +52,7 @@
 
     <section class="report">
       <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
-      <ion-button id="report-btn">
+      <ion-button id="report-btn" [routerLink]="['/report']">
         Realizar una denuncia
       </ion-button>
     </section>
@@ -289,21 +289,9 @@ sin distinción de ubicación económica, social o cultural.
   <br>
   <br>
 
-
-
-
-
-
-
-
-
-
-
-
-
   <article>
 
-    <ion-card class="botom" routerLink="/institucional">
+    <ion-card class="botom" routerLink="/violence-type/institucional">
       <img src="../assets/img/institucional.jpg" />
       <ion-card-content>
         <ion-card-title>
@@ -315,7 +303,7 @@ sin distinción de ubicación económica, social o cultural.
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/sexual">
+    <ion-card class="botom" routerLink="/violence-type/sexual">
       <img src="../assets/img/sexual.jpg" />
       <ion-card-content>
         <ion-card-title>
@@ -327,7 +315,7 @@ sin distinción de ubicación económica, social o cultural.
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/laboral">
+    <ion-card class="botom" routerLink="/violence-type/laboral">
       <img src="../assets/img/laboral.jpg" />
       <ion-card-content>
         <ion-card-title>
@@ -339,7 +327,7 @@ sin distinción de ubicación económica, social o cultural.
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/feminicidio">
+    <ion-card class="botom" routerLink="/violence-type/feminicidio">
       <img src="../assets/img/feminicidio.jpg" />
       <ion-card-content>
         <ion-card-title>
@@ -351,7 +339,7 @@ sin distinción de ubicación económica, social o cultural.
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/familiar">
+    <ion-card class="botom" routerLink="/violence-type/familiar">
       <img src="../assets/img/repro.jpg" />
       <ion-card-content>
         <ion-card-title>
