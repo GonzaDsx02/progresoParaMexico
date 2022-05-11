@@ -1,28 +1,28 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="light-bg">
     <ion-buttons slot="start" class="menu-button">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
+      <ion-menu-button menu="main-menu" class="purple"></ion-menu-button>
     </ion-buttons>    
     <ion-buttons slot="end" class="menu-container">
       <button class="menu-items current">
         <!-- <ion-icon slot="icon-only" name="person-circle"></ion-icon> -->
         Inicio
       </button>
-      <button class="menu-items">
+      <button class="menu-items" [routerLink]="['/report']">
         <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
         Denunciar
       </button>
-      <button class="menu-items">
+      <button class="menu-items" [routerLink]="['/about']">
         <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
         ¿Quienes somos?
       </button>    
-      <button class="menu-items">
+      <button class="menu-items" [routerLink]="['/login']">
         <!-- <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon> -->
         Ingresar
       </button>
     </ion-buttons>
     <ion-title>      
-      <img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México">                  
+      <a href="/home"><img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México"></a>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -33,34 +33,34 @@
     <ion-slides pager="true" class="slides">
       <ion-slide>  
         <ion-avatar id="c1" class="carousel">          
-          <img src="../assets/img/carousel.png" alt="img1" class="img-carousel">
+          <img class="img-carousel" src="../assets/img/carousel.png" alt="img1">
         </ion-avatar>
       </ion-slide>    
       <ion-slide>
         <ion-avatar class="carousel">
-          <img src="../assets/img/brazo.png" alt="img2" class="img-carousel">    
+          <img class="img-carousel" src="../assets/img/brazo.png" alt="img2">    
         </ion-avatar>
       </ion-slide>    
       <ion-slide>
         <ion-avatar class="carousel">
-          <img src="../assets/img/freedom.png" alt="img3" class="img-carousel">    
+          <img class="img-carousel" src="../assets/img/freedom.png" alt="img3">    
         </ion-avatar>
       </ion-slide>    
       <ion-slide>
         <ion-avatar class="carousel">
-          <img src="../assets/img/friends.png" alt="img4" class="img-carousel">    
+          <img class="img-carousel" src="../assets/img/friends.png" alt="img4">    
         </ion-avatar>
       </ion-slide>   
       <ion-slide>
         <ion-avatar class="carousel">
-          <img src="../assets/img/team.png" alt="img5" class="img-carousel">    
+          <img class="img-carousel" src="../assets/img/team.png" alt="img5">    
         </ion-avatar>
       </ion-slide>         
     </ion-slides>
 
     <section class="report">      
       <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
-      <ion-button id="report-btn">        
+      <ion-button id="report-btn" [routerLink]="['/report']">        
         Realizar una denuncia
       </ion-button>
     </section>      

@@ -31,6 +31,22 @@ const routes: Routes = [
     path: 'feminicidio',
     loadChildren: () => import('./pages/violence/feminicidio/feminicidio.module').then( m => m.FeminicidioPageModule)
   },
+<<<<<<< HEAD
+=======
+  {
+    path: 'report',
+    loadChildren: () => import('./pages/report/report.module').then( m => m.ReportPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+];
+>>>>>>> d4bfb76777a04c9def913a91dc9cdb98f7519dea
 
 
 ];
