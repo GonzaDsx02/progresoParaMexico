@@ -1,0 +1,429 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="light-bg">
+    <ion-buttons slot="start" class="menu-button">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" class="menu-container">
+      <button class="menu-items current">
+        <!-- <ion-icon slot="icon-only" name="person-circle"></ion-icon> -->
+        Inicio
+      </button>
+      <button class="menu-items">
+        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
+        Denunciar
+      </button>
+      <button class="menu-items">
+        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
+        ¿Quienes somos?
+      </button>
+      <button class="menu-items">
+        <!-- <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon> -->
+        Ingresar
+      </button>
+    </ion-buttons>
+    <ion-title>
+      <img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <article class="title-violence">
+    <section>
+      <h3 align="center" class="title-violence-text">Violencia Institucional</h3>
+    </section>
+  </article>
+
+
+  <article class="introduction centralized light-bg">
+    <section>
+      <h3 align="center" class="title"><b> ¿Cuándo puede ocurrir la violencia
+          institucional?</b></h3>
+      <p align="center">Cuando has presentado una denuncia por ser víctima de algún tipo de violencia, o has sido
+        despojado injustamente de tus derechos y las instituciones no te han proporcionado un trato digno
+        de calidad y calidez, e incluso cuando las autoridades han tolerado la vulneración de derechos o
+        han participado en complicidad con tu agresor.</p>
+    </section>
+
+    <section class="report">
+      <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
+      <ion-button id="report-btn">
+        Realizar una denuncia
+      </ion-button>
+    </section>
+
+    <section>
+      <h3 align="center" class="title"><b> ¿Quién puede ejercer la violencia
+          institucional?</b></h3>
+      <p align="center">La Policía, el Ministerio Público, los jueces y los magistrados de tribunales, las autoridades
+        escolares o cualquier otro agente de autoridad por acciones u omisiones que violenten tus derechos y/o atenten
+        contra tu dignidad e integridad personal y familiar.</p>
+    </section>
+
+  </article>
+
+  <article class="message-violence">
+    <section>
+      <h3 align="center" class="message-violence-text">!NO TE CALLES¡</h3>
+      <h3 align="subtitle" class="message-violence-text">RECUERDA QUE DENUNCIAR NO TIENE NINGUN COSTO</h3>
+    </section>
+  </article>
+
+  <article class="introductionbg">
+    <section>
+      <h3 align="center" class="title"><b> ¿Dónde denunciar?</b></h3>
+      <p align="center"><b>ATENCION TEMPRANA FISCALIA DEL ESTADO</b></p>
+      <p align="center">Tecnológico No. 3200 Oriente, Ciudad Industrial, 63195 Tepic, Nay.</p>
+      <p align="center">311-129-60-00 </p>
+
+      <p align="center"><b>COMISION MUNICIPAL DE LOS DERECHOS HUMANOS DE TEPIC</b></p>
+      <p align="center">Membrillo Col. Comerciantes Tepic, Nay.</p>
+      <p align="center">311-378-99-43 </p>
+
+      
+      <p align="center"><b>COMISION DE DEFENSA DE LOS DERECHOS HUMANOS DEL ESTADO DE NAYARIT</b></p>
+      <p align="center">Encino 18, Col. San juan Esq. Jacarandas Tepic, Nay.</p>
+      <p align="center">311-378-99-43 </p>
+      
+    </section>
+  
+  </article>  
+
+  
+
+
+  <br><br><br><br>
+  <article id="v-types" class="centralized">
+    <h2 align="center" class="title"><b><br>Casos en los que puedes acudir
+        a denunciar si eres víctima de algún
+        tipo de violencia institucional</b></h2>
+    <div class="v-content">
+      <div class="v-item first-row">
+        <div class="v-title md">
+          <!--  <ion-avatar>
+             <img src="">
+            </ion-avatar> -->
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si...</h1>
+            <p>Acudiste con alguna autoridad federal
+              a denunciar algún tipo de maltrato o
+              violencia física, psicológica, sexual, económica o patrimonial, y la autoridad se
+              negó, sin fundamento, a ejercer las atribuciones que legalmente le corresponden en relación con tales
+              ilícitos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="v-item first-row">
+        <div class="v-title md">
+          <!-- <ion-avatar>
+              <img src="../assets/img/v-sexual.png">
+            </ion-avatar>      -->
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si</h1>
+            <p>Has recibido un trato indigno por parte
+              del Ministerio Público al momento de denunciar violencia por parte de tu pareja. </p>
+          </div>
+        </div>
+      </div>
+      <div class="v-item first-row">
+        <div class="v-title md">
+          <!--   <ion-avatar>
+              <img src="../assets/img/v-psico.png">
+            </ion-avatar> -->
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si te has enterado a destiempo que ya perdiste la patria potestad de tus hijos/as,
+              la custodia o que estás divorciada sin haber recibido ninguna notificación.</p>
+          </div>
+        </div>
+      </div>
+      <div class="v-item first-row">
+        <div class="v-title md">
+          <!-- <ion-avatar>
+              <img src="../assets/img/v-economica.png">
+            </ion-avatar> -->
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si se ha cometido algún tipo de violencia hacia ti con la tolerancia o anuencia
+              de algún servidor público o autoridad
+              federal.</p>
+          </div>
+        </div>
+      </div>
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si algún servidor público o autoridad federal ha hecho uso de su cargo, poder
+              o influencia para quebrantar las leyes y
+              poner trabas y obstáculos que te impidan el acceso a la justicia.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si estás en un proceso de divorcio y te
+              han amenazado con quitarte a tus hijos/as o meterte a la cárcel.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si al presentar una denuncia ante la autoridad federal o servidor público fuiste
+              ignorado o discriminado.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si has sido víctima de acoso u hostigamiento sexual o laboral y las autoridades no han actuado.</p>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si te han amenazado con despedirte de
+              tu trabajo o te han despedido por estar
+              embarazada.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si en la escuela o en el trabajo has sido
+              víctima de acoso u hostigamiento sexual y las autoridades de tu escuela o trabajo te han exigido pruebas
+              que ponen
+              en peligro tu integridad.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si el Ministerio Público te ha solicitado
+              dinero para agilizar los trámites de tu
+              denuncia o para consignar la averiguación previa.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si te han negado tu solicitud de medidas u órdenes de protección, aun cuando has demostrado que te encuentras
+              en situación de peligro por parte de tu
+              pareja.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si denunciaste una violación sexual y el
+              Ministerio Público reveló tu identidad y
+              otros datos personales al agresor.</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si cuando denunciaste un delito de agresión fuiste obligada a ser revisada por
+              una persona de otro sexo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="v-item">
+        <div class="v-title md">
+        </div>
+        <div class="v-text md">
+          <div>
+            <h1 class="subtitle">Si..</h1>
+            <p>Si has acudido al Ministerio Público a denunciar violencia familiar y fue minimizada tu denuncia o no fue tomada en
+              cuenta.</p>
+          </div>
+        </div>
+      </div>
+
+
+    
+
+
+    </div>
+  </article>
+
+
+
+
+  <article id="index-container">
+   
+      <ion-slide>
+        <ion-avatar class="carousel">
+          <img src="../assets/img/brazo.png" alt="img2" class="img-carousel">
+        </ion-avatar>
+      </ion-slide>
+    </article>  
+
+
+    <article class="introductionbg">
+      <section>
+        <h3 align="center" class="title"><b> Recuerda que denunciar es completamente !GRATIS¡</b></h3>
+        <p align="center">En México menos del 1% de las denuncias sobre violaciones graves a los derechos humanos ha resultado en una sentencia condenatoria para los responsables. Ayúdanos a que esto no siga ocurriendo exigiendo a las autoridades que investiguen, procesen y sancionen a los perpetradores de estas violaciones.</p>
+      </section>
+    </article>
+      
+    
+       
+
+    
+
+
+
+
+
+
+
+
+  <article>
+
+  <ion-card class="botom"  routerLink="/institucional">
+    <img src="../assets/img/institucional.jpg" />
+    <ion-card-content>
+      <ion-card-title>
+        Violencia Institucional
+      </ion-card-title>
+      <p>
+        Son los actos u omisiones de las personas con calidad de servidor público.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="botom" routerLink="/sexual">
+    <img src="../assets/img/sexual.jpg" />
+    <ion-card-content>
+      <ion-card-title>
+        Violencia Sexual
+      </ion-card-title>
+      <p>
+        Cuando se manipula a realizar una actividad sexual no deseada.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="botom" routerLink="/laboral">
+    <img src="../assets/img/laboral.jpg" />
+    <ion-card-content>
+      <ion-card-title>
+        Violencia Laboral
+      </ion-card-title>
+      <p>
+        No temas denunciar, aún si quien te acosa es tu superior jerárquico.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="botom" routerLink="/feminicidio">
+    <img src="../assets/img/feminicidio.jpg" />
+    <ion-card-content>
+      <ion-card-title>
+        Feminicidio
+      </ion-card-title>
+      <p>
+        Las autoridades deben respetar la dignidad de las víctimas.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="botom" routerLink="/familiar">
+    <img src="../assets/img/repro.jpg" />
+    <ion-card-content>
+      <ion-card-title>
+        Violencia familiar.
+      </ion-card-title>
+      <p>
+        Los integrantes de la familia están obligados a evitar conductas que generen violencia familiar.
+      </p>
+    </ion-card-content>
+  </ion-card>
+</article>
+
+  <ion-footer>
+    <div class="footer">
+      <div class="footer-content">
+        <h4 class="green-title">Contacto</h4>
+        <ion-item lines="none" class="footer-item">
+          <ion-icon name="call-outline"></ion-icon>
+          <p>311 264 0466</p>
+        </ion-item>
+        <ion-item lines="none" class="footer-item">
+          <ion-icon name="logo-facebook"></ion-icon>
+          <p>/promexac</p>
+        </ion-item>
+        <ion-item lines="none" class="footer-item">
+          <ion-icon name="mail-outline"></ion-icon>
+          <p>contacto@progresoparamexico.org</p>
+        </ion-item>
+      </div>
+    </div>
+  </ion-footer>
+
+</ion-content>
