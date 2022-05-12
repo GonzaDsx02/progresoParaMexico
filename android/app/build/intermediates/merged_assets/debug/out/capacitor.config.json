@@ -1,0 +1,6 @@
+{
+	"appId": "ppm.gps.app",
+	"appName": "frontEndProgresoParaMexico",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
