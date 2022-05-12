@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">frontEndProgresoParaMexico</string>
+    <string name="title_activity_main">frontEndProgresoParaMexico</string>
+    <string name="package_name">ppm.gps.app</string>
+    <string name="custom_url_scheme">ppm.gps.app</string>
+</resources>
