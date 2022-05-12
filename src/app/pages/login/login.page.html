@@ -23,7 +23,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>  
+<ion-content>
   <form [formGroup]="formLogin">
     <div id="container">
       <h1 align="center">Ingresa a tu cuenta</h1>
@@ -59,11 +59,15 @@
       <ion-button type="submit" id="submit-button" (click)="login()">
         Ingresar
       </ion-button>
+     <!-- <ion-button type="submit" id="submit-button" (click)="registro()">
+        Registrar
+      </ion-button>-->
+
       <ion-item class="register">
         <ion-label>
-          ¿Aún no tienes cuenta? <a href="#" class="reg-link">Registrate</a>
+          ¿Aun no tienes cuenta? <a href="#" class="reg-link">Registrate</a>
         </ion-label>
       </ion-item>
     </div>
-  </form>  
+  </form>
 </ion-content>
