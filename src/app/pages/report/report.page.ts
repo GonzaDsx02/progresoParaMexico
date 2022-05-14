@@ -26,9 +26,12 @@ export class ReportPage implements OnInit {
   victim_gen: string;
   victim_role: string;  
   violence_type: string; 
+  level: string;
   school: string;   
   school_place: string;  
-  specific_place: string;  
+  description: string; 
+  proceed: boolean;
+  contact: string;
 
   //----------------------------------------------------------
   
@@ -60,12 +63,15 @@ export class ReportPage implements OnInit {
       v_type: ['', Validators.required],
       vic_gen: ['', Validators.required],
       ag_gen:['', Validators.required],
-      ag_name: ['', Validators.required],
-      place_form: ['', Validators.required],
+      ag_name: ['', Validators.required],      
       vic_role: ['', Validators.required],
       ag_role: ['', Validators.required],
       school_form: ['', Validators.required],
-      sc_place_form: ['', Validators.required]
+      sc_place_form: ['', Validators.required],
+      desc: ['', Validators.required],
+      lvl: ['', Validators.required],
+      proc: ['', Validators.required],
+      cont: ['']
     });
 
     this.validationMessages = {
@@ -104,9 +110,11 @@ export class ReportPage implements OnInit {
     this.victim_gen = "";
     this.victim_role = "";  
     this.violence_type = "";
+    this.level = "";
     this.school = "";    
     this.school_place = "";
-    this.specific_place = "";
+    this.description = "";
+    this.contact = "";
   }
 
   ngOnInit() {
@@ -137,9 +145,10 @@ export class ReportPage implements OnInit {
       +"\n"+this.victim_gen
       +"\n"+this.victim_role
       +"\n"+this.violence_type
+      +"\n"+this.level
       +"\n"+this.school
       +"\n"+this.school_place
-      +"\n"+this.specific_place);
+      +"\n"+this.description);
   }
 
 }

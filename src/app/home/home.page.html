@@ -32,7 +32,7 @@
   <article id="index-container">
     <ion-slides pager="true" class="slides">
       <ion-slide>  
-        <ion-avatar id="c1" class="carousel">          
+        <ion-avatar class="carousel">          
           <img class="img-carousel" src="../assets/img/carousel.png" alt="img1">
         </ion-avatar>
       </ion-slide>    
@@ -59,7 +59,7 @@
     </ion-slides>
 
     <section class="report">      
-      <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
+      <p align="center" class="title"><b>¡Todas las denuncias son anónimas!</b></p>
       <ion-button id="report-btn" [routerLink]="['/report']">        
         Realizar una denuncia
       </ion-button>
@@ -98,54 +98,54 @@
     <h2 align="center" class="title"><b>Tipos de violencia</b></h2>
     <div class="v-content"> 
       <div class="v-item first-row">
-        <div class="v-title md">
+        <div class="v-title">
           <ion-avatar>
             <img src="../assets/img/v-fisica.png">
           </ion-avatar>
         </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
             <h1 class="subtitle">Física</h1>
-            <p>Todas las agresiones que atentan contra el cuerpo de una persona, ya sea a través de golpes, lanzamiento de objetos, encierro, sacudidas o estrujones, entre otras conductas que puedan ocasionar daños físicos.</p>
+            <p align="justify">Todas las agresiones que atentan contra el cuerpo de una persona, ya sea a través de golpes, lanzamiento de objetos, encierro, sacudidas o estrujones, entre otras conductas que puedan ocasionar daños físicos.</p>
           </div>          
         </div>
       </div>
       <div class="v-item first-row">
-        <div class="v-title md">
+        <div class="v-title">
           <ion-avatar>
             <img src="../assets/img/v-sexual.png">
           </ion-avatar>          
         </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
             <h1 class="subtitle">Sexual</h1>
-            <p>Todas las relaciones o actos sexuales, físicos o verbales, no deseados ni aceptados por la otra persona. Puede presentarse hacia hombres o mujeres utilizando la fuerza o la coacción física, psicológica o cualquier otro mecanismo que anule o limite la voluntad personal. </p>
+            <p align="justify">Todas las relaciones o actos sexuales, físicos o verbales, no deseados ni aceptados por la otra persona. Puede presentarse hacia hombres o mujeres utilizando la fuerza o la coacción física, psicológica o cualquier otro mecanismo que anule o limite la voluntad personal. </p>
           </div>          
         </div>
       </div>
       <div class="v-item">
-        <div class="v-title md">
+        <div class="v-title">
           <ion-avatar>
             <img src="../assets/img/v-psico.png">
           </ion-avatar>
         </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
             <h1 class="subtitle">Psicológica ó emocional</h1>
-          <p>Toda acción u omisión destinada a degradar o controlar las acciones, comportamientos, creencias y decisiones de otras personas por medio de intimidación, manipulación, amenaza, humillación, aislamiento, o cualquier conducta que implique un perjuicio en la salud psicológica.</p>
+          <p align="justify">Toda acción u omisión destinada a degradar o controlar las acciones, comportamientos, creencias y decisiones de otras personas por medio de intimidación, manipulación, amenaza, humillación, aislamiento, o cualquier conducta que implique un perjuicio en la salud psicológica.</p>
           </div>          
         </div>
       </div>      
       <div class="v-item">
-        <div class="v-title md">
+        <div class="v-title">
           <ion-avatar>
             <img src="../assets/img/v-economica.png">
           </ion-avatar>
         </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
             <h1 class="subtitle">Económica</h1>
-            <p>El dinero como un factor para dominar o establecer relaciones de poder perjudiciales. Se puede manifestar cuando a la persona se le quita el dinero que gana, se le impide gastarlo en beneficio suyo o de su familia, o se le niega el dinero para controlar su independencia.</p>
+            <p align="justify">El dinero como un factor para dominar o establecer relaciones de poder perjudiciales. Se puede manifestar cuando a la persona se le quita el dinero que gana, se le impide gastarlo en beneficio suyo o de su familia, o se le niega el dinero para controlar su independencia.</p>
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@
           <ion-card-title align="justify" class="title">Violencia Institucional </ion-card-title>
         </ion-card-header>      
         <ion-card-content class="card-cnt">
-          <p align="justify">La violencia institucional se caracteriza por el uso del poder del Estado para causar daño y reforzar los mecanismos establecidos de dominación.</p>          
+          <p align="justify" class="card-text">La violencia institucional se caracteriza por el uso del poder del Estado para causar daño y reforzar los mecanismos establecidos de dominación.</p>          
         </ion-card-content>
         <div>
           <ion-button fill="outline" routerLink="/violence-type/institucional">
@@ -175,7 +175,7 @@
           <ion-card-title align="justify" class="title">Violencia Sexual</ion-card-title>
         </ion-card-header>      
         <ion-card-content class="card-cnt">
-          <p align="justify">La Organización de las Naciones Unidas (ONU) define como cualquier acto sexual, la tentativa de consumarlo u otro acto dirigido contra la sexualidad mediante coacción, sin importar la relación entre el agresor y la víctima.</p>          
+          <p align="justify" class="card-text">La Organización de las Naciones Unidas (ONU) define como cualquier acto sexual, la tentativa de consumarlo u otro acto dirigido contra la sexualidad mediante coacción, sin importar la relación entre el agresor y la víctima.</p>          
         </ion-card-content>
         <div>
           <ion-button fill="outline" routerLink="/violence-type/sexual">
@@ -189,7 +189,7 @@
           <ion-card-title align="justify" class="title">Violencia Familiar</ion-card-title>
         </ion-card-header>      
         <ion-card-content class="card-cnt">
-          <p align="justify">La violencia familiar consiste en que una persona lleve a cabo actos o conductas de dominio, control o agresión física, psicológica, sexual, patrimonial o económica sobre su esposa, esposo concubina, concubinario, novio, novia, madre, padre, abuela, abuelo, nieta, nieto.</p>          
+          <p align="justify" class="card-text">La violencia familiar consiste en que una persona lleve a cabo actos o conductas de dominio, control o agresión física, psicológica, sexual, patrimonial o económica sobre su esposa, esposo concubina, concubinario, novio, novia, madre, padre, abuela, abuelo, nieta, nieto.</p>          
         </ion-card-content>
         <div>
           <ion-button fill="outline" routerLink="/violence-type/familiar">
@@ -203,7 +203,7 @@
           <ion-card-title align="justify" class="title">Violencia Laboral</ion-card-title>
         </ion-card-header>      
         <ion-card-content class="card-cnt">
-          <p align="justify">La violencia en el lugar de trabajo o la violencia ocupacional se refiere a la violencia, generalmente en forma de abuso físico o amenaza, que crea un riesgo para la salud y la seguridad de un empleado o de varios empleados.</p>          
+          <p align="justify" class="card-text">La violencia en el lugar de trabajo o la violencia ocupacional se refiere a la violencia, generalmente en forma de abuso físico o amenaza, que crea un riesgo para la salud y la seguridad de un empleado o de varios empleados.</p>          
         </ion-card-content>
         <div>
           <ion-button fill="outline" routerLink="/violence-type/laboral">
@@ -217,7 +217,7 @@
           <ion-card-title align="justify" class="title">Feminicidio</ion-card-title>
         </ion-card-header>      
         <ion-card-content class="card-cnt">
-          <p align="justify">La muerte violenta de las mujeres por razones de género, tipificada en nuestro sistema penal como feminicidio, es la forma más extrema de violencia contra la mujer.</p>          
+          <p align="justify" class="card-text">La muerte violenta de las mujeres por razones de género, tipificada en nuestro sistema penal como feminicidio, es la forma más extrema de violencia contra la mujer.</p>          
         </ion-card-content>
         <div>
           <ion-button fill="outline" routerLink="/violence-type/feminicidio">
