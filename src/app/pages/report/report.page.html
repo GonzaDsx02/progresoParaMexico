@@ -27,39 +27,16 @@
   <form [formGroup]="formReports">
     <div id="container">
       <h1 align="center">Formulario de denuncias</h1>
-      <div id="form-items">        
+      <div id="form-items">    
+
         <ion-item class="item">
-          <ion-label>Tipo de violencia</ion-label>
-          <ion-select placeholder="Seleccionar" interface="popover"  formControlName="v_type" [(ngModel)]="violence_type">
-            <ion-select-option value="physical">Física</ion-select-option>
-            <ion-select-option value="sexual">Sexual</ion-select-option>
-            <ion-select-option value="economic">Económica</ion-select-option>
-            <ion-select-option value="psycho">Psicológica/Emocional</ion-select-option>            
-            <ion-select-option value="any">Otra</ion-select-option>
-          </ion-select>
-        </ion-item>
+          <ion-label position="floating">Nombre del agresor</ion-label>
+          <ion-input formControlName="ag_name" [(ngModel)]="aggressor_name"></ion-input>
+        </ion-item>        
         <div class="form_error">
-          <ng-container *ngFor="let val of validationMessages['v_type']">
+          <ng-container *ngFor="let val of validationMessages['ag_name']">
             <div
-              *ngIf="formReports.get('v_type').hasError(val.type) && (formReports.get('v_type').dirty || formReports.get('v_type').touched)"
-            >
-              {{val.message}}
-            </div>
-          </ng-container>
-        </div>
-        
-        <ion-item class="item">
-          <ion-label>Tu género/Género de la victima</ion-label>
-          <ion-select placeholder="Seleccionar" interface="popover" formControlName="vic_gen" [(ngModel)]="victim_gen">
-            <ion-select-option value="m">Masculino</ion-select-option>
-            <ion-select-option value="f">Femenino</ion-select-option>
-            <ion-select-option value="any">Prefiero no decirlo</ion-select-option>
-          </ion-select>
-        </ion-item>
-        <div class="form_error">
-          <ng-container *ngFor="let val of validationMessages['vic_gen']">
-            <div
-              *ngIf="formReports.get('vic_gen').hasError(val.type) && (formReports.get('vic_gen').dirty || formReports.get('vic_gen').touched)"
+              *ngIf="formReports.get('ag_name').hasError(val.type) && (formReports.get('ag_name').dirty || formReports.get('ag_name').touched)"
             >
               {{val.message}}
             </div>
@@ -82,30 +59,20 @@
               {{val.message}}
             </div>
           </ng-container>
-        </div>
+        </div>      
 
         <ion-item class="item">
-          <ion-label position="floating">Nombre del agresor</ion-label>
-          <ion-input formControlName="ag_name" [(ngModel)]="aggressor_name"></ion-input>
-        </ion-item>        
-        <div class="form_error">
-          <ng-container *ngFor="let val of validationMessages['ag_name']">
-            <div
-              *ngIf="formReports.get('ag_name').hasError(val.type) && (formReports.get('ag_name').dirty || formReports.get('ag_name').touched)"
-            >
-              {{val.message}}
-            </div>
-          </ng-container>
-        </div>
-
-        <ion-item class="item">
-          <ion-label position="floating">Lugar</ion-label>
-          <ion-input formControlName="place_form" [(ngModel)]="place"></ion-input>
+          <ion-label>El rol del agresor</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover" formControlName="ag_role" [(ngModel)]="aggressor_role">
+            <ion-select-option value="student">Estudiante</ion-select-option>
+            <ion-select-option value="teacher">Docente</ion-select-option>
+            <ion-select-option value="other">Otro</ion-select-option>
+          </ion-select>
         </ion-item>
         <div class="form_error">
-          <ng-container *ngFor="let val of validationMessages['place_form']">
+          <ng-container *ngFor="let val of validationMessages['ag_role']">
             <div
-              *ngIf="formReports.get('place_form').hasError(val.type) && (formReports.get('place_form').dirty || formReports.get('place_form').touched)"
+              *ngIf="formReports.get('ag_role').hasError(val.type) && (formReports.get('ag_role').dirty || formReports.get('ag_role').touched)"
             >
               {{val.message}}
             </div>
@@ -113,7 +80,25 @@
         </div>
 
         <ion-item class="item">
-          <ion-label>Tu rol</ion-label>
+          <ion-label>Tu género/Género de la victima</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover" formControlName="vic_gen" [(ngModel)]="victim_gen">
+            <ion-select-option value="m">Masculino</ion-select-option>
+            <ion-select-option value="f">Femenino</ion-select-option>
+            <ion-select-option value="any">Prefiero no decirlo</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="form_error">
+          <ng-container *ngFor="let val of validationMessages['vic_gen']">
+            <div
+              *ngIf="formReports.get('vic_gen').hasError(val.type) && (formReports.get('vic_gen').dirty || formReports.get('vic_gen').touched)"
+            >
+              {{val.message}}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item class="item">
+          <ion-label>Tu rol/Rol de la victima</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="vic_role" [(ngModel)]="victim_role">
             <ion-select-option value="student">Estudiante</ion-select-option>
             <ion-select-option value="teacher">Docente</ion-select-option>
@@ -131,17 +116,19 @@
         </div>
 
         <ion-item class="item">
-          <ion-label>El rol del agresor</ion-label>
-          <ion-select placeholder="Seleccionar" interface="popover" formControlName="ag_role" [(ngModel)]="aggressor_role">
-            <ion-select-option value="student">Estudiante</ion-select-option>
-            <ion-select-option value="teacher">Docente</ion-select-option>
-            <ion-select-option value="other">Otro</ion-select-option>
+          <ion-label>Tipo de violencia</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover"  formControlName="v_type" [(ngModel)]="violence_type">
+            <ion-select-option value="physical">Física</ion-select-option>
+            <ion-select-option value="sexual">Sexual</ion-select-option>
+            <ion-select-option value="economic">Económica</ion-select-option>
+            <ion-select-option value="psycho">Psicológica/Emocional</ion-select-option>            
+            <ion-select-option value="any">Otra</ion-select-option>
           </ion-select>
         </ion-item>
         <div class="form_error">
-          <ng-container *ngFor="let val of validationMessages['ag_role']">
+          <ng-container *ngFor="let val of validationMessages['v_type']">
             <div
-              *ngIf="formReports.get('ag_role').hasError(val.type) && (formReports.get('ag_role').dirty || formReports.get('ag_role').touched)"
+              *ngIf="formReports.get('v_type').hasError(val.type) && (formReports.get('v_type').dirty || formReports.get('v_type').touched)"
             >
               {{val.message}}
             </div>
@@ -167,13 +154,27 @@
         </div>
 
         <ion-item class="item">
-          <ion-label position="floating">Area del suceso</ion-label>
-          <ion-textarea  formControlName="sc_place_form" [(ngModel)]="school_place"></ion-textarea>
+          <ion-label position="floating">Lugar de la institución</ion-label>
+          <ion-input formControlName="sc_place_form" [(ngModel)]="school_place"></ion-input>
         </ion-item>
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['sc_place_form']">
             <div
               *ngIf="formReports.get('sc_place_form').hasError(val.type) && (formReports.get('sc_place_form').dirty || formReports.get('sc_place_form').touched)"
+            >
+              {{val.message}}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item class="item">
+          <ion-label position="floating">Area especifica del suceso</ion-label>
+          <ion-textarea  formControlName="place_form" [(ngModel)]="specific_place"></ion-textarea>
+        </ion-item>
+        <div class="form_error">
+          <ng-container *ngFor="let val of validationMessages['place_form']">
+            <div
+              *ngIf="formReports.get('place_form').hasError(val.type) && (formReports.get('place_form').dirty || formReports.get('place_form').touched)"
             >
               {{val.message}}
             </div>
