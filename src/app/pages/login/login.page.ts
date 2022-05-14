@@ -71,9 +71,9 @@ export class LoginPage implements OnInit {
       })
       .catch(error => {  
         console.log(error);
+        this.showAlert('Datos Erroneos', 'Favor de verificar sus datos');
       }); // fin del catch
 
-      this.showAlert('Datos Erroneos', 'Favor de verificar sus datos');
   }
   //  Añadiendo el método para desplegar la alerta
   async showAlert(header, message) {
