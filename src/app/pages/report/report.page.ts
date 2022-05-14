@@ -20,15 +20,15 @@ export class ReportPage implements OnInit {
   //VARIABLES QUE GUARDAN LA INFORMACIÓN PROVENIENTE DEL HTML. 
   //---------------YA ESTAN LISTAS PARA USARSE----------------
 
-  violence_type: string;
-  victim_gen: string;
-  aggressor_gen: string;
   aggressor_name: string;
-  place: string;
-  victim_role: string;
+  aggressor_gen: string;
   aggressor_role: string;
-  school: string;
+  victim_gen: string;
+  victim_role: string;  
+  violence_type: string; 
+  school: string;   
   school_place: string;  
+  specific_place: string;  
 
   //----------------------------------------------------------
   
@@ -98,14 +98,15 @@ export class ReportPage implements OnInit {
       ]
     }
 
-    this.violence_type = "";
-    this.victim_gen = ""
+    this.aggressor_name = "";
     this.aggressor_gen = "";
-    this.place = "";
-    this.victim_role = "";
     this.aggressor_role = "";
-    this.school = "";
-    this.school_place = ""
+    this.victim_gen = "";
+    this.victim_role = "";  
+    this.violence_type = "";
+    this.school = "";    
+    this.school_place = "";
+    this.specific_place = "";
   }
 
   ngOnInit() {
@@ -130,15 +131,15 @@ export class ReportPage implements OnInit {
       Aqui van los codigos que envían el formulario a la base de datos
 
     */
-    alert(this.violence_type
-      +"\n"+this.victim_gen
+    alert(this.aggressor_name
       +"\n"+this.aggressor_gen
-      +"\n"+this.aggressor_name
-      +"\n"+this.place
-      +"\n"+this.victim_role
       +"\n"+this.aggressor_role
+      +"\n"+this.victim_gen
+      +"\n"+this.victim_role
+      +"\n"+this.violence_type
       +"\n"+this.school
-      +"\n"+this.school_place);
+      +"\n"+this.school_place
+      +"\n"+this.specific_place);
   }
 
 }
