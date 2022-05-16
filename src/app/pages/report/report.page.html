@@ -134,6 +134,36 @@
           </ng-container>
         </div>
 
+        <ion-item (click)="setDate()">
+          <ion-label>Fecha del suceso</ion-label>
+          <ion-badge class="empty" *ngIf="date==''">Seleccionar fecha</ion-badge>
+          <ion-badge class="choosed"*ngIf="date!=''">{{formattedDate}}</ion-badge>
+        </ion-item>
+        <div id="dateContainer">
+          <div>
+            <ion-datetime *ngIf="choosed==false"
+            [max]="actualDate"
+            min="2010-01-01"
+            presentation="date"
+            formControlName="date_val"
+            [(ngModel)]="date"
+            showDefaultButtons="true"
+            (ionChange)="getDate()"
+            (ionCancel)="getDate()"
+            (ionConfirm)="getDate()"
+            ></ion-datetime>
+          </div>
+        </div>
+        <div class="form_error">
+          <ng-container *ngFor="let val of validationMessages['date_val']">
+            <div
+              *ngIf="formReports.get('date_val').hasError(val.type) && (formReports.get('date_val').dirty || formReports.get('date_val').touched)"
+            >
+              {{val.message}}
+            </div>
+          </ng-container>
+        </div>
+
         <div>
           <div id="level">
             <ion-item class="item">
@@ -209,7 +239,7 @@
             <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
-        <small>Con esto permites que se te de asesoría para proceder con tu
+        <small>Con esto permites que se te dé asesoría para proceder con tu
           denuncia ante las autoridades. Todos tus datos seguirán siendo anónimos.
         </small>
         <div class="form_error">
@@ -224,7 +254,7 @@
 
         <ion-item class="item">
           <ion-label position="floating">Contacto</ion-label>
-          <ion-input formControlName="cont" [(ngModel)]="contact"></ion-input>
+          <ion-input formControlName="cont" [(ngModel)]="contact" placeholder="Opcional"></ion-input>
         </ion-item>
 
       </div>
