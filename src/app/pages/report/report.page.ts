@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { format, parseISO} from 'date-fns';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -19,6 +20,10 @@ export class ReportPage implements OnInit {
 
   //VARIABLES QUE GUARDAN LA INFORMACIÓN PROVENIENTE DEL HTML. 
   //---------------YA ESTAN LISTAS PARA USARSE----------------
+  choosed = true;
+  date = '';
+  actualDate=''
+  formattedDate = '';
 
   aggressor_name: string;
   aggressor_gen: string;
@@ -71,37 +76,24 @@ export class ReportPage implements OnInit {
       desc: ['', Validators.required],
       lvl: ['', Validators.required],
       proc: ['', Validators.required],
-      cont: ['']
+      cont: [''],
+      date_val: ['', Validators.required]
     });
 
     this.validationMessages = {
-      v_type: [
-        { type: 'required', message: "Obligatorio!" }
-      ],      
-      vic_gen: [
-        { type: 'required', message: "Obligatorio!" }
-      ],      
-      ag_gen: [
-        { type: 'required', message: "Obligatorio!" }
-      ],
-      ag_name: [
-        { type: 'required', message: "Obligatorio!" }
-      ],
-      place_form: [
-        { type: 'required', message: "Obligatorio!" }
-      ],
-      vic_role: [
-        { type: 'required', message: "Obligatorio!" }
-      ],
-      ag_role: [
-        { type: 'required', message: "Obligatorio!" }
-      ],
-      school_form: [
-        { type: 'required', message: "Obligatorio!" }
-      ],
-      sc_place_form: [
-        { type: 'required', message: "Obligatorio!" }
-      ]
+      v_type: [{ type: 'required', message: "Obligatorio!" }],      
+      vic_gen: [{ type: 'required', message: "Obligatorio!" }],      
+      ag_gen: [{ type: 'required', message: "Obligatorio!" }],
+      ag_name: [{ type: 'required', message: "Obligatorio!" }],
+      place_form: [{ type: 'required', message: "Obligatorio!" }],
+      vic_role: [{ type: 'required', message: "Obligatorio!" }],
+      ag_role: [{ type: 'required', message: "Obligatorio!" }],
+      school_form: [{ type: 'required', message: "Obligatorio!" }],
+      sc_place_form: [{ type: 'required', message: "Obligatorio!" }],
+      lvl:[{type: 'required', message: "Obligatorio!"}],
+      desc:[{type: 'required', message: "Obligatorio!"}],
+      proc:[{type: 'required', message: "Obligatorio!"}],
+      date_val:[{type: 'required', message: "Obligatorio!"}]
     }
 
     this.aggressor_name = "";
@@ -115,6 +107,7 @@ export class ReportPage implements OnInit {
     this.school_place = "";
     this.description = "";
     this.contact = "";
+    this.actualDate = this.getActualDate();
   }
 
   ngOnInit() {
@@ -133,12 +126,36 @@ export class ReportPage implements OnInit {
    * @variable school: Escuela en donde ocurrió la agresión
    * @variable school_place: Lugar de la escuela
    */
+
+//--------------------------------------------------------------------------------------------------------------------------------------------
+  //Funciones utilizadas para la seleccion y el formato de fechas seleccionadas. 
+
+  //obtiene la fecha actual. Utilizada en la variable {actualDate} para evitar que se seleccione una fecha que aun no ha pasado.
+  private getActualDate(){
+    return (new Date().getMonth()+1)<10 ? new Date().getFullYear() + '-0' + (new Date().getMonth()+1) + '-' + new Date().getDate() : new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + new Date().getDate()
+  }
+
+  //permite saber si la fecha ha sido o no seleccionada por el usuario
+  setDate(){
+    this.choosed = false;
+  }
+
+  //Guarda la fecha seleccionada dentro de la variable {formattedDate}. Esta variable es la que se debe utilizar para las operaciones en la BD.
+  getDate(){
+    this.choosed = true;
+    this.formattedDate = format(parseISO(this.date), 'd MMM, yyyy'); //El formato puede ser modificado a criterio del desarrollador.
+  }
+
+//--------------------------------------------------------------------------------------------------------------------------------------------
+
   send(){
     /*
 
       Aqui van los codigos que envían el formulario a la base de datos
 
     */
+
+    //Este alert permite visualizar los datos que fueron ingresados en el formulario
     alert(this.aggressor_name
       +"\n"+this.aggressor_gen
       +"\n"+this.aggressor_role
@@ -148,8 +165,9 @@ export class ReportPage implements OnInit {
       +"\n"+this.level
       +"\n"+this.school
       +"\n"+this.school_place
-      +"\n"+this.description);
+      +"\n"+this.description
+      +"\n"+this.formattedDate
+      +"\n"+this.contact);
   }
-
 }
 

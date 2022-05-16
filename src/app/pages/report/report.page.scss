@@ -1,9 +1,23 @@
+  ion-badge.empty{
+    --background: #331832;
+  }
+  ion-badge.choosed{
+    --background: #39b54a;
+  }
+
   *{
     font-family: 'Roboto', sans-serif;
   }  
 
   div#container > h1{
     color: #262262;
+  }
+
+  div#dateContainer{
+    width:100%;
+    height:100%;
+    display:grid;
+    place-items: center;
   }
 
   .light-bg{
@@ -59,6 +73,16 @@
   .item{
     padding:5px;
   }    
+
+  #level{
+    transition-duration: 0.3s;
+    width:100%;
+  }  
+
+  #school{
+    transition-duration: 0.3s;
+    width:100%;
+  }
 
   #submit-button{
     width:100px;      
@@ -159,6 +183,10 @@
       transition-duration: 0.3s;
       margin-right:5%;
       display: inline-block;
+    }
+
+    div#dateContainer{
+      place-items: end;
     }
   }
 
