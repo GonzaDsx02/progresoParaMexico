@@ -4,6 +4,11 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { Alert } from 'selenium-webdriver';
 import { AlertController, LoadingController } from '@ionic/angular';
+// estas 3 lineas siempre debemos ponerlas asi como estan para poder generar los pdf's
+// decia pau que era mejor hacer cada metodo en la pagina que ocupenes, y concuerdo
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-login',
@@ -82,6 +87,17 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }// end of the show alert method
+  
+  //Prueba de funcionalidad para el generador del PDF
+  pdf(){
+    let var1 = 871623
+    let docDefinition = {
+      header: 'Title of the pdf',
+      content: "Single test\t"+var1
+    };
+    pdfMake.createPdf(docDefinition).open()
+
+  }
 
   /*registro() {
     this.userService.register(this.formLogin.value)
