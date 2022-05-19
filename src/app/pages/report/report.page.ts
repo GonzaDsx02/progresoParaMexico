@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { format, parseISO} from 'date-fns';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
+import { DatabaseService } from 'src/app/services/database.service';
+import { Item } from './report.module';
 
 @Component({
   selector: 'app-report',
@@ -18,7 +21,7 @@ export class ReportPage implements OnInit {
   public validationMessages: object;
 
 
-  //VARIABLES QUE GUARDAN LA INFORMACIÓN PROVENIENTE DEL HTML. 
+  //VARIABLES QUE GUARDAN LA INFORMACIÓN PROVENIENTE DEL HTML.
   //---------------YA ESTAN LISTAS PARA USARSE----------------
   choosed = true;
   date = '';
@@ -29,18 +32,35 @@ export class ReportPage implements OnInit {
   aggressor_gen: string;
   aggressor_role: string;
   victim_gen: string;
-  victim_role: string;  
-  violence_type: string; 
+  victim_role: string;
+  violence_type: string;
   level: string;
-  school: string;   
-  school_place: string;  
-  description: string; 
+  school: string;
+  school_place: string;
+  description: string;
   proceed: boolean;
   contact: string;
 
+  newItem: Item = {
+    id:"",
+    aggressor_name: "",
+    aggressor_gen: "",
+    aggressor_role: "",
+    victim_gen: "",
+    victim_role: "",
+    violence_type: "",
+    level: "",
+    school: "",
+    school_place: "",
+    description: "",
+    proceed: "",
+    date: "",
+    contact: "",
+  }
+
   //----------------------------------------------------------
-  
-  
+
+
   /**
    * Constructor de la clase
    * @param formBuilder para crear el formulario
@@ -48,7 +68,7 @@ export class ReportPage implements OnInit {
    * v_type: Tipo de violencia reportada
    *
    * vic_gen: Genero de la víctima
-   * 
+   *
    * ag_gen: Genero del agresor
    *
    * ag_name: Nombre del agresor
@@ -63,12 +83,12 @@ export class ReportPage implements OnInit {
    *
    * sc_place_form: Lugar de la escuela en donde ocurrió la agresión
    */
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private firestore: DatabaseService, private alertController: AlertController) {
     this.formReports = this.fb.group({
       v_type: ['', Validators.required],
       vic_gen: ['', Validators.required],
       ag_gen:['', Validators.required],
-      ag_name: ['', Validators.required],      
+      ag_name: ['', Validators.required],
       vic_role: ['', Validators.required],
       ag_role: ['', Validators.required],
       school_form: ['', Validators.required],
@@ -81,8 +101,8 @@ export class ReportPage implements OnInit {
     });
 
     this.validationMessages = {
-      v_type: [{ type: 'required', message: "Obligatorio!" }],      
-      vic_gen: [{ type: 'required', message: "Obligatorio!" }],      
+      v_type: [{ type: 'required', message: "Obligatorio!" }],
+      vic_gen: [{ type: 'required', message: "Obligatorio!" }],
       ag_gen: [{ type: 'required', message: "Obligatorio!" }],
       ag_name: [{ type: 'required', message: "Obligatorio!" }],
       place_form: [{ type: 'required', message: "Obligatorio!" }],
@@ -100,10 +120,10 @@ export class ReportPage implements OnInit {
     this.aggressor_gen = "";
     this.aggressor_role = "";
     this.victim_gen = "";
-    this.victim_role = "";  
+    this.victim_role = "";
     this.violence_type = "";
     this.level = "";
-    this.school = "";    
+    this.school = "";
     this.school_place = "";
     this.description = "";
     this.contact = "";
@@ -128,7 +148,7 @@ export class ReportPage implements OnInit {
    */
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
-  //Funciones utilizadas para la seleccion y el formato de fechas seleccionadas. 
+  //Funciones utilizadas para la seleccion y el formato de fechas seleccionadas.
 
   //obtiene la fecha actual. Utilizada en la variable {actualDate} para evitar que se seleccione una fecha que aun no ha pasado.
   private getActualDate(){
@@ -143,11 +163,16 @@ export class ReportPage implements OnInit {
   //Guarda la fecha seleccionada dentro de la variable {formattedDate}. Esta variable es la que se debe utilizar para las operaciones en la BD.
   getDate(){
     this.choosed = true;
-    this.formattedDate = format(parseISO(this.date), 'd MMM, yyyy'); //El formato puede ser modificado a criterio del desarrollador.
+    this.formattedDate = format(parseISO(this.newItem.date), 'd MMM, yyyy'); //El formato puede ser modificado a criterio del desarrollador.
   }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
-
+async showAlert(header, message) {
+  const alert = await this.alertController.create({
+    header, message, buttons: ["ok"]
+  });
+  await alert.present();
+}
   send(){
     /*
 
@@ -156,18 +181,12 @@ export class ReportPage implements OnInit {
     */
 
     //Este alert permite visualizar los datos que fueron ingresados en el formulario
-    alert(this.aggressor_name
-      +"\n"+this.aggressor_gen
-      +"\n"+this.aggressor_role
-      +"\n"+this.victim_gen
-      +"\n"+this.victim_role
-      +"\n"+this.violence_type
-      +"\n"+this.level
-      +"\n"+this.school
-      +"\n"+this.school_place
-      +"\n"+this.description
-      +"\n"+this.formattedDate
-      +"\n"+this.contact);
+    console.log('Esto vamos a guardar->', this.newItem)
+    const data = this.newItem;
+    const enlace = 'Reports';
+    this.firestore.createDo(data,enlace);
+    this.showAlert('Datos registrados', 'Estos datos seran parte de la estadistica estatal.\n Si se le dara seguimiento a tu denuncia, espera a que nuestro equipo se ponga en contacto contigo.');
+    this.formReports.reset()
   }
 }
 

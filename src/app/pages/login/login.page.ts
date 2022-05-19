@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Alert } from 'selenium-webdriver';
 import { AlertController, LoadingController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -69,7 +70,7 @@ export class LoginPage implements OnInit {
         console.log(response);
         this.router.navigate(['/panel-admin']);
       })
-      .catch(error => {  
+      .catch(error => {
         console.log(error);
         this.showAlert('Datos Erroneos', 'Favor de verificar sus datos');
       }); // fin del catch
@@ -82,13 +83,11 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }// end of the show alert method
-
   /*registro() {
     this.userService.register(this.formLogin.value)
     .then(response=>{
       console.log(response);
     })
     .catch(error=>console.log(error));
-    
   }*/
 } // fin del on init
