@@ -19,3 +19,19 @@ import { ReportPage } from './report.page';
   declarations: [ReportPage]
 })
 export class ReportPageModule {}
+export interface Item {
+  
+  aggressor_name: string;
+  aggressor_gen: string;
+  aggressor_role: string;
+  victim_gen: string;
+  victim_role: string;  
+  violence_type: string; 
+  level: string;
+  school: string;   
+  school_place: string;  
+  description: string; 
+  proceed: string;
+  contact: string; 
+  date: string;
+}
