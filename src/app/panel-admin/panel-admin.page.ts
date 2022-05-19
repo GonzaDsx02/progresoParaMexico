@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';// estas 3 lineas siempre debemos ponerlas asi como estan para poder generar los pdf's
+import { UserService } from '../services/user.service';
+// estas 3 lineas siempre debemos ponerlas asi como estan para poder generar los pdf's
 // decia pau que era mejor hacer cada metodo en la pagina que ocupenes, y concuerdo
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { DataApiService } from '../services/data-api.service';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -13,13 +15,17 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 })
 export class PanelAdminPage implements OnInit {
 
-  constructor(private userService: UserService,
-    private router : Router
-    ) {
+  constructor(
+    private userService: UserService,
+    private router : Router,
+    private dataApi : DataApiService
+    ) { }
 
-   }
+    public reports = [];
+    public report = '';
 
   ngOnInit() {
+    this.dataApi.getAllReports().subscribe(reports => { console.log('Reports', reports)});
   }
 
   signOut(){

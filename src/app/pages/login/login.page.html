@@ -2,7 +2,7 @@
   <ion-toolbar class="light-bg">
     <ion-buttons slot="start" class="menu-button">
       <ion-menu-button menu="main-menu" class="purple"></ion-menu-button>
-    </ion-buttons>    
+    </ion-buttons>
     <ion-buttons slot="end" class="menu-container">
       <button class="menu-items" [routerLink]="['/home']">
         Inicio
@@ -12,18 +12,18 @@
       </button>
       <button class="menu-items" [routerLink]="['/about']">
         ¿Quienes somos?
-      </button>    
+      </button>
       <button class="menu-items current" [routerLink]="['/login']">
         Ingresar
       </button>
     </ion-buttons>
-    <ion-title>      
-      <a href="/home"><img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México"></a>                        
+    <ion-title>
+      <a href="/home"><img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México"></a>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>  
+<ion-content>
   <form [formGroup]="formLogin">
     <div id="container">
       <h1 align="center">Ingresa a tu cuenta</h1>
@@ -54,14 +54,10 @@
               {{val.message}}
             </div>
           </ng-container>
-        </div>        
-      </div>      
+        </div>
+      </div>
       <ion-button type="submit" id="submit-button" (click)="login()">
         Ingresar
-      </ion-button>
-      <!-- aqui va donde se manda a llamar el método para generar el pdf, solo es de prueba, no va a ir en la version final -->
-      <ion-button type="submit" (click)="pdf()">
-        Crear pdf
       </ion-button>
      <!-- <ion-button type="submit" id="submit-button" (click)="registro()">
         Registrar
@@ -73,5 +69,5 @@
         </ion-label>
       </ion-item>
     </div>
-  </form>  
+  </form>
 </ion-content>
