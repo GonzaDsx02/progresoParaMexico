@@ -1,12 +1,12 @@
 export const environment = {
   firebase: {
-    projectId: 'progresoparamexico-3a82d',
-    appId: '1:3231121015:web:8bcb2d2acfb1e3ffd3d072',
-    storageBucket: 'progresoparamexico-3a82d.appspot.com',
-    locationId: 'us-central',
-    apiKey: 'AIzaSyARtMmlG7_mgQZoBRPzLRvzGRIfDYKS_Qk',
-    authDomain: 'progresoparamexico-3a82d.firebaseapp.com',
-    messagingSenderId: '3231121015',
+    apiKey: "AIzaSyBNidqsgvOJouy0_eHCvnsVbxuWUoBI3x4",
+    authDomain: "progresomex-gps.firebaseapp.com",
+    projectId: "progresomex-gps",
+    storageBucket: "progresomex-gps.appspot.com",
+    messagingSenderId: "19383712365",
+    appId: "1:19383712365:web:229928bb6f56d292dfdd64",
+    measurementId: "G-LF08RKM7L2"
   },
   production: true
 };
