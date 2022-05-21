@@ -71,6 +71,10 @@ div > ion-button:hover{
   padding: 10%;
   text-align:center;  
 }
+.report2{
+  padding: 10%;
+  text-align:center;  
+}
 
 .report:before{ 
   content:'';
@@ -83,6 +87,14 @@ div > ion-button:hover{
   border-radius:3px;
   transition-duration: 0.3s;
   animation: 1s jump infinite;
+}
+
+.report2:before{ 
+  content:'';
+  position: absolute;
+  width: 100px;
+  height:100px;
+ 
 }
 
 @keyframes jump {
@@ -103,9 +115,24 @@ div > ion-button:hover{
   transform: translateX(-183px)  translateY(190px);
 }
 
+
+.report2:after{
+  color: #331832;
+  position:absolute;
+  width: 190px;
+  height: 60px;
+}
+
 #report-btn{    
   --background: red;
   --border-radius: 50px;
+  position:relative;
+}
+
+#report2-btn{    
+  --background: red;
+  --border-radius: 50px;
+  width:30%;
   position:relative;
 }
 
@@ -195,6 +222,10 @@ ion-item.footer-item > ion-icon{
     padding: 5%;
     text-align:center;  
   }
+  .report2{
+    padding: 5%;
+    text-align:center;  
+  }
 }
 
 @media only screen and (min-width: 720px){            
@@ -251,6 +282,12 @@ ion-item.footer-item > ion-icon{
     text-align:center;  
   }
 
+  .report2{
+    padding: 2%;
+    text-align:center;  
+  }
+
+
   .report:before{  
     transition-duration: 0.3s;   
     width: 25px;
@@ -259,6 +296,12 @@ ion-item.footer-item > ion-icon{
     border-bottom: 5px solid #39b54a;  
     transform: translateX(-50%) translateY(180px) rotate(45deg);  
     animation: 1s jump_s infinite;
+  }
+
+  
+  .report2:before{  
+    width: 50px;
+    height:50px;
   }
   
   @keyframes jump_s {
@@ -273,6 +316,8 @@ ion-item.footer-item > ion-icon{
   .report:after{    
     transform: translateX(-183px)  translateY(170px);
   }
+
+ 
 
   .gallery{
     transition-duration:0.3s;
@@ -298,6 +343,8 @@ ion-item.footer-item > ion-icon{
     animation: 1s jump_md infinite;
   }
   
+ 
+
   @keyframes jump_md {
     50%{
       transform: translateX(-50%) translateY(120px) rotate(45deg);   
@@ -310,6 +357,8 @@ ion-item.footer-item > ion-icon{
   .report:after{    
     transform: translateX(-183px)  translateY(120px);
   }
+
+
 
   .introduction{
     padding: 50px 100px;
@@ -327,6 +376,11 @@ ion-item.footer-item > ion-icon{
     text-align:center;
   }
 
+  .report2{
+    padding: 50px 0px;
+    text-align:center;
+  }
+
   .report:before{  
     transition-duration: 0.3s;   
     width: 15px;
@@ -335,6 +389,12 @@ ion-item.footer-item > ion-icon{
     border-bottom: 5px solid #39b54a;
     transform: translateX(70px) translateY(130px) rotate(45deg);  
     animation: 1s jump_lg infinite;
+  }
+
+  .report2:before{  
+    transition-duration: 0.3s;   
+    width: 15px;
+    height:15px;
   }
 
   @keyframes jump_lg {
@@ -349,6 +409,7 @@ ion-item.footer-item > ion-icon{
   .report:after{    
     transform: translateX(-190px)  translateY(85px);
   }
+
 
   .v-title, .v-text{
     display:inline-block;
