@@ -19,20 +19,22 @@
 }      
 
 .intro{
+    transition-duration:0.3s;
     position: relative;
-    width: 60%;
-    height: 400px;
-    margin-left: 15%;
+    width: 80%;
+    height: 480px;
+    margin-left: 10%;
     margin-top: 5%;
     background: #331832;
 }
 
 .intro-content{
+    transition-duration:0.3s;
     position:absolute;
-    width: 50%;
+    width:80%;
     height: 70%;
     margin-top: 8%;
-    margin-left: 5%;
+    margin-left: 10%;
 }
 
 .text{
@@ -88,9 +90,10 @@ ion-item.footer-item > ion-icon{
 }
 
 .areas{
-    display: inline-block;
-    width:20%;
-    height:200px;
+    transition-duration: 0.3s;
+    width:80%;
+    height:100px;
+    justify-content: center;
     color:#fff;
 }
 
@@ -183,7 +186,7 @@ ion-item.footer-item > ion-icon{
     color: #fff; 
 }
 
-@media screen and (min-width:672px){        
+@media screen and (min-width:672px){      
     .card-obj{
         width:70%;   
         margin-left: 15%;                        
@@ -192,10 +195,12 @@ ion-item.footer-item > ion-icon{
 
 @media screen and (min-width:768px){  
     .menu-button{
+        transition-duration:0.3s;
         display: none;
     }
 
-    .menu-items{          
+    .menu-items{    
+        transition-duration:0.3s;      
         color: #999;    
         margin-left: 10px;
         font-size: 1.2em;    
@@ -226,7 +231,25 @@ ion-item.footer-item > ion-icon{
         display:flex;
         margin-right:5%;
     }        
-    
+
+    .intro{
+        transition-duration:0.3s;
+        position: relative;
+        width: 60%;
+        height: 400px;
+        margin-left: 15%;
+        margin-top: 5%;
+        background: #331832;
+    }
+
+    .areas{
+        transition-duration: 0.3s;
+        display: inline-block;
+        width:25%;
+        height:200px;
+        color:#fff;
+    }  
+
     .card-obj{        
         margin-left:0px;     
         width:45%;          
@@ -244,6 +267,15 @@ ion-item.footer-item > ion-icon{
 
     div.cards > div.card-obj:nth-child(even){                
         margin-left: 0%;                
+    }
+
+    .intro-content{
+        transition-duration:0.3s;
+        position:absolute;
+        width: 50%;
+        height: 70%;
+        margin-top: 8%;
+        margin-left: 5%;
     }
 
     .card-obj{
