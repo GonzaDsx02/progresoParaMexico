@@ -167,17 +167,16 @@ export class ReportPage implements OnInit {
   }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
-async showAlert(header, message) {
-  const alert = await this.alertController.create({
-    header, message, buttons: ["ok"]
-  });
-  await alert.present();
-}
+  async showAlert(header, message) {
+    const alert = await this.alertController.create({
+      header, message, buttons: ["ok"]
+    });
+    await alert.present();
+  }
+
   send(){
     /*
-
       Aqui van los codigos que envían el formulario a la base de datos
-
     */
 
     //Este alert permite visualizar los datos que fueron ingresados en el formulario

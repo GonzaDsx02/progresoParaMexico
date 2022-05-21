@@ -136,8 +136,8 @@
 
         <ion-item (click)="setDate()">
           <ion-label>Fecha del suceso</ion-label>
-          <ion-badge class="empty" *ngIf="date==''">Seleccionar fecha</ion-badge>
-          <ion-badge class="choosed"*ngIf="date!=''">{{formattedDate}}</ion-badge>
+          <ion-badge class="empty" *ngIf="newItem.date==''">Seleccionar fecha</ion-badge>
+          <ion-badge class="choosed"*ngIf="newItem.date!=''">{{formattedDate}}</ion-badge>
         </ion-item>
         <div id="dateContainer">
           <div>
