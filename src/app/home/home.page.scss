@@ -71,10 +71,6 @@ div > ion-button:hover{
   padding: 10%;
   text-align:center;  
 }
-.report2{
-  padding: 10%;
-  text-align:center;  
-}
 
 .report:before{ 
   content:'';
@@ -87,14 +83,6 @@ div > ion-button:hover{
   border-radius:3px;
   transition-duration: 0.3s;
   animation: 1s jump infinite;
-}
-
-.report2:before{ 
-  content:'';
-  position: absolute;
-  width: 100px;
-  height:100px;
- 
 }
 
 @keyframes jump {
@@ -115,25 +103,23 @@ div > ion-button:hover{
   transform: translateX(-183px)  translateY(190px);
 }
 
-
-.report2:after{
-  color: #331832;
-  position:absolute;
-  width: 190px;
-  height: 60px;
-}
-
 #report-btn{    
   --background: red;
   --border-radius: 50px;
   position:relative;
 }
 
-#report2-btn{    
-  --background: red;
-  --border-radius: 50px;
-  width:30%;
-  position:relative;
+.violentometro{
+  width:100%;
+}
+
+#horizontal-viol{
+  transition-duration: 0.3s;
+  display:none;
+}
+
+.center{
+  text-align:center;
 }
 
 #info{        
@@ -222,9 +208,11 @@ ion-item.footer-item > ion-icon{
     padding: 5%;
     text-align:center;  
   }
-  .report2{
-    padding: 5%;
-    text-align:center;  
+
+  #vertical-viol{
+    transition-duration: 0.3s;
+    width:80%;
+    margin-left: 10%;
   }
 }
 
@@ -282,12 +270,6 @@ ion-item.footer-item > ion-icon{
     text-align:center;  
   }
 
-  .report2{
-    padding: 2%;
-    text-align:center;  
-  }
-
-
   .report:before{  
     transition-duration: 0.3s;   
     width: 25px;
@@ -298,12 +280,16 @@ ion-item.footer-item > ion-icon{
     animation: 1s jump_s infinite;
   }
 
-  
-  .report2:before{  
-    width: 50px;
-    height:50px;
+  #horizontal-viol{
+    transition-duration: 0.3s;
+    display:block;
   }
-  
+
+  #vertical-viol{
+    transition-duration: 0.3s;
+    display:none;
+  }
+
   @keyframes jump_s {
     50%{
       transform: translateX(-50%) translateY(170px) rotate(45deg);   
@@ -358,10 +344,14 @@ ion-item.footer-item > ion-icon{
     transform: translateX(-183px)  translateY(120px);
   }
 
-
-
   .introduction{
     padding: 50px 100px;
+  }
+
+  #horizontal-viol{
+    transition-duration: 0.3s;
+    width:80%;
+    margin-left: 10%;
   }
 }
 
@@ -376,11 +366,6 @@ ion-item.footer-item > ion-icon{
     text-align:center;
   }
 
-  .report2{
-    padding: 50px 0px;
-    text-align:center;
-  }
-
   .report:before{  
     transition-duration: 0.3s;   
     width: 15px;
@@ -389,12 +374,6 @@ ion-item.footer-item > ion-icon{
     border-bottom: 5px solid #39b54a;
     transform: translateX(70px) translateY(130px) rotate(45deg);  
     animation: 1s jump_lg infinite;
-  }
-
-  .report2:before{  
-    transition-duration: 0.3s;   
-    width: 15px;
-    height:15px;
   }
 
   @keyframes jump_lg {

@@ -27,11 +27,14 @@ export interface Item {
   aggressor_role: string;
   victim_gen: string;
   victim_role: string;
-  violence_type: string;
+  incident_time: string;
   level: string;
   school: string;
   school_place: string;
   description: string;
+  denuncied: string;
+  actions: string;
+  help: string;
   proceed: string;
   contact: string;
   date: string;

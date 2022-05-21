@@ -23,23 +23,7 @@ export class ReportPage implements OnInit {
 
   //VARIABLES QUE GUARDAN LA INFORMACIÓN PROVENIENTE DEL HTML.
   //---------------YA ESTAN LISTAS PARA USARSE----------------
-  choosed = true;
-  date = '';
-  actualDate=''
-  formattedDate = '';
-
-  aggressor_name: string;
-  aggressor_gen: string;
-  aggressor_role: string;
-  victim_gen: string;
-  victim_role: string;
-  violence_type: string;
-  level: string;
-  school: string;
-  school_place: string;
-  description: string;
-  proceed: boolean;
-  contact: string;
+  actualDate = this.getDate();
 
   newItem: Item = {
     id:"",
@@ -48,13 +32,16 @@ export class ReportPage implements OnInit {
     aggressor_role: "",
     victim_gen: "",
     victim_role: "",
-    violence_type: "",
+    incident_time: "",
     level: "",
     school: "",
     school_place: "",
     description: "",
+    denuncied: "",
+    actions: "",
+    help: "",
     proceed: "",
-    date: "",
+    date: this.actualDate,
     contact: "",
   }
 
@@ -85,49 +72,41 @@ export class ReportPage implements OnInit {
    */
   constructor(private fb: FormBuilder, private firestore: DatabaseService, private alertController: AlertController) {
     this.formReports = this.fb.group({
-      v_type: ['', Validators.required],
-      vic_gen: ['', Validators.required],
-      ag_gen:['', Validators.required],
-      ag_name: ['', Validators.required],
-      vic_role: ['', Validators.required],
-      ag_role: ['', Validators.required],
+      lvl: ['', Validators.required],
       school_form: ['', Validators.required],
+      vic_gen: ['', Validators.required],
+      vic_role: ['', Validators.required],
+      ag_name: ['', Validators.required],
+      ag_gen:['', Validators.required],
+      ag_role: ['', Validators.required],
+      inc_time: ['', Validators.required],
       sc_place_form: ['', Validators.required],
       desc: ['', Validators.required],
-      lvl: ['', Validators.required],
+      denuncied: ['', Validators.required],
+      actions: ['', Validators.required],
+      help: ['', Validators.required],
       proc: ['', Validators.required],
       cont: [''],
       date_val: ['', Validators.required]
     });
 
     this.validationMessages = {
-      v_type: [{ type: 'required', message: "Obligatorio!" }],
-      vic_gen: [{ type: 'required', message: "Obligatorio!" }],
-      ag_gen: [{ type: 'required', message: "Obligatorio!" }],
-      ag_name: [{ type: 'required', message: "Obligatorio!" }],
-      place_form: [{ type: 'required', message: "Obligatorio!" }],
-      vic_role: [{ type: 'required', message: "Obligatorio!" }],
-      ag_role: [{ type: 'required', message: "Obligatorio!" }],
-      school_form: [{ type: 'required', message: "Obligatorio!" }],
-      sc_place_form: [{ type: 'required', message: "Obligatorio!" }],
       lvl:[{type: 'required', message: "Obligatorio!"}],
+      school_form: [{ type: 'required', message: "Obligatorio!" }],
+      vic_gen: [{ type: 'required', message: "Obligatorio!" }],
+      vic_role: [{ type: 'required', message: "Obligatorio!" }],
+      ag_name: [{ type: 'required', message: "Obligatorio!" }],
+      ag_gen: [{ type: 'required', message: "Obligatorio!" }],
+      ag_role: [{ type: 'required', message: "Obligatorio!" }],
+      inc_time: [{ type: 'required', message: "Obligatorio!" }],
+      sc_place_form: [{ type: 'required', message: "Obligatorio!" }],
       desc:[{type: 'required', message: "Obligatorio!"}],
+      denuncied: [{ type: 'required', message: "Obligatorio!" }],
+      actions: [{ type: 'required', message: "Obligatorio!" }],
+      help: [{ type: 'required', message: "Obligatorio!" }],
       proc:[{type: 'required', message: "Obligatorio!"}],
       date_val:[{type: 'required', message: "Obligatorio!"}]
     }
-
-    this.aggressor_name = "";
-    this.aggressor_gen = "";
-    this.aggressor_role = "";
-    this.victim_gen = "";
-    this.victim_role = "";
-    this.violence_type = "";
-    this.level = "";
-    this.school = "";
-    this.school_place = "";
-    this.description = "";
-    this.contact = "";
-    this.actualDate = this.getActualDate();
   }
 
   ngOnInit() {
@@ -150,20 +129,14 @@ export class ReportPage implements OnInit {
 //--------------------------------------------------------------------------------------------------------------------------------------------
   //Funciones utilizadas para la seleccion y el formato de fechas seleccionadas.
 
-  //obtiene la fecha actual. Utilizada en la variable {actualDate} para evitar que se seleccione una fecha que aun no ha pasado.
+  //obtiene la fecha actual.
   private getActualDate(){
-    return (new Date().getMonth()+1)<10 ? new Date().getFullYear() + '-0' + (new Date().getMonth()+1) + '-' + new Date().getDate() : new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + new Date().getDate()
+    return (new Date().getMonth()+1)<10 ? new Date().getFullYear() + '-0' + (new Date().getMonth()+1) + '-' + new Date().getDate() : new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + new Date().getDate();
   }
 
-  //permite saber si la fecha ha sido o no seleccionada por el usuario
-  setDate(){
-    this.choosed = false;
-  }
-
-  //Guarda la fecha seleccionada dentro de la variable {formattedDate}. Esta variable es la que se debe utilizar para las operaciones en la BD.
+  //Guarda la fecha seleccionada dentro de la variable {actualDate}. Esta variable es la que se debe utilizar para las operaciones en la BD.
   getDate(){
-    this.choosed = true;
-    this.formattedDate = format(parseISO(this.newItem.date), 'd MMM, yyyy'); //El formato puede ser modificado a criterio del desarrollador.
+    return format(parseISO(this.getActualDate()), 'd MMM, yyyy'); //El formato puede ser modificado a criterio del desarrollador.
   }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
