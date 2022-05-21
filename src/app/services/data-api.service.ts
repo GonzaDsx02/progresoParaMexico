@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators'
 })
 export class DataApiService {
 
+
   constructor(private afs: AngularFirestore) {
     this.itemCollection = afs.collection<Item>('Reports');
     this.item = this.itemCollection.valueChanges()
@@ -27,9 +28,20 @@ export class DataApiService {
         return data;
       });
     }));
-  }
+  };
 
-  getMaestr(){
+  getAll2(){
+    return this.item = this.itemCollection.snapshotChanges()
+    .pipe(map(actions=> actions.map(
+      a=> {
+        const data = a.payload.doc.data() as Item;
+        const id = a.payload.doc.id;
+        return {id, ...data};
+      }
+    )));
+  };//fin del segundo método para tener todos los datos
+
+  getMaestro(){
     //return this.item = this
   }
 }
