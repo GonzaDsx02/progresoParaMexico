@@ -164,11 +164,11 @@ div > ion-button:hover{
 } 
 
 .footer{    
+  position:relative;
+  transition-duration: 0.3s;
   width:100%;
-  height:300px;
+  height:500px;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1047%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(51%2c 24%2c 50%2c 1)'%3e%3c/rect%3e%3cpath d='M1440 0L856.41 0L1440 221.47z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M856.41 0L1440 221.47L1440 234.32L562.13 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M562.13 0L1440 234.32L1440 408.82L416.58 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M416.5799999999999 0L1440 408.82L1440 465.6L325.12999999999994 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 560L600.25 560L0 340.44z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 340.44L600.25 560L744.47 560L0 164.32999999999998z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 164.32999999999998L744.47 560L1109.29 560L0 77.32999999999998z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 77.32999999999998L1109.29 560L1231.31 560L0 58.52999999999999z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1047'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
-  //display:inline-block;
-  position:absolute;
 }
 
 .footer:before{
@@ -185,8 +185,30 @@ div > ion-button:hover{
   margin-top:5%;    
 }
 
+.contact{
+  display:inline-block;
+  width: 100%;
+}
+
+.links{
+  display:inline-block;
+  width: 100%;
+  margin-top:50px;
+}
+
 .footer-item{
   --background: none;
+}
+
+.footer-item-links{
+  font-size: 1.2rem;
+  color: #fff;
+  margin-left:5%;
+  text-decoration: none;
+}
+
+.footer-item-links:hover{
+  color:#39b54a;
 }
 
 ion-item.footer-item > p, 
@@ -303,8 +325,6 @@ ion-item.footer-item > ion-icon{
     transform: translateX(-183px)  translateY(170px);
   }
 
- 
-
   .gallery{
     transition-duration:0.3s;
     width:47%;
@@ -317,6 +337,22 @@ ion-item.footer-item > ion-icon{
   .card-text{    
     height:130px;
   }
+
+  .footer{
+    transition-duration: 0.3s;
+    height:250px;
+  }
+
+  .contact{
+    width: 50%;
+    vertical-align: middle;
+  }
+  
+  .links{
+    width: 50%;
+    vertical-align: middle;
+    margin-top:0px;
+  }
 }
 
 @media only screen and (min-width: 960px){
@@ -328,8 +364,6 @@ ion-item.footer-item > ion-icon{
     transform: translateX(-50%) translateY(130px) rotate(45deg);  
     animation: 1s jump_md infinite;
   }
-  
- 
 
   @keyframes jump_md {
     50%{
