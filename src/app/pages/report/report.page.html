@@ -274,10 +274,10 @@
           </ng-container>
         </div>
 
-        <ion-item id="final" class="item" lines="none">
+        <ion-item *ngIf="newItem.proceed == 'yes'">
           <ion-label position="floating">Contacto</ion-label>
-          <ion-input formControlName="cont" [(ngModel)]="newItem.contact" placeholder="Opcional" type="tel"></ion-input>
-        </ion-item>
+          <ion-input formControlName="cont" [(ngModel)]="newItem.contact" placeholder="Opcional"></ion-input>
+        </ion-item>     
 
       </div>
       
