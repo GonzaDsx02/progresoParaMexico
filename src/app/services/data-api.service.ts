@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Item } from '../pages/report/report.module'
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators'
@@ -41,7 +41,16 @@ export class DataApiService {
     )));
   };//fin del segundo método para tener todos los datos
 
-  getMaestro(){
-    //return this.item = this
+  getAggressors(){
+    return this.itemCollection.snapshotChanges().pipe(
+      map(
+        actions => actions.map(
+          gender =>{
+            const boe = gender.payload.doc.data().aggressor_gen
+            return {boe};
+          }//fin de la funcion
+        )// fin del map de la funcion
+      )// fin del map
+    )// fin del pipe
   }
 }

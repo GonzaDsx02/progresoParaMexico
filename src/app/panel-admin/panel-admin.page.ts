@@ -6,7 +6,7 @@ import { UserService } from '../services/user.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { DataApiService } from '../services/data-api.service';
-import { Alignment, CanvasLine, Content, LineStyle, Margins } from 'pdfmake/interfaces';
+import { Alignment,Margins } from 'pdfmake/interfaces';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -24,9 +24,20 @@ export class PanelAdminPage implements OnInit {
 
     public reports = [];
     public report = '';
+    public MaleAggressors = 0;
+    public FemaleAggressors = 0;
 
   ngOnInit() {
-    this.dataApi.getAll2().subscribe(reports => { console.log('Reports', reports)});
+    //this.dataApi.getAll2().subscribe(reports => { console.log('Reports', reports)});
+    
+    this.dataApi.getAggressors().subscribe(gender => {
+      gender.forEach(m =>{
+        if(m.boe.endsWith("m")){
+          this.MaleAggressors++;
+        } else {this.FemaleAggressors++}
+      })// fin del foreach
+      console.log(this.MaleAggressors);
+    });
   }
 
   signOut(){
@@ -38,7 +49,6 @@ export class PanelAdminPage implements OnInit {
   }
 
   async pdf() {
-    let var1 = 29183;
     let docDefinition = {
       pageMargins:[40,60,40,60] as Margins,
       header: function(){
@@ -67,7 +77,8 @@ export class PanelAdminPage implements OnInit {
       //con esta funcion nos permite poner más de un solo elemento en el header
       //normalmente solo permite poner uno
       content: [
-        {text: "Pruebas del pdf para impresion " + var1,margin: [0,30,0,0] as Margins}
+        {text: 'Agresores hombres en todas las instituciones:  ' + this.MaleAggressors, style: 'normal'},
+        {text: 'Agresores mujeres en todas las instituciones:  ' + this.FemaleAggressors, style: 'normal'}
       ],// aqui es donde se agregaran las varibales y todo el texto 
       // que va a it contenido en el pdf
       images:{
@@ -84,6 +95,11 @@ export class PanelAdminPage implements OnInit {
           color:'grey',
           alignment:'justify' as Alignment
         }// fin del estilo 'Header'
+        ,normal:{
+          italics: true,
+          fontSize:14,
+          margin:[0,5,0,0] as Margins
+        }
       }// fin de la seccion para los estilos varios
     };
     pdfMake.createPdf(docDefinition).open()
