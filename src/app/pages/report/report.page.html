@@ -29,14 +29,14 @@
       <h1 align="center">Formulario de denuncias</h1>
       <div id="form-items">    
 
-        <ion-item>
+        <ion-item lines="none">
           <ion-label>Fecha del suceso</ion-label>
           <ion-badge class="choosed">{{actualDate}}</ion-badge>
         </ion-item>
 
         <div>
           <div id="level">
-            <ion-item class="item">
+            <ion-item class="item" lines="none">
               <ion-label>Nivel</ion-label>
               <ion-select placeholder="Seleccionar" interface="popover"  formControlName="lvl" [(ngModel)]="newItem.level">
                 <ion-select-option value="middle">Medio superior</ion-select-option>
@@ -54,7 +54,7 @@
             </div>
           </div>
           <div id="school">
-            <ion-item class="item">
+            <ion-item class="item" >
               <ion-label>Institución donde sucedió</ion-label>
               <ion-select placeholder="Seleccionar" interface="popover" formControlName="school_form" [(ngModel)]="newItem.school">
                 <ion-select-option value="itt">ITT</ion-select-option>
@@ -74,7 +74,7 @@
           </div>
         </div>
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label>Tu género/Género de la victima</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="vic_gen" [(ngModel)]="newItem.victim_gen">
             <ion-select-option value="m">Masculino</ion-select-option>
@@ -92,7 +92,7 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label>Tu rol/Rol de la victima</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="vic_role" [(ngModel)]="newItem.victim_role">
             <ion-select-option value="worker">Administrativo</ion-select-option>
@@ -110,7 +110,7 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label position="floating">Nombre del agresor</ion-label>
           <ion-input formControlName="ag_name" [(ngModel)]="newItem.aggressor_name"></ion-input>
         </ion-item>        
@@ -124,7 +124,7 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label>Género del agresor</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="ag_gen" [(ngModel)]="newItem.aggressor_gen">
             <ion-select-option value="m">Masculino</ion-select-option>
@@ -142,7 +142,7 @@
           </ng-container>
         </div>      
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label>El rol del agresor</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="ag_role" [(ngModel)]="newItem.aggressor_role">
             <ion-select-option value="worker">Administrativo</ion-select-option>
@@ -160,7 +160,7 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label>Tiempo transcurrido del suceso</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover"  formControlName="inc_time" [(ngModel)]="newItem.incident_time">
             <ion-select-option value="week">Menos de una semana</ion-select-option>
@@ -181,7 +181,7 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label position="floating">Lugar del suceso</ion-label>
           <ion-input placeholder="Ej. Aula G1, Canchas, Dirección" formControlName="sc_place_form" [(ngModel)]="newItem.school_place"></ion-input>
         </ion-item>
@@ -195,7 +195,7 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label position="floating">Descripción del suceso</ion-label>
           <ion-textarea  formControlName="desc" [(ngModel)]="newItem.description"></ion-textarea>
         </ion-item>
@@ -209,7 +209,7 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label>¿Denunciaste el suceso a tu institución?</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="denuncied" [(ngModel)]="newItem.denuncied">
             <ion-select-option value="yes">Si</ion-select-option>
@@ -226,7 +226,7 @@
           </ng-container>
         </div>
 
-        <ion-item *ngIf="newItem.denuncied == 'yes'">
+        <ion-item *ngIf="newItem.denuncied == 'yes'" lines="none">
           <ion-label position="floating">¿Qué acciones tomó la institución?</ion-label>
           <ion-textarea  formControlName="actions" [(ngModel)]="newItem.actions"></ion-textarea>
         </ion-item>
@@ -240,7 +240,7 @@
           </ng-container>
         </div>
 
-        <ion-item *ngIf="newItem.denuncied == 'yes'">
+        <ion-item *ngIf="newItem.denuncied == 'yes'" lines="none">
           <ion-label position="floating">¿Qué apoyo recibiste despues de la denuncia?</ion-label>
           <ion-textarea  formControlName="help" [(ngModel)]="newItem.help"></ion-textarea>
         </ion-item>
@@ -254,7 +254,7 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item class="item" lines="none">
           <ion-label>Proceder denuncia</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="proc" [(ngModel)]="newItem.proceed">
             <ion-select-option value="yes">Si</ion-select-option>
@@ -274,9 +274,9 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item id="final" class="item" lines="none">
           <ion-label position="floating">Contacto</ion-label>
-          <ion-input formControlName="cont" [(ngModel)]="newItem.contact" placeholder="Opcional"></ion-input>
+          <ion-input formControlName="cont" [(ngModel)]="newItem.contact" placeholder="Opcional" type="tel"></ion-input>
         </ion-item>
 
       </div>

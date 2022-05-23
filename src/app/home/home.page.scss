@@ -57,6 +57,7 @@ div > ion-button:hover{
 }
 
 .carousel{    
+  transition-duration: 0.3s;
   width:100%; 
   height:300px;   
   --border-radius:0px !important;
@@ -282,6 +283,7 @@ ion-item.footer-item > ion-icon{
   }  
 
   .slides{
+    transition-duration: 0.3s;
     width:100%;
     height:50%;            
   }
@@ -357,7 +359,13 @@ ion-item.footer-item > ion-icon{
 
 @media only screen and (min-width: 960px){
   .slides{
+    transition-duration: 0.3s;
     height:60%;            
+  }
+
+  .carousel{
+    transition-duration: 0.3s;
+    height:350px;
   }
 
   .report:before{     
