@@ -55,6 +55,12 @@ div#container > h1{
     padding:5px;
 }    
 
+#form-items > ion-item{
+    --border-width: 1px;
+    --border-style: outset;
+    --border-radius: 5px;
+}
+
 #submit-button{
     transition-duration:0.3s;
     width:100px;      
