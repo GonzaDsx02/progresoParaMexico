@@ -30,7 +30,7 @@
       <div id="form-items">    
 
         <ion-item>
-          <ion-label>Fecha del suceso</ion-label>
+          <ion-label>Fecha del reporte</ion-label>
           <ion-badge class="choosed">{{actualDate}}</ion-badge>
         </ion-item>
 
@@ -274,10 +274,10 @@
           </ng-container>
         </div>
 
-        <ion-item class="item">
+        <ion-item *ngIf="newItem.proceed == 'yes'">
           <ion-label position="floating">Contacto</ion-label>
           <ion-input formControlName="cont" [(ngModel)]="newItem.contact" placeholder="Opcional"></ion-input>
-        </ion-item>
+        </ion-item>     
 
       </div>
       
