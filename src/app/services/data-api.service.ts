@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators'
 export class DataApiService {
 
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore,private db: AngularFirestore) {
     this.itemCollection = afs.collection<Item>('Reports');
     this.item = this.itemCollection.valueChanges()
    }
@@ -52,5 +52,34 @@ export class DataApiService {
         )// fin del map de la funcion
       )// fin del map
     )// fin del pipe
-  }
-}
+  }// fin del metodo Agresores
+
+
+  getEscuelas() {
+    return this.itemCollection.snapshotChanges().pipe(
+      map(
+        actions => actions.map(
+          gender => {
+            const schol = gender.payload.doc.data().level
+            return { schol };
+          }//fin de la funcion
+        )// fin del map de la funcion
+      )// fin del map
+    )// fin del pipe
+  }// fin del metodo escuelas
+
+
+  getViolenceType() {
+    return this.itemCollection.snapshotChanges().pipe(
+      map(
+        actions => actions.map(
+          gender => {
+            const violence = gender.payload.doc.data()
+            return { violence };
+          }//fin de la funcion
+        )// fin del map de la funcion
+      )// fin del map
+    )// fin del pipe
+  }// fin del metodo escuelas
+
+}// fin de la clase

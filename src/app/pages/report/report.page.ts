@@ -26,7 +26,7 @@ export class ReportPage implements OnInit {
   actualDate = this.getDate();
 
   newItem: Item = {
-    id:"",
+    id: "",
     aggressor_name: "",
     aggressor_gen: "",
     aggressor_role: "",
