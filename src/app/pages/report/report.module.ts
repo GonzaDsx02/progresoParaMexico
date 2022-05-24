@@ -38,4 +38,5 @@ export interface Item {
   proceed: string;
   contact: string;
   date: string;
+  type_vio: string;
 }
