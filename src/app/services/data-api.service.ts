@@ -13,10 +13,13 @@ export class DataApiService {
 
   constructor(private afs: AngularFirestore) {
     this.itemCollection = afs.collection<Item>('Reports');
+    this.itemCollectionS = afs.collection('EscuelasSuperior')
     this.item = this.itemCollection.valueChanges()
    }
 
   private itemCollection: AngularFirestoreCollection<Item>;
+  private itemCollectionS:AngularFirestoreCollection;
+  private itemS: Observable<any[]>;
   private item: Observable<Item[]>
 
   getAll2(){
@@ -69,6 +72,28 @@ export class DataApiService {
         )// fin del map de la funcion
       )// fin del map
     )// fin del pipe
-  }// fin del metodo escuelas
+  };// fin del metodo escuelas
+
+  getEscuelasName(){
+    return this.itemCollectionS.snapshotChanges().pipe(
+      map(action=> action.map(
+        name=>{
+          const nombreEscuela = name.payload.doc.data().Nombre
+          return {nombreEscuela}
+        }// fin del nombre
+      ))// fin de los maps
+    )//fin del pipe
+  };
+
+  getProfes(){
+    return this.itemCollection.snapshotChanges().pipe(
+      map(action => action.map(
+        nameProf=>{
+          const profe = nameProf.payload.doc.data().aggressor_name
+          return {profe}
+        }
+      ))// fin de los maps
+    )//Fin del pipe
+  };//fin del metodo de los profes
 
 }// fin de la clase

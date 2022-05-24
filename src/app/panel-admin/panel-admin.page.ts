@@ -38,6 +38,7 @@ export class PanelAdminPage implements OnInit {
     public vio_Psico = 0;
     public topViol1 = '';
     public totalAgresores = 0;
+    public Superior = Array();
 
   ngOnInit() {
     //this.dataApi.getAll2().subscribe(reports => { console.log('Reports', reports)});
@@ -64,14 +65,18 @@ export class PanelAdminPage implements OnInit {
       })
     });
 
-    //
-    this.db.collection('Reports').ref.where("aggressor_role","==","teacher").get().then(data =>{
-      data.forEach(name =>{
-        this.profes.push(name.data());
-      })// fin forEach del data
-    })// fin del then del data
+    //Aqui empieza el llenado del array para los nombres de las escuelas superiores
+    this.dataApi.getEscuelasName().subscribe(nameSchool=>{
+      nameSchool.forEach(them=>{
+        this.Superior.push(them.nombreEscuela);
+      })
+      //console.log(this.Superior);
+    });
 
-    console.log(this.profes);
+    console.log(this.Superior);
+
+    //inicio para el metodo de los profes
+    
 
     this.dataApi.getViolenceType().subscribe(violence => {
       violence.forEach(type =>{
