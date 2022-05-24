@@ -6,7 +6,7 @@ import { UserService } from '../services/user.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { DataApiService } from '../services/data-api.service';
-import { Alignment,Margins } from 'pdfmake/interfaces';
+import { Alignment,Margins, Table } from 'pdfmake/interfaces';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
@@ -32,6 +32,12 @@ export class PanelAdminPage implements OnInit {
     public middleSchools = 0;
     public SuperiorSchool = 0;
     public escuelasMayor= "";
+    public vio_Fisico = 0;
+    public vio_Econo = 0;
+    public vio_Sex = 0;
+    public vio_Psico = 0;
+    public topViol1 = '';
+    public totalAgresores = 0;
 
   ngOnInit() {
     //this.dataApi.getAll2().subscribe(reports => { console.log('Reports', reports)});
@@ -42,8 +48,10 @@ export class PanelAdminPage implements OnInit {
           this.MaleAggressors++;
         } else {this.FemaleAggressors++}
       })// fin del foreach
-      //console.log(this.MaleAggressors);
-      //console.log(this.FemaleAggressors);
+      this.totalAgresores=gender.length
+      console.log(this.MaleAggressors);
+      console.log(this.FemaleAggressors);
+      console.log(this.totalAgresores);
     });
 
     this.dataApi.getEscuelas().subscribe(school =>{
@@ -54,7 +62,6 @@ export class PanelAdminPage implements OnInit {
           this.SuperiorSchool++;
         }
       })
-      console.log('Escuelas de Nivel Superior: ',this.SuperiorSchool,'\nEscuelas de nivel medio superior: ',this.middleSchools)
     });
 
     //
@@ -65,6 +72,16 @@ export class PanelAdminPage implements OnInit {
     })// fin del then del data
 
     console.log(this.profes);
+
+    this.dataApi.getViolenceType().subscribe(violence => {
+      violence.forEach(type =>{
+        if (type.violence.type_vio.endsWith('financial')){this.vio_Econo ++;}
+        else if (type.violence.type_vio.endsWith('fisic')) { this.vio_Fisico++; }
+        else if (type.violence.type_vio.endsWith('sexual')) { this.vio_Sex++; }
+        else if (type.violence.type_vio.endsWith('psyc')) { this.vio_Psico++; }
+      })
+    });
+
   }// final del ngOninit
 
   signOut(){
@@ -83,6 +100,17 @@ export class PanelAdminPage implements OnInit {
     } else {
       this.escuelasMayor = 'Nivel Medio Superior'
     }
+
+    if ((this.vio_Econo > this.vio_Fisico) && (this.vio_Econo > this.vio_Psico) && (this.vio_Econo > this.vio_Sex)) { this.topViol1 = 'Economica'; }
+    else if ((this.vio_Fisico > this.vio_Econo) && (this.vio_Fisico > this.vio_Psico) && (this.vio_Fisico > this.vio_Sex)) { this.topViol1 = 'Fisica'; }
+    else if ((this.vio_Psico > this.vio_Econo) && (this.vio_Psico > this.vio_Fisico) && (this.vio_Psico > this.vio_Sex)) { this.topViol1 = 'Psocologica'; }
+    else if ((this.vio_Sex > this.vio_Econo) && (this.vio_Sex > this.vio_Psico) && (this.vio_Sex > this.vio_Fisico)) { this.topViol1 = 'Sexual'; }
+    else{
+      this.topViol1 = 'Todos son iguales';
+    }
+
+    let MalePercentage = (this.MaleAggressors*100)/this.totalAgresores;
+    let FemalePercentage = (this.FemaleAggressors * 100)/this.totalAgresores;
 
     let docDefinition = {
       pageMargins:[40,60,40,60] as Margins,
@@ -112,10 +140,22 @@ export class PanelAdminPage implements OnInit {
       //con esta funcion nos permite poner más de un solo elemento en el header
       //normalmente solo permite poner uno
       content: [
-        { text: 'Agresores hombres en todas las instituciones: \t '+this.MaleAggressors ,style: 'normal'},
-        //{text: ,style:'normla'},
-        {text: 'Agresores mujeres en todas las instituciones:\t  ' + this.FemaleAggressors, style: 'normal', margin: [0,5,0,0] as Margins},
-        {text: 'Nivel educativo con mayor incidencia de violencia:\t '+this.escuelasMayor, style: 'normal', margin: [0,5,0,0] as Margins}
+        {
+          table:{
+            widths: [250,'*'],
+            body:[
+              [
+                {text:'Parámetro',style:{alignment: 'center' as Alignment,bold:true}},
+                {text:'Resultados en porcentaje',style:{alignment:'center' as Alignment,bold:true}}
+              ],
+              ['Agresores hombres en todas las instituciones',{text: MalePercentage + '%', style: {alignment:'center' as Alignment}}],
+              ['Agresores mujeres en todas las instituciones',{text: FemalePercentage + '%', style:{alignment:'center' as Alignment}}],
+              ['Nivel educativo con mayor incidencia de violencia:', {text: this.escuelasMayor, style:{alignment: 'center' as Alignment}}],
+              ['Violencia de mayor incidencia',{text: this.topViol1, style:{alignment:'center' as Alignment}}]
+            ]
+          } as Table,
+          margin:[0,20,0,0] as Margins// fin de la tabla
+        }
       ],// aqui es donde se agregaran las varibales y todo el texto
       // que va a it contenido en el pdf
       images:{

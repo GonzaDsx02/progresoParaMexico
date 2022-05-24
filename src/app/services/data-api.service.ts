@@ -11,24 +11,13 @@ import { map } from 'rxjs/operators'
 export class DataApiService {
 
 
-  constructor(private afs: AngularFirestore,private db: AngularFirestore) {
+  constructor(private afs: AngularFirestore) {
     this.itemCollection = afs.collection<Item>('Reports');
     this.item = this.itemCollection.valueChanges()
    }
 
   private itemCollection: AngularFirestoreCollection<Item>;
   private item: Observable<Item[]>
-
-  getAllReports(){
-    return this.item = this.itemCollection.snapshotChanges()
-    .pipe(map(changes => {
-      return changes.map(action => {
-        const data = action.payload.doc.data() as Item;
-        data.id = action.payload.doc.id
-        return data;
-      });
-    }));
-  };
 
   getAll2(){
     return this.item = this.itemCollection.snapshotChanges()
