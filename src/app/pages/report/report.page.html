@@ -75,6 +75,25 @@
         </div>
 
         <ion-item class="item">
+          <ion-label>Tipo de Violencia</ion-label>
+          <ion-select placeholder="Seleccionar" interface="popover" formControlName="type_vio" [(ngModel)]="newItem.type_vio">
+            <ion-select-option value="fisic">Física</ion-select-option>
+            <ion-select-option value="sexual">Sexual</ion-select-option>
+            <ion-select-option value="psyc">Psicológica</ion-select-option>
+            <ion-select-option value="financial">Económica</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="form_error">
+          <ng-container *ngFor="let val of validationMessages['type_vio']">
+            <div
+              *ngIf="formReports.get('type_vio').hasError(val.type) && (formReports.get('type_vio').dirty || formReports.get('type_vio').touched)"
+            >
+              {{val.message}}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item class="item">
           <ion-label>Tu género/Género de la victima</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="vic_gen" [(ngModel)]="newItem.victim_gen">
             <ion-select-option value="m">Masculino</ion-select-option>
