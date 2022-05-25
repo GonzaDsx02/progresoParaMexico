@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: 'panel-admin',
     loadChildren: () => import('./panel-admin/panel-admin.module').then( m => m.PanelAdminPageModule),
-    ...canActivate(()=>redirectUnauthorizedTo(['/about']))
+    ...canActivate(()=>redirectUnauthorizedTo(['/home']))
   },
   {
     path: 'violence-type/institucional',

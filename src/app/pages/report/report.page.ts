@@ -26,7 +26,7 @@ export class ReportPage implements OnInit {
   actualDate = this.getDate();
 
   newItem: Item = {
-    id:"",
+    id: "",
     aggressor_name: "",
     aggressor_gen: "",
     aggressor_role: "",
@@ -43,6 +43,7 @@ export class ReportPage implements OnInit {
     proceed: "",
     date: this.actualDate,
     contact: "",
+    type_vio: "",
   }
 
   //----------------------------------------------------------
@@ -87,7 +88,8 @@ export class ReportPage implements OnInit {
       help: ['', Validators.required],
       proc: ['', Validators.required],
       cont: [''],
-      date_val: ['', Validators.required]
+      date_val: ['', Validators.required],
+      type_vio: ['', Validators.required]
     });
 
     this.validationMessages = {
@@ -105,7 +107,8 @@ export class ReportPage implements OnInit {
       actions: [{ type: 'required', message: "Obligatorio!" }],
       help: [{ type: 'required', message: "Obligatorio!" }],
       proc:[{type: 'required', message: "Obligatorio!"}],
-      date_val:[{type: 'required', message: "Obligatorio!"}]
+      date_val:[{type: 'required', message: "Obligatorio!"}],
+      type_vio:[{type: 'required', message: "Obligatorio!"}]
     }
   }
 

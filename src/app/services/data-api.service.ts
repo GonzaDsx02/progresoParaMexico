@@ -13,22 +13,14 @@ export class DataApiService {
 
   constructor(private afs: AngularFirestore) {
     this.itemCollection = afs.collection<Item>('Reports');
+    this.itemCollectionS = afs.collection('EscuelasSuperior')
     this.item = this.itemCollection.valueChanges()
    }
 
   private itemCollection: AngularFirestoreCollection<Item>;
+  private itemCollectionS:AngularFirestoreCollection;
+  private itemS: Observable<any[]>;
   private item: Observable<Item[]>
-
-  getAllReports(){
-    return this.item = this.itemCollection.snapshotChanges()
-    .pipe(map(changes => {
-      return changes.map(action => {
-        const data = action.payload.doc.data() as Item;
-        data.id = action.payload.doc.id
-        return data;
-      });
-    }));
-  };
 
   getAll2(){
     return this.item = this.itemCollection.snapshotChanges()
@@ -52,5 +44,56 @@ export class DataApiService {
         )// fin del map de la funcion
       )// fin del map
     )// fin del pipe
-  }
-}
+  }// fin del metodo Agresores
+
+
+  getEscuelas() {
+    return this.itemCollection.snapshotChanges().pipe(
+      map(
+        actions => actions.map(
+          gender => {
+            const schol = gender.payload.doc.data().level
+            return { schol };
+          }//fin de la funcion
+        )// fin del map de la funcion
+      )// fin del map
+    )// fin del pipe
+  }// fin del metodo escuelas
+
+
+  getViolenceType() {
+    return this.itemCollection.snapshotChanges().pipe(
+      map(
+        actions => actions.map(
+          gender => {
+            const violence = gender.payload.doc.data()
+            return { violence };
+          }//fin de la funcion
+        )// fin del map de la funcion
+      )// fin del map
+    )// fin del pipe
+  };// fin del metodo escuelas
+
+  getEscuelasName(){
+    return this.itemCollectionS.snapshotChanges().pipe(
+      map(action=> action.map(
+        name=>{
+          const nombreEscuela = name.payload.doc.data().Nombre
+          return {nombreEscuela}
+        }// fin del nombre
+      ))// fin de los maps
+    )//fin del pipe
+  };
+
+  getProfes(){
+    return this.itemCollection.snapshotChanges().pipe(
+      map(action => action.map(
+        nameProf=>{
+          const profe = nameProf.payload.doc.data().aggressor_name
+          return {profe}
+        }
+      ))// fin de los maps
+    )//Fin del pipe
+  };//fin del metodo de los profes
+
+}// fin de la clase
