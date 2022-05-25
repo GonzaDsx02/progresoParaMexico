@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
   password: string;
 
   /**
-   * Constructor de la clase
+   * constructor(): Constructor de la clase
    * @param formBuilder para crear el formulario
    * @param validationMessages para crear el mensaje de validacion (Para requerir el campo de usuario y contraseña)
    */
@@ -61,33 +61,35 @@ export class LoginPage implements OnInit {
   }
 
   /**
-   * Funcion para inicio de sesion
+   * login() - Funcion para inicio de sesion
+   * @method loginUser(usuario, contraseña) - método encargado de haer el login del usuario en en la pagina
+   * @param usuario - Usuario para el inicio de sesion
+   * @param contraseña - Contraseña del usuario
+   * @return showAlert(titulo, mensaje) - regresa un metodo de alerta al cual se le pasan
+   * @return navigate() - Usa métodos del router para redirigir hacia el panel de administración
   */
   login() {
-    //Aqui va todo el guateque
     this.userService.loginUser(this.username, this.password)
       .then(response => {
-        console.log(response);
+        //console.log(response);
         this.router.navigate(['/panel-admin']);
       })
       .catch(error => {
-        console.log(error);
+        //console.log(error);
         this.showAlert('Datos Erroneos', 'Favor de verificar sus datos');
       }); // fin del catch
+  };
 
-  }
-  //  Añadiendo el método para desplegar la alerta
+  /**
+   * showAlert(titulo, mensaje) - Desplega una ventana informativa
+   * @param header - Titulo de la ventana informativa
+   * @param message - Mensaje de la ventana informativa
+   */
   async showAlert(header, message) {
     const alert = await this.alertController.create({
       header, message, buttons: ["ok"]
     });
     await alert.present();
   }// end of the show alert method
-  /*registro() {
-    this.userService.register(this.formLogin.value)
-    .then(response=>{
-      console.log(response);
-    })
-    .catch(error=>console.log(error));
-  }*/
+
 } // fin del on init
