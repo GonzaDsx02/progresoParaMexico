@@ -1,20 +1,49 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>panelAdmin</ion-title>
+    <ion-button type="submit" id="submit-button" (click)="signOut()">
+      SignOut
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div>
-    <div>
-      <ion-button type="submit" id="submit-button" (click)="signOut()">
-        SignOut
-      </ion-button>
+  
+  
+  <ion-card class="estadisticas">
+    <ion-card-header>      
+      <ion-card-title>Estadisticas</ion-card-title>
+    </ion-card-header>
+    <div class = "botonreport">
+    
+      <div>
+        <ion-button type="submit" id="submit-button" (click)="pdf()" style="width:180px; align-items: center;">
+            PDF Reportes
+        </ion-button>
+      </div>
     </div>
-    <div>
-      <ion-button type="submit" id="submit-button" (click)="pdf()">
-          PDF Reportes
-      </ion-button>
-    </div>
-  </div>
+  
+    <ion-card-content>
+      Se pueden visualizar las estadisticas de acuerdo a los reportes registrados
+    </ion-card-content>
+  </ion-card>
+  
+  
+  
+  
+  <ion-footer>
+    <div class="footer">
+      <div class="footer-content">
+        <div class="contact">
+          <h4 class="green-title">Copyright © ProgresoMexico 2022</h4>      
+          <ion-item lines="none" class="footer-item">                     
+          </ion-item>        
+          
+        </div>
+        
+      </div>      
+    </div>    
+  </ion-footer>
 </ion-content>
+
+
