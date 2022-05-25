@@ -10,7 +10,13 @@ import { map } from 'rxjs/operators'
 })
 export class DataApiService {
 
-
+  /**
+   * constructor - Constructor de la clase con las diferentes instancias necesarias para poder hacer las consultas
+   * @variable itemCollection: Variable con el modelo de datos del Item, que es el modelo de datos del formulario
+   * @variable itemCollectionS: Varibale que hace referencia a la colección de Escuelas Superiores
+   * @variable itemS: Varibale tipo observable para la colección de Escuelas Superiores
+   * @vaiable item: Variable tipo observable para la coleccion de Reports
+   */
   constructor(private afs: AngularFirestore) {
     this.itemCollection = afs.collection<Item>('Reports');
     this.itemCollectionS = afs.collection('EscuelasSuperior');

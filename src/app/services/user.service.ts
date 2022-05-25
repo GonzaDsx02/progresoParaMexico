@@ -4,9 +4,18 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signO
   providedIn: 'root'
 })
 export class UserService {
-
+  /**
+   *constructor - Consctrutor de la clase para los servicios de authentificación
+   * @param auth: Prametro usado para instanciar la clase de Auth
+   */
   constructor(private auth:Auth) { }
 
+  /**
+   * register(email,password)- Método que se encargar de registrar un usuario
+   * @param email - Email del usuario a registrar
+   * @param password - Contraseña del usuario a registrar
+   * @returns
+   */
 register({email, password}:any){
     return createUserWithEmailAndPassword(this.auth,email,password);
 }
