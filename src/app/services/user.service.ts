@@ -10,26 +10,40 @@ export class UserService {
    */
   constructor(private auth:Auth) { }
 
+    /**
+     * register(email,password)- Método que se encargar de registrar un usuario
+     * @param email - Email del usuario a registrar
+     * @param password - Contraseña del usuario a registrar
+     * @return- Método propio de firebase para dar de alta a un usuario
+     */
+  register({email, password}:any){
+      return createUserWithEmailAndPassword(this.auth,email,password);
+  }
+
   /**
-   * register(email,password)- Método que se encargar de registrar un usuario
-   * @param email - Email del usuario a registrar
-   * @param password - Contraseña del usuario a registrar
-   * @returns
-   */
-register({email, password}:any){
-    return createUserWithEmailAndPassword(this.auth,email,password);
-}
+   *loginUser(email, password): Método para acceder a un usuario
+  * @param email- Correo del usuario previamente registrado
+  * @param password- contraseña del usuario previamente registrado
+  * @returns Método propio de Firebase de tipo promesa con la autenticación del usuario
+  */
+  loginUser(email,password){
+    return signInWithEmailAndPassword(this.auth,email,password);
+  }
 
-loginUser(email,password){
-  return signInWithEmailAndPassword(this.auth,email,password);
-}
+  /**
+   *logout(): Método para salir la sesion del uaurio actual
+  * @returns regresa una promesa
+  */
+  logout(){
+  return signOut(this.auth)
+  }
 
-logout(){
- return signOut(this.auth)
-}
-
-getCurrentUer(){
-  return this.auth.currentUser.email
-}
+  /**
+   *getCurrentUser(): Método para recuperar el email del usuario actual
+  * @returns Regresa el email del usuario
+  */
+  getCurrentEmailUser(){
+    return this.auth.currentUser.email
+  }
 
 }

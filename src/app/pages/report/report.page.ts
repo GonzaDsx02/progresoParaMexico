@@ -24,7 +24,27 @@ export class ReportPage implements OnInit {
   //VARIABLES QUE GUARDAN LA INFORMACIÓN PROVENIENTE DEL HTML.
   //---------------YA ESTAN LISTAS PARA USARSE----------------
   actualDate = this.getDate();
-
+  /**
+   * newItem - Es una instacia de la interfaz de datos 'Item'
+   * @param id - Id del documento en
+   * @param aggressor_name - Nombre del agresor
+   * @param aggressor_gen - Genero del agresor
+   * @param aggressor_role - Rol del agresor
+   * @param victim_gen - Genero de la victima
+   * @param victim_role - Rol de la victima
+   * @param incident_time - El tiempo desde que ocurrio el indicende (días, semanas, meses, años...)
+   * @param lever - Nivel edicativo donde sucedio la violencia
+   * @param school - Nombre de la escuela donde paso el suceso
+   * @param school_place - Lugar dentro de la escuela donde paso el suceso
+   * @param description - Descripcion del suceso
+   * @param denuncied - ¿Se denuncio el suceso?
+   * @param actions - En caso de haber denunciad el suceso, ¿Que acciones tomo la institución?
+   * @param help - Si la institucion brinda ayuda de algun tipo sobre la violnecia (informacion, taller etc...)
+   * @param proceed - Campo que epecifica si el denunciante quiere denunciar de manera formal
+   * @param date - No es editable por el usuario, recibe la fecha en que se hace el reporte
+   * @param contact - Contacto de la persona que hace el reporte en caso de proceder de manera formal con la denuncia
+   * @param type_vio - Tipo de violencia sufrida por quien lleno el reporte
+   */
   newItem: Item = {
     id: "",
     aggressor_name: "",

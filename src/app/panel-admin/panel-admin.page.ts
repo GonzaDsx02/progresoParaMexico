@@ -198,7 +198,8 @@ export class PanelAdminPage implements OnInit {
           margin: [0, 20, 0, 0] as Margins// fin de la tabla
         }
       ],
-      /**iamges: Diccionario de imagenes en formato URI para la renderizacion yu vizualizacion de las mismas, al momento de llamar al metodo
+      /**
+       * images: Diccionario de imagenes en formato URI para la renderizacion yu vizualizacion de las mismas, al momento de llamar al metodo
        *  recomendable no quitar el folding de ser posibl, esto porque los URI son demaciado largos y se extiende mucho hacia abajo
        * @name logoTec: Nombre que hace referencia a la imgen del logo del TEC
        * @name logoProgreso: Nombre que hace referencia al logo de la A.C. Progreso Para México
