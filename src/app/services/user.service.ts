@@ -19,4 +19,8 @@ logout(){
  return signOut(this.auth)
 }
 
+getCurrentUer(){
+  return this.auth.currentUser.email
+}
+
 }
