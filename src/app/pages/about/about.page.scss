@@ -14,9 +14,11 @@
     display: none;
 }  
 
-#logo{    
-    width:90px;    
-}      
+#logo{
+    transition-duration: 0.3s;
+    width:100px;
+    margin-left: 35%;
+}          
 
 .intro{
     transition-duration:0.3s;
@@ -220,6 +222,11 @@ ion-item.footer-item > ion-icon{
         transition-duration:0.3s;
         display: none;
     }
+
+    #logo{
+        transition-duration: 0.3s;
+        margin-left: 0px;
+    }   
 
     .menu-items{    
         transition-duration:0.3s;      

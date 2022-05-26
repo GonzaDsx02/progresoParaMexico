@@ -14,9 +14,11 @@
     display: none;
 }  
 
-#logo{    
-    width:90px;    
-}      
+#logo{
+    transition-duration: 0.3s;
+    width:100px;
+    margin-left: 35%;
+}   
 
 ion-item.footer-item > p, 
 ion-item.footer-item > ion-icon{
@@ -38,7 +40,7 @@ div#container > h1{
 #container{       
     width:90%;
     background: #fff;
-    height: 500px;      
+    height: 400px;      
     border-top: 3px solid #39b54a;
     margin-left:5%;   
     margin-top:15%;    
@@ -160,6 +162,11 @@ div#container > h1{
     .menu-button{
         display: none;
     }
+
+    #logo{
+        transition-duration: 0.3s;
+        margin-left: 0px;
+    }   
 
     .menu-items{          
         color: #999;    
