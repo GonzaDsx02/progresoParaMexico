@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { Alert } from 'selenium-webdriver';
@@ -60,11 +60,26 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  //método para validar los campos que están vacíos en el formulario
+  private visualValidationForm(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control.controls) {
+        this.visualValidationForm(control);
+      }
+    });
+  }
+
   /**
    * Funcion para inicio de sesion
   */
-  login() {
+  login(form: NgForm) {
     //Aqui va todo el guateque
+    if(form.invalid){
+      this.visualValidationForm(this.formLogin);
+      this.showAlert('Error', '¡Usuario y contraseña requeridos!');
+      return;
+    }
     this.userService.loginUser(this.username, this.password)
       .then(response => {
         console.log(response);

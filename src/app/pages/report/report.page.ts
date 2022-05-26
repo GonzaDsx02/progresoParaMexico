@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { format, parseISO} from 'date-fns';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Item } from './report.module';
@@ -19,6 +19,7 @@ export class ReportPage implements OnInit {
   */
   public formReports: FormGroup;
   public validationMessages: object;
+  incorrect = false;
 
 
   //VARIABLES QUE GUARDAN LA INFORMACIÓN PROVENIENTE DEL HTML.
@@ -73,7 +74,7 @@ export class ReportPage implements OnInit {
    */
   constructor(private fb: FormBuilder, private firestore: DatabaseService, private alertController: AlertController) {
     this.formReports = this.fb.group({
-      lvl: ['', Validators.required],
+      level: ['', Validators.required],
       school_form: ['', Validators.required],
       vic_gen: ['', Validators.required],
       vic_role: ['', Validators.required],
@@ -93,7 +94,7 @@ export class ReportPage implements OnInit {
     });
 
     this.validationMessages = {
-      lvl:[{type: 'required', message: "Obligatorio!"}],
+      level:[{type: 'required', message: "Obligatorio!"}],
       school_form: [{ type: 'required', message: "Obligatorio!" }],
       vic_gen: [{ type: 'required', message: "Obligatorio!" }],
       vic_role: [{ type: 'required', message: "Obligatorio!" }],
@@ -150,18 +151,48 @@ export class ReportPage implements OnInit {
     await alert.present();
   }
 
-  send(){
+  //método para validar los campos que están vacíos en el formulario
+  private visualValidationForm(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control.controls) {
+        this.visualValidationForm(control);
+      }
+    });
+  }
+
+  send(f: NgForm){
     /*
       Aqui van los codigos que envían el formulario a la base de datos
     */
 
-    //Este alert permite visualizar los datos que fueron ingresados en el formulario
-    console.log('Esto vamos a guardar->', this.newItem)
-    const data = this.newItem;
-    const enlace = 'Reports';
-    this.firestore.createDo(data,enlace);
-    this.showAlert('Datos registrados', 'Estos datos seran parte de la estadistica estatal.\n Si se le dara seguimiento a tu denuncia, espera a que nuestro equipo se ponga en contacto contigo.');
-    this.formReports.reset()
+    //validación del formulario
+    if(this.newItem.level && this.newItem.school && this.newItem.aggressor_name && this.newItem.aggressor_gen && this.newItem.aggressor_role && this.newItem.victim_gen && this.newItem.victim_role && this.newItem.incident_time && this.newItem.school_place && this.newItem.description && this.newItem.denuncied && this.newItem.proceed && this.newItem.type_vio){
+      if(this.newItem.denuncied=='yes'){
+        if(this.newItem.actions && this.newItem.help){
+          this.showAlert('Reporte enviado', 'Envío exitoso');
+
+          //Aquí comienza el envío de datos
+          //Este alert permite visualizar los datos que fueron ingresados en el formulario
+          //console.log('Esto vamos a guardar->', this.newItem)
+          const data = this.newItem;
+          const enlace = 'Reports';
+          this.firestore.createDo(data,enlace);
+          this.showAlert('Datos registrados', 'Estos datos seran parte de la estadistica estatal.\n Si se le dara seguimiento a tu denuncia, espera a que nuestro equipo se ponga en contacto contigo.');
+          this.formReports.reset()
+          //termina el envío de datos
+
+        }else{
+          this.visualValidationForm(this.formReports);
+          this.showAlert('Campos obligatorios', 'Ingresa los datos faltantes');
+        }
+      }else{
+        this.showAlert('Reporte enviado', 'Envío exitoso');
+      }
+    }else{
+      this.visualValidationForm(this.formReports);
+      this.showAlert('Campos obligatorios', 'Ingresa los datos faltantes');
+    }
   }
 }
 
