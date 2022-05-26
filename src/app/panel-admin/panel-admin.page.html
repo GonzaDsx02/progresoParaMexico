@@ -1,9 +1,14 @@
-<ion-header style="background-color: #39b54a;">
-  <ion-toolbar>
-    <ion-title>Panel de Administración <ion-button type="submit" id="submit-button" (click)="signOut()" >
-      SignOut
-    </ion-button></ion-title> 
-    
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="primary">
+      <ion-chip color="warning" (click)="signOut()">
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-chip>
+      <!-- <ion-button type="button" id="logout-button" (click)="signOut()">
+        SignOut
+      </ion-button> -->
+    </ion-buttons>
+    <ion-title>Panel de Administración</ion-title> 
   </ion-toolbar>
 </ion-header>
 
@@ -37,13 +42,12 @@
         </ion-item>
         
       </ion-list>
-      <div class = "botonreport">
-    
+      <div class = "reports-buttons">
         <div>
-          <ion-button type="submit" id="submit-button" (click)="estadisticaescuela()" style="width:200px;">
+          <ion-button type="button" id="statistics" (click)="estadisticaescuela()">
               Mostrar estadisticas
           </ion-button>
-          <ion-button type="submit" id="submit-button" (click)="pdf()" style="width:200px;">
+          <ion-button type="button" id="download-stats" (click)="pdf()">
             Descargar estadisticas
         </ion-button>
         </div>
@@ -60,7 +64,6 @@
     
     <ion-card-content>
       Aqui se pueden visualizar las denuncias realizadas por los usuarios.
-       
       <ion-grid>
         <ion-row>
           <ion-col col-1>
@@ -72,8 +75,6 @@
               
             </ion-list>
           </ion-col>
-
-          
 
           <ion-col col-1>
             <ion-list>
@@ -95,17 +96,14 @@
             </ion-list>
           </ion-col>
 
-          
           <ion-col col-1>
             <ion-list>
               <ion-label >Tipo de Violencia</ion-label>
               <ion-item *ngFor="let item of todo| async">
                 {{ item.type_vio }}
               </ion-item>
-              
             </ion-list>
           </ion-col>
-
 
           <ion-col col-1>
             <ion-list>
@@ -113,7 +111,6 @@
               <ion-item *ngFor="let item of todo| async">
                 {{ item.proceed }}
               </ion-item>
-              
             </ion-list>
           </ion-col>
 
@@ -123,23 +120,14 @@
               <ion-item *ngFor="let item of todo| async">
                 {{ item.contact }}
               </ion-item>
-              
             </ion-list>
           </ion-col>
-
         </ion-row>
       </ion-grid>
+      <ion-button type="button" class="button" (click)="pdfreport()">
+        Descargar reportes
+    </ion-button>
     </ion-card-content>
-
-    <div class = "botonreport">
-    
-      <div>       
-
-        <ion-button type="submit" id="submit-button" (click)="pdfreport()" style="width:200px;">
-            Descargar reportes
-        </ion-button>
-      </div>
-    </div>
   </ion-card>
   
   <ion-card class="usuario">
@@ -147,8 +135,7 @@
       <ion-card-title>Agregar usuario</ion-card-title>
     </ion-card-header>
     
-    <ion-card-content>
-      
+    <ion-card-content>  
       <ion-item>
         <ion-label position="floating">Correo Electrónico</ion-label>
         <ion-input type="email" name="email" class="email" placeholder="Ingresa correo electrónico"
@@ -159,14 +146,12 @@
         <ion-input type="password" name="password" class="password" placeholder="Ingresa contraseña"
         [(ngModel)]="password" required minlenght="5"></ion-input>
       </ion-item>        
-      <ion-button type="submit" id="submit-button" (click)="onAddUser()" style="width:200px;">
+      <ion-button type="button" class="button" (click)="onAddUser()">
         Registrar Usuario
-    </ion-button>
+      </ion-button>
     </ion-card-content>
   </ion-card>
-  
-  
-  
+
   <ion-footer>
     <div class="footer">
       <div class="footer-content">
@@ -174,9 +159,7 @@
           <h4 class="green-title" style="color: white;">Copyright © ProgresoMexico 2022</h4>      
           <ion-item lines="none" class="footer-item">                     
           </ion-item>        
-          
         </div>
-        
       </div>      
     </div>    
   </ion-footer>
