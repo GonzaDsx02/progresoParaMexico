@@ -25,13 +25,13 @@
 
 <ion-content>
   <form [formGroup]="formLogin" (ngSubmit)="login( f )"
-  #f = "ngForm">
+  #f = "ngForm" (keyup.enter)="login(f)">
     <div id="container">
       <h1 align="center">Ingresa a tu cuenta</h1>
       <div id="form-items">
         <ion-item class="item">
           <ion-label position="floating">Correo electrónico</ion-label>
-          <ion-input [(ngModel)] = "username" formControlName="us_name" name="username"></ion-input>
+          <ion-input type="email" [(ngModel)] = "username" formControlName="us_name" name="username"></ion-input>
         </ion-item>
         <div class="form_error">
           <ng-container *ngFor="let val of validationMessages['us_name']">
