@@ -10,23 +10,31 @@ import { map } from 'rxjs/operators'
 })
 export class DataApiService {
 
-
+  /**
+   * constructor - Constructor de la clase con las diferentes instancias necesarias para poder hacer las consultas
+   * @variable itemCollection: Variable con el modelo de datos del Item, que es el modelo de datos del formulario
+   * @variable itemCollectionS: Varibale que hace referencia a la colección de Escuelas Superiores
+   * @variable itemS: Varibale tipo observable para la colección de Escuelas Superiores
+   * @vaiable item: Variable tipo observable para la coleccion de Reports
+   */
   constructor(private afs: AngularFirestore) {
     this.itemCollection = afs.collection<Item>('Reports');
     this.itemCollectionS = afs.collection('EscuelasSuperior');
+    this.itemCollectionMS = afs.collection('EscuelasMediaSuperior');
     this.item = this.itemCollection.valueChanges();
     this.itemS = this.itemCollectionS.valueChanges();
    }
 
   private itemCollection: AngularFirestoreCollection<Item>;
   private itemCollectionS:AngularFirestoreCollection;
+  private itemCollectionMS: AngularFirestoreCollection;
   private itemS: Observable<any[]>;
+  private itemMS: Observable<any[]>
   private item: Observable<Item[]>
 
   /**
    * getAll2() - Segunda prueba para la recuperacion general de la informacion dentro de firestore
    */
-
   getAll2(){
     return this.item = this.itemCollection.snapshotChanges()
     .pipe(map(actions=> actions.map(
@@ -116,5 +124,32 @@ export class DataApiService {
       ))// fin de los maps
     )//Fin del pipe
   };//fin del metodo de los profes
+
+  /**
+   *
+   */
+  getSuperiorNames(){
+    return this.itemCollectionS.snapshotChanges().pipe(
+      map(Schools=> Schools.map(SchoolsDetail=>{
+        const schoolName = SchoolsDetail.payload.doc.data().Nombre
+        const municipio = SchoolsDetail.payload.doc.data().Municipio
+        return {schoolName, municipio}
+      }))// fin del map para recuperar los nombres
+    )//fin del pipe
+  }// fin de la recuperacion de nombres
+
+  /**
+   *
+   */
+
+  getMiddleNames(){
+    return this.itemCollectionMS.snapshotChanges().pipe(
+      map(Schools=> Schools.map(SchoolsDetails=>{
+        const middleSName = SchoolsDetails.payload.doc.data().Nombre
+        const municipio = SchoolsDetails.payload.doc.data().Municipio
+        return {middleSName, municipio}
+      }))
+    )
+  }
 
 }// fin de la clase

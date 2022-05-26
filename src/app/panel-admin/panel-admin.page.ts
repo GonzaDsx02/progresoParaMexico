@@ -73,9 +73,10 @@ export class PanelAdminPage implements OnInit {
   public vio_Psico = 0;
   public topViol1 = '';
   public totalAgresores = 0;
-  public Superior = Array();
   public email: string = '';
   public password: string = '';
+  public Superior =Array();
+  public MediaSuperior = Array();
 
 
   ionViewDidEnter(){
@@ -136,6 +137,26 @@ export class PanelAdminPage implements OnInit {
         else if (type.violence.type_vio.endsWith('Psicológica')) { this.vio_Psico++; }
       })
     });
+    
+    this.dataApi.getSuperiorNames().subscribe(School=>{
+      this.Superior.splice(0);
+      School.forEach(SchoolDetail=>{
+        if(SchoolDetail.municipio == 'Tepic'){
+          const nombreSchool = SchoolDetail.schoolName;
+          this.Superior.push(nombreSchool);
+        }
+      })//fin del for
+    })//fin del subscribe
+
+    this.dataApi.getMiddleNames().subscribe(School =>{
+      this.MediaSuperior.splice(0);
+      School.forEach(SchoolDetail =>{
+        if(SchoolDetail.municipio == 'Tepic'){
+          const schoolMName = SchoolDetail.middleSName;
+          this.MediaSuperior.push(schoolMName);
+        }
+      })
+    })// fin del metodo para las escuelas de media superior
 
   }// final del ngOninit
 
@@ -273,7 +294,8 @@ export class PanelAdminPage implements OnInit {
           margin: [0, 20, 0, 0] as Margins// fin de la tabla
         }
       ],
-      /**iamges: Diccionario de imagenes en formato URI para la renderizacion yu vizualizacion de las mismas, al momento de llamar al metodo
+      /**
+       * images: Diccionario de imagenes en formato URI para la renderizacion yu vizualizacion de las mismas, al momento de llamar al metodo
        *  recomendable no quitar el folding de ser posibl, esto porque los URI son demaciado largos y se extiende mucho hacia abajo
        * @name logoTec: Nombre que hace referencia a la imgen del logo del TEC
        * @name logoProgreso: Nombre que hace referencia al logo de la A.C. Progreso Para México
