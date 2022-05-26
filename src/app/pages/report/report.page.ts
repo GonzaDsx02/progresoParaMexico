@@ -154,15 +154,6 @@ export class ReportPage implements OnInit {
     await alert.present();
   }
 
-<<<<<<< HEAD
-  
-
-  send(){
-    /*
-      Aqui van los codigos que envían el formulario a la base de datos
-    */   
-    console.log('Esto vamos a guardar->', this.newItem)
-=======
   /**
    * send(): Método para insertar los reportes dentro de la base de datos
    * @constant data - contiene toda la informacion recuperada del formulario
@@ -176,7 +167,6 @@ export class ReportPage implements OnInit {
 
     //Este alert permite visualizar los datos que fueron ingresados en el formulario
     //console.log('Esto vamos a guardar->', this.newItem)
->>>>>>> 3e785ac5048ab59469b63e68831033f14de58e2b
     const data = this.newItem;
     const enlace = 'Reports';
     this.firestore.createDo(data,enlace);

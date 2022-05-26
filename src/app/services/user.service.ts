@@ -5,8 +5,10 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signO
   providedIn: 'root'
 })
 export class UserService {
-<<<<<<< HEAD
-
+    /**
+   *constructor - Consctrutor de la clase para los servicios de authentificación
+   * @param auth: Prametro usado para instanciar la clase de Auth
+   */
   constructor(private auth:Auth, private afsAuth: AngularFireAuth) { }
 
   registerUser(email:string, pass:string){
@@ -16,13 +18,6 @@ export class UserService {
       err => reject(err));
     })
   }
-=======
-  /**
-   *constructor - Consctrutor de la clase para los servicios de authentificación
-   * @param auth: Prametro usado para instanciar la clase de Auth
-   */
-  constructor(private auth:Auth) { }
->>>>>>> 3e785ac5048ab59469b63e68831033f14de58e2b
 
     /**
      * register(email,password)- Método que se encargar de registrar un usuario
