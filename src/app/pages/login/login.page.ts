@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
   password: string;
 
   /**
-   * Constructor de la clase
+   * constructor(): Constructor de la clase
    * @param formBuilder para crear el formulario
    * @param validationMessages para crear el mensaje de validacion (Para requerir el campo de usuario y contraseña)
    */
@@ -62,7 +62,12 @@ export class LoginPage implements OnInit {
   }
 
   /**
-   * Funcion para inicio de sesion
+   * login() - Funcion para inicio de sesion
+   * @method loginUser(usuario, contraseña) - método encargado de haer el login del usuario en en la pagina
+   * @param usuario - Usuario para el inicio de sesion
+   * @param contraseña - Contraseña del usuario
+   * @return showAlert(titulo, mensaje) - regresa un metodo de alerta al cual se le pasan
+   * @return navigate() - Usa métodos del router para redirigir hacia el panel de administración
   */
   login(form: NgForm) {
     //Aqui va todo el guateque
@@ -81,7 +86,7 @@ export class LoginPage implements OnInit {
     }
     this.userService.loginUser(this.username, this.password)
       .then(response => {
-        console.log(response);
+        //console.log(response);
         this.router.navigate(['/panel-admin']);
       })
       .catch(error => {
@@ -95,6 +100,5 @@ export class LoginPage implements OnInit {
           heightAuto: false
         });
       }); // fin del catch
-
   }
 } // fin LoginPage

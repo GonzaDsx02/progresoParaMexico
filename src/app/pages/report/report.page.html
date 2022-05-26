@@ -250,7 +250,7 @@
           <ion-label position="floating">¿Qué acciones tomó la institución?</ion-label>
           <ion-textarea  formControlName="actions" [(ngModel)] = "newItem.actions" name="actions"></ion-textarea>
         </ion-item>
-        <div class="form_error" *ngIf="newItem.denuncied == 'yes'">
+        <div class="form_error" *ngIf="newItem.denuncied == 'Si'">
           <ng-container *ngFor="let val of validationMessages['actions']">
             <div
               *ngIf="formReports.get('actions').hasError(val.type) && (formReports.get('actions').dirty || formReports.get('actions').touched)"
@@ -294,7 +294,7 @@
           </ng-container>
         </div>
 
-        <ion-item *ngIf="newItem.proceed == 'yes'">
+        <ion-item *ngIf="newItem.proceed == 'Si'">
           <ion-label position="floating">Contacto</ion-label>
           <ion-input formControlName="cont" [(ngModel)] = "newItem.contact" name="contact" placeholder="Opcional"></ion-input>
         </ion-item>

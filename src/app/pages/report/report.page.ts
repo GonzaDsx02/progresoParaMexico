@@ -25,7 +25,27 @@ export class ReportPage implements OnInit {
   //VARIABLES QUE GUARDAN LA INFORMACIÓN PROVENIENTE DEL HTML.
   //---------------YA ESTAN LISTAS PARA USARSE----------------
   actualDate = this.getDate();
-
+  /**
+   * newItem - Es una instacia de la interfaz de datos 'Item'
+   * @param id - Id del documento en
+   * @param aggressor_name - Nombre del agresor
+   * @param aggressor_gen - Genero del agresor
+   * @param aggressor_role - Rol del agresor
+   * @param victim_gen - Genero de la victima
+   * @param victim_role - Rol de la victima
+   * @param incident_time - El tiempo desde que ocurrio el indicende (días, semanas, meses, años...)
+   * @param lever - Nivel edicativo donde sucedio la violencia
+   * @param school - Nombre de la escuela donde paso el suceso
+   * @param school_place - Lugar dentro de la escuela donde paso el suceso
+   * @param description - Descripcion del suceso
+   * @param denuncied - ¿Se denuncio el suceso?
+   * @param actions - En caso de haber denunciad el suceso, ¿Que acciones tomo la institución?
+   * @param help - Si la institucion brinda ayuda de algun tipo sobre la violnecia (informacion, taller etc...)
+   * @param proceed - Campo que epecifica si el denunciante quiere denunciar de manera formal
+   * @param date - No es editable por el usuario, recibe la fecha en que se hace el reporte
+   * @param contact - Contacto de la persona que hace el reporte en caso de proceder de manera formal con la denuncia
+   * @param type_vio - Tipo de violencia sufrida por quien lleno el reporte
+   */
   newItem: Item = {
     id: "",
     aggressor_name: "",
@@ -51,26 +71,17 @@ export class ReportPage implements OnInit {
 
 
   /**
-   * Constructor de la clase
+   * constructor(): Constructor de la clase
    * @param formBuilder para crear el formulario
-   *
-   * v_type: Tipo de violencia reportada
-   *
-   * vic_gen: Genero de la víctima
-   *
-   * ag_gen: Genero del agresor
-   *
-   * ag_name: Nombre del agresor
-   *
-   * place: Lugar de la violencia
-   *
-   * vic_role: Rol de la víctima
-   *
-   * ag_role: Rol del agresor
-   *
-   * school_form: Escuela en donde ocurrió la agresión
-   *
-   * sc_place_form: Lugar de la escuela en donde ocurrió la agresión
+   * @variable v_type: Tipo de violencia reportada
+   * @variable vic_gen: Genero de la víctima
+   * @variable ag_gen: Genero del agresor
+   * @variable ag_name: Nombre del agresor
+   * @variable place: Lugar de la violencia
+   * @variable vic_role: Rol de la víctima
+   * @variable ag_role: Rol del agresor
+   * @variable school_form: Escuela en donde ocurrió la agresión
+   * @variable sc_place_form: Lugar de la escuela en donde ocurrió la agresión
    */
   constructor(private fb: FormBuilder, private firestore: DatabaseService,) {
     this.formReports = this.fb.group({
@@ -116,29 +127,22 @@ export class ReportPage implements OnInit {
   ngOnInit() {
   }
 
-  /**
-   * Funcion para enviar los datos del formulario a la base de datos
-   * @param alert para mostrar un mensaje de alerta datos a enviar:
-   * @variable violence_type: Tipo de violencia reportada
-   * @variable victim_gen: Genero de la víctima
-   * @variable aggresor_gen: Genero del agresor
-   * @variable aggressor_name: Nombre del agresor
-   * @variable place: Lugar de la violencia
-   * @variable victim_role: Rol de la víctima
-   * @variable aggressor_role: Rol del agresor*
-   * @variable school: Escuela en donde ocurrió la agresión
-   * @variable school_place: Lugar de la escuela
-   */
-
 //--------------------------------------------------------------------------------------------------------------------------------------------
   //Funciones utilizadas para la seleccion y el formato de fechas seleccionadas.
 
   //obtiene la fecha actual.
+  /**
+   *  getActualDate(): Método para regresar la fecha actual
+   * @returns - la fecha actual
+   */
   private getActualDate(){
     return (new Date().getMonth()+1)<10 ? new Date().getFullYear() + '-0' + (new Date().getMonth()+1) + '-' + new Date().getDate() : new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + new Date().getDate();
   }
 
-  //Guarda la fecha seleccionada dentro de la variable {actualDate}. Esta variable es la que se debe utilizar para las operaciones en la BD.
+
+  /**
+   * getDate(): Guarda la fecha seleccionada dentro de la variable {actualDate}. Esta variable es la que se debe utilizar para las operaciones en la BD.
+  */
   getDate(){
     return format(parseISO(this.getActualDate()), 'd MMM, yyyy'); //El formato puede ser modificado a criterio del desarrollador.
   }
@@ -155,7 +159,13 @@ export class ReportPage implements OnInit {
     });
   }
 
-  send(f: NgForm){
+  /**
+   * send(): Método para insertar los reportes dentro de la base de datos
+   * @constant data - contiene toda la informacion recuperada del formulario
+   * @constant enlace - Contiene el nombre de la base de datos
+   * @method createDo(data,enlace) - Método encargado de ingresar los datos a la colección especificada en 'enlace'
+   */
+  send(){
     /*
       Aqui van los codigos que envían el formulario a la base de datos
     */

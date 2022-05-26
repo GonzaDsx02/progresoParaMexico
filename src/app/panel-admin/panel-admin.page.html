@@ -1,20 +1,185 @@
-<ion-header>
+<ion-header style="background-color: #39b54a;">
   <ion-toolbar>
-    <ion-title>panelAdmin</ion-title>
+    <ion-title>Panel de Administración <ion-button type="submit" id="submit-button" (click)="signOut()" >
+      SignOut
+    </ion-button></ion-title> 
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div>
-    <div>
-      <ion-button type="submit" id="submit-button" (click)="signOut()">
-        SignOut
-      </ion-button>
+  
+  
+  <ion-card class="estadisticas">
+    <ion-card-header>      
+      <ion-card-title>Estadisticas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Se pueden visualizar las estadisticas de acuerdo a los reportes registrados.
+      <ion-list>
+        <ion-item>
+          <ion-label></ion-label>
+          <ion-input [formControl]="nombre">Nivel educativo con mayor incidencía de
+            violencia:</ion-input>
+          
+        </ion-item>
+        <ion-item>
+          <ion-label></ion-label>
+          <ion-input [formControl]="tipoviol">Violencia de mayor incidencía:</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label></ion-label>
+          <ion-input [formControl]="hombres">Porcentaje de agresores hombres en todas las instituciones: </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label></ion-label>
+          <ion-input [formControl]="mujeres">Porcentaje de agresores mujeres en todas las instituciones: </ion-input>
+        </ion-item>
+        
+      </ion-list>
+      <div class = "botonreport">
+    
+        <div>
+          <ion-button type="submit" id="submit-button" (click)="estadisticaescuela()" style="width:200px;">
+              Mostrar estadisticas
+          </ion-button>
+          <ion-button type="submit" id="submit-button" (click)="pdf()" style="width:200px;">
+            Descargar estadisticas
+        </ion-button>
+        </div>
+      </div>
+    </ion-card-content>
+    
+  
+    
+  </ion-card>
+  <ion-card class="reportes">
+    <ion-card-header>      
+      <ion-card-title>Reportes</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      Aqui se pueden visualizar las denuncias realizadas por los usuarios.
+       
+      <ion-grid>
+        <ion-row>
+          <ion-col col-1>
+            <ion-label >Fecha del Reporte</ion-label>
+            <ion-list>
+              <ion-item *ngFor="let item of todo| async">
+                {{ item.date }}
+              </ion-item>
+              
+            </ion-list>
+          </ion-col>
+
+          
+
+          <ion-col col-1>
+            <ion-list>
+              <ion-label >Escuela</ion-label>
+              <ion-item *ngFor="let item of todo| async">
+                {{ item.school }}
+              </ion-item>
+              
+            </ion-list>
+          </ion-col>
+
+          <ion-col col-5>
+            <ion-list>
+              <ion-label >Nombre del Agresor</ion-label>
+              <ion-item *ngFor="let item of todo| async">
+                {{ item.aggressor_name }}
+              </ion-item>
+              
+            </ion-list>
+          </ion-col>
+
+          
+          <ion-col col-1>
+            <ion-list>
+              <ion-label >Tipo de Violencia</ion-label>
+              <ion-item *ngFor="let item of todo| async">
+                {{ item.type_vio }}
+              </ion-item>
+              
+            </ion-list>
+          </ion-col>
+
+
+          <ion-col col-1>
+            <ion-list>
+              <ion-label >Denuncia formal</ion-label>
+              <ion-item *ngFor="let item of todo| async">
+                {{ item.proceed }}
+              </ion-item>
+              
+            </ion-list>
+          </ion-col>
+
+          <ion-col col-1>
+            <ion-label>Contacto</ion-label>
+            <ion-list>
+              <ion-item *ngFor="let item of todo| async">
+                {{ item.contact }}
+              </ion-item>
+              
+            </ion-list>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+
+    <div class = "botonreport">
+    
+      <div>       
+
+        <ion-button type="submit" id="submit-button" (click)="pdfreport()" style="width:200px;">
+            Descargar reportes
+        </ion-button>
+      </div>
     </div>
-    <div>
-      <ion-button type="submit" id="submit-button" (click)="pdf()">
-          PDF Reportes
-      </ion-button>
-    </div>
-  </div>
+  </ion-card>
+  
+  <ion-card class="usuario">
+    <ion-card-header>      
+      <ion-card-title>Agregar usuario</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      
+      <ion-item>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="email" name="email" class="email" placeholder="Ingresa correo electrónico"
+        [(ngModel)]="email" required minlenght="8"></ion-input>
+      </ion-item>     
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" name="password" class="password" placeholder="Ingresa contraseña"
+        [(ngModel)]="password" required minlenght="5"></ion-input>
+      </ion-item>        
+      <ion-button type="submit" id="submit-button" (click)="onAddUser()" style="width:200px;">
+        Registrar Usuario
+    </ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+  
+  
+  <ion-footer>
+    <div class="footer">
+      <div class="footer-content">
+        <div class="contact">
+          <h4 class="green-title" style="color: white;">Copyright © ProgresoMexico 2022</h4>      
+          <ion-item lines="none" class="footer-item">                     
+          </ion-item>        
+          
+        </div>
+        
+      </div>      
+    </div>    
+  </ion-footer>
 </ion-content>
+
+
