@@ -22,38 +22,38 @@
       </button>
     </ion-buttons>
     <ion-title>      
-      <a href="/home"><img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México"></a>
+      <a href="/home"><img src="../assets/img/logo.png" id="logo" alt="Asociación progreso para México" loading="lazy"></a>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
 
   <article id="index-container">
     <ion-slides pager="true" class="slides">
       <ion-slide>  
         <ion-avatar class="carousel">          
-          <img class="img-carousel" src="../assets/img/carousel.png" alt="img1">
+          <img class="img-carousel" src="../assets/img/carousel.png" alt="Violencia física" loading="lazy">
         </ion-avatar>
       </ion-slide>    
       <ion-slide>
         <ion-avatar class="carousel">
-          <img class="img-carousel" src="../assets/img/brazo.png" alt="img2">    
+          <img class="img-carousel" src="../assets/img/brazo.png" alt="Violencia sexual" loading="lazy">    
         </ion-avatar>
       </ion-slide>    
       <ion-slide>
         <ion-avatar class="carousel">
-          <img class="img-carousel" src="../assets/img/freedom.png" alt="img3">    
+          <img class="img-carousel" src="../assets/img/freedom.png" alt="Libertad" loading="lazy">    
         </ion-avatar>
       </ion-slide>    
       <ion-slide>
         <ion-avatar class="carousel">
-          <img class="img-carousel" src="../assets/img/friends.png" alt="img4">    
+          <img class="img-carousel" src="../assets/img/friends.png" alt="Amistad" loading="lazy">    
         </ion-avatar>
       </ion-slide>   
       <ion-slide>
         <ion-avatar class="carousel">
-          <img class="img-carousel" src="../assets/img/team.png" alt="img5">    
+          <img class="img-carousel" src="../assets/img/team.png" alt="Equipo" loading="lazy">    
         </ion-avatar>
       </ion-slide>         
     </ion-slides>
@@ -68,7 +68,7 @@
 
   <article id="info">        
     <h1 align="center" class="green-title">PROMEX nace en el año 2013</h1>
-    <img src="../assets/img/logowhite.png" width="300px" alt="white-logo">      
+    <img src="../assets/img/logowhite.png" width="300px" alt="Logo blanco" loading="lazy">      
     <h4 align="center" class="light-color">Preocupadas por trabajar para lograr una <b>equidad y justicia social</b>.</h4>        
     <p align="center" class="light-color">Somos un equipo multidisciplinario trabajando en conjunto por un objetivo en común.</p>          
   </article>
@@ -100,7 +100,7 @@
       <div class="v-item first-row">
         <div class="v-title">
           <ion-avatar>
-            <img src="../assets/img/v-fisica.png">
+            <img src="../assets/img/v-fisica.png" alt="Violencia física" loading="lazy">
           </ion-avatar>
         </div>
         <div class="v-text">
@@ -113,7 +113,7 @@
       <div class="v-item first-row">
         <div class="v-title">
           <ion-avatar>
-            <img src="../assets/img/v-sexual.png">
+            <img src="../assets/img/v-sexual.png" alt="Violencia sexual" loading="lazy">
           </ion-avatar>          
         </div>
         <div class="v-text">
@@ -126,7 +126,7 @@
       <div class="v-item">
         <div class="v-title">
           <ion-avatar>
-            <img src="../assets/img/v-psico.png">
+            <img src="../assets/img/v-psico.png" alt="Violencia psicológica" loading="lazy">
           </ion-avatar>
         </div>
         <div class="v-text">
@@ -139,7 +139,7 @@
       <div class="v-item">
         <div class="v-title">
           <ion-avatar>
-            <img src="../assets/img/v-economica.png">
+            <img src="../assets/img/v-economica.png" alt="Violencia económica" loading="lazy">
           </ion-avatar>
         </div>
         <div class="v-text">
@@ -154,8 +154,8 @@
 
   <article id="victim">
     <h2 align="center" class="title"><b>¿Estas sufriendo de violencia?</b></h2>
-    <img id="horizontal-viol" class="violentometro" src="../assets/img/termo.png" alt="violentometro">  
-    <img id="vertical-viol" class="violentometro" src="../assets/img/termov.png" alt="violentometro">  
+    <img id="horizontal-viol" class="violentometro" src="../assets/img/termo.png" alt="violentometro" loading="lazy">  
+    <img id="vertical-viol" class="violentometro" src="../assets/img/termov.png" alt="violentometro" loading="lazy">  
 
     <section class="center">      
       <ion-button id="report-btn" [routerLink]="['/report']">        
@@ -165,7 +165,7 @@
 
     <div align="center">      
       <ion-card class="gallery">
-        <img src="../assets/img/brazo.png" >
+        <img src="../assets/img/brazo.png" alt="Violencia institucional" loading="lazy">
         <ion-card-header>          
           <ion-card-title align="justify" class="title">Violencia Institucional </ion-card-title>
         </ion-card-header>      
@@ -179,7 +179,7 @@
         </div>
       </ion-card>
       <ion-card class="gallery">
-        <img src="../assets/img/carousel.png" >
+        <img src="../assets/img/carousel.png" alt="Violencia sexual" loading="lazy">
         <ion-card-header>          
           <ion-card-title align="justify" class="title">Violencia Sexual</ion-card-title>
         </ion-card-header>      
@@ -193,7 +193,7 @@
         </div>
       </ion-card>
       <ion-card class="gallery">
-        <img src="../assets/img/psico.png" >
+        <img src="../assets/img/psico.png" alt="Violencia familiar" loading="lazy">
         <ion-card-header>          
           <ion-card-title align="justify" class="title">Violencia Familiar</ion-card-title>
         </ion-card-header>      
@@ -207,7 +207,7 @@
         </div>
       </ion-card>
       <ion-card class="gallery">
-        <img src="../assets/img/laboral.jpg" >
+        <img src="../assets/img/laboral.jpg" alt="Violencia laboral" loading="lazy">
         <ion-card-header>          
           <ion-card-title align="justify" class="title">Violencia Laboral</ion-card-title>
         </ion-card-header>      
@@ -221,7 +221,7 @@
         </div>
       </ion-card>
       <ion-card class="gallery">
-        <img src="../assets/img/feminicidio.jpg" >
+        <img src="../assets/img/feminicidio.jpg" alt="Feminicidio" loading="lazy">
         <ion-card-header>          
           <ion-card-title align="justify" class="title">Feminicidio</ion-card-title>
         </ion-card-header>      
