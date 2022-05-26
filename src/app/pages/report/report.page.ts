@@ -150,12 +150,12 @@ export class ReportPage implements OnInit {
     await alert.present();
   }
 
+  
+
   send(){
     /*
       Aqui van los codigos que envían el formulario a la base de datos
-    */
-
-    //Este alert permite visualizar los datos que fueron ingresados en el formulario
+    */   
     console.log('Esto vamos a guardar->', this.newItem)
     const data = this.newItem;
     const enlace = 'Reports';

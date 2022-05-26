@@ -7,22 +7,58 @@ import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { DataApiService } from '../services/data-api.service';
 import { Alignment, Margins, Table } from 'pdfmake/interfaces';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Auth } from '@angular/fire/auth';
+
+import { resolve } from 'dns';
+import { rejects } from 'assert';
+
+interface reportesadmin{
+  date: string;
+  level: string;
+  school: string;
+  aggressor_name: string;
+  aggressor_gen: string;
+  aggressor_role: string;
+  victim_gen: string;
+  victim_role: string;
+  description: string;
+  proceed: string;
+  contact: string;
+  type_vio: string;
+}
 
 @Component({
   selector: 'app-panel-admin',
   templateUrl: './panel-admin.page.html',
   styleUrls: ['./panel-admin.page.scss'],
 })
-export class PanelAdminPage implements OnInit {
 
+ 
+export class PanelAdminPage implements OnInit {
+  nombre = new FormControl('');
+  tipoviol = new FormControl('');
+  hombres = new FormControl('');
+  mujeres = new FormControl('');
+  denun = new FormControl('');
+  todocolection: AngularFirestoreCollection<reportesadmin>;
+  todo:Observable<reportesadmin[]>;
+
+  
   constructor(
     private userService: UserService,
     private router: Router,
-    private dataApi: DataApiService
+    private dataApi: DataApiService,
+    private db: AngularFirestore,
+    private authService: UserService
+    
   ) { }
 
+  
   public reports = [];
   public report = '';
   public MaleAggressors = 0;
@@ -38,7 +74,14 @@ export class PanelAdminPage implements OnInit {
   public topViol1 = '';
   public totalAgresores = 0;
   public Superior = Array();
+  public email: string = '';
+  public password: string = '';
 
+
+  ionViewDidEnter(){
+    this.todocolection = this.db.collection('Reports');
+    this.todo = this.todocolection.valueChanges();
+  }
   /**
    * ngOnInit() - Método el cual se dispara al inicializarse la pagina
    * @method getAggressors(): Método encargado de recuperar el genero de los agresores en los reportes
@@ -59,9 +102,11 @@ export class PanelAdminPage implements OnInit {
 
   ngOnInit() {
 
+    this.db.collection('Reports').valueChanges().subscribe(val=>console.log(val));
+
     this.dataApi.getAggressors().subscribe(gender => {
       gender.forEach(m => {
-        if (m.boe.endsWith("m")) {
+        if (m.boe.endsWith("Masculino")) {
           this.MaleAggressors++;
         } else { this.FemaleAggressors++ }
       })// fin del foreach
@@ -70,7 +115,7 @@ export class PanelAdminPage implements OnInit {
 
     this.dataApi.getEscuelas().subscribe(school => {
       school.forEach(level => {
-        if (level.schol.endsWith('middle')) {
+        if (level.schol.endsWith('Medio Superior')) {
           this.middleSchools++;
         } else {
           this.SuperiorSchool++;
@@ -78,20 +123,17 @@ export class PanelAdminPage implements OnInit {
       })
     });
 
+   
+
     //Aqui empieza el llenado del array para los nombres de las escuelas superiores
-    this.dataApi.getEscuelasName().subscribe(nameSchool => {
-      nameSchool.forEach(them => {
-        this.Superior.push(them.nombreEscuela);
-      })
-      //console.log(this.Superior);
-    });
+    
 
     this.dataApi.getViolenceType().subscribe(violence => {
       violence.forEach(type => {
-        if (type.violence.type_vio.endsWith('financial')) { this.vio_Econo++; }
-        else if (type.violence.type_vio.endsWith('fisic')) { this.vio_Fisico++; }
-        else if (type.violence.type_vio.endsWith('sexual')) { this.vio_Sex++; }
-        else if (type.violence.type_vio.endsWith('psyc')) { this.vio_Psico++; }
+        if (type.violence.type_vio.endsWith('Económica')) { this.vio_Econo++; }
+        else if (type.violence.type_vio.endsWith('Física')) { this.vio_Fisico++; }
+        else if (type.violence.type_vio.endsWith('Sexual')) { this.vio_Sex++; }
+        else if (type.violence.type_vio.endsWith('Psicológica')) { this.vio_Psico++; }
       })
     });
 
@@ -111,6 +153,12 @@ export class PanelAdminPage implements OnInit {
       .catch(error => console.log(error));
   }
 
+  onAddUser(){
+      this.authService.registerUser(this.email, this.password)
+      .then ((res )=>{
+        this.router.navigate(['admin/list-books']);
+      }).catch(err => console.log('err', err.message));
+  }
 
   /**
    * pdf() - Método de creación de reportes de violencia
@@ -126,6 +174,33 @@ export class PanelAdminPage implements OnInit {
    * @variable vio_Sex: Recuento de las incidencias del tipo de violencia sexual
    * @variable docDefinition: Varibale encargada de crear todo el cuerpo del pdf
    */
+
+    reportes(){
+      this.db.collection('Reports').valueChanges().subscribe(val=>this.denun.setValue(val));
+    }
+  estadisticaescuela(){
+    if (this.SuperiorSchool > this.middleSchools) {
+      this.nombre.setValue('Nivel Superior')
+    } else {
+      this.nombre.setValue('Nivel Medio Superior')
+    }
+
+    if ((this.vio_Econo > this.vio_Fisico) && (this.vio_Econo > this.vio_Psico) && (this.vio_Econo > this.vio_Sex)) { this.tipoviol.setValue('Económica') }
+    else if ((this.vio_Fisico > this.vio_Econo) && (this.vio_Fisico > this.vio_Psico) && (this.vio_Fisico > this.vio_Sex)) { this.tipoviol.setValue('Física') }
+    else if ((this.vio_Psico > this.vio_Econo) && (this.vio_Psico > this.vio_Fisico) && (this.vio_Psico > this.vio_Sex)) { this.tipoviol.setValue('Psicológica'); }
+    else if ((this.vio_Sex > this.vio_Econo) && (this.vio_Sex > this.vio_Psico) && (this.vio_Sex > this.vio_Fisico)) { this.tipoviol.setValue('Sexual') }
+    else {
+      this.tipoviol.setValue('Igual numero de incidencias')
+    }
+
+    this.hombres.setValue((this.MaleAggressors * 100) / this.totalAgresores+'%');
+    this.mujeres.setValue((this.FemaleAggressors * 100) / this.totalAgresores+'%');
+    
+  }
+  pdfreport(){
+    this.db.collection('Reports').valueChanges().subscribe(val=>this.denun.setValue(val));
+
+  }
 
   pdf() {
     if (this.SuperiorSchool > this.middleSchools) {
@@ -164,7 +239,7 @@ export class PanelAdminPage implements OnInit {
               margin: [10, 10, 0, 0] as Margins
             },
             {
-              text: 'Reporte de estadisticas generales de las denuncias\nProgreso para Méxcio',
+              text: 'Reporte de estadisticas generales de las denuncias\nProgreso para México',
               style: 'header',
               alignment: 'center' as Alignment,
               margin: [-90, 10, 0, 0] as Margins
