@@ -165,7 +165,7 @@ export class ReportPage implements OnInit {
    * @constant enlace - Contiene el nombre de la base de datos
    * @method createDo(data,enlace) - Método encargado de ingresar los datos a la colección especificada en 'enlace'
    */
-  send(){
+  send(f: NgForm){
     /*
       Aqui van los codigos que envían el formulario a la base de datos
     */
