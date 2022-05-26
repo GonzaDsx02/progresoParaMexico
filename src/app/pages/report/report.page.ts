@@ -170,7 +170,9 @@ export class ReportPage implements OnInit {
     const data = this.newItem;
     const enlace = 'Reports';
     this.firestore.createDo(data,enlace);
-    this.showAlert('Datos registrados', 'Estos datos seran parte de la estadistica estatal.\n Si se le dara seguimiento a tu denuncia, espera a que nuestro equipo se ponga en contacto contigo.');
+    this.showAlert('Datos registrados',
+      'Estos datos seran parte de la estadistica estatal.\n'+
+      'Si se le dara seguimiento a tu denuncia, espera a que nuestro equipo se ponga en contacto contigo.');
     this.formReports.reset()
   }
 }

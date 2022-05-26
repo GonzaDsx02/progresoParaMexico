@@ -21,7 +21,6 @@ export class DatabaseService {
    *getCollection() - Método que realiza la conexión con la colección de 'Reports'
    */
   getCollection(){
-    //console.log("Recibi datos");
     this.firestore.collection('Reports').valueChanges().subscribe((res)=>{
         console.log('res ->', res);
     });

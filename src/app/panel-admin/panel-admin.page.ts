@@ -37,8 +37,8 @@ export class PanelAdminPage implements OnInit {
   public vio_Psico = 0;
   public topViol1 = '';
   public totalAgresores = 0;
-  public Superior = Array();
-
+  public Superior =Array();
+  public MediaSuperior = Array();
   /**
    * ngOnInit() - Método el cual se dispara al inicializarse la pagina
    * @method getAggressors(): Método encargado de recuperar el genero de los agresores en los reportes
@@ -94,6 +94,26 @@ export class PanelAdminPage implements OnInit {
         else if (type.violence.type_vio.endsWith('psyc')) { this.vio_Psico++; }
       })
     });
+    
+    this.dataApi.getSuperiorNames().subscribe(School=>{
+      this.Superior.splice(0);
+      School.forEach(SchoolDetail=>{
+        if(SchoolDetail.municipio == 'Tepic'){
+          const nombreSchool = SchoolDetail.schoolName;
+          this.Superior.push(nombreSchool);
+        }
+      })//fin del for
+    })//fin del subscribe
+
+    this.dataApi.getMiddleNames().subscribe(School =>{
+      this.MediaSuperior.splice(0);
+      School.forEach(SchoolDetail =>{
+        if(SchoolDetail.municipio == 'Tepic'){
+          const schoolMName = SchoolDetail.middleSName;
+          this.MediaSuperior.push(schoolMName);
+        }
+      })
+    })// fin del metodo para las escuelas de media superior
 
   }// final del ngOninit
 
