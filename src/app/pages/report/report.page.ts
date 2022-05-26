@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { format, parseISO} from 'date-fns';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Item } from './report.module';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-report',
@@ -72,7 +72,7 @@ export class ReportPage implements OnInit {
    *
    * sc_place_form: Lugar de la escuela en donde ocurrió la agresión
    */
-  constructor(private fb: FormBuilder, private firestore: DatabaseService, private alertController: AlertController) {
+  constructor(private fb: FormBuilder, private firestore: DatabaseService,) {
     this.formReports = this.fb.group({
       level: ['', Validators.required],
       school_form: ['', Validators.required],
@@ -144,12 +144,6 @@ export class ReportPage implements OnInit {
   }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
-  async showAlert(header, message) {
-    const alert = await this.alertController.create({
-      header, message, buttons: ["ok"]
-    });
-    await alert.present();
-  }
 
   //método para validar los campos que están vacíos en el formulario
   private visualValidationForm(formGroup: FormGroup) {
@@ -170,7 +164,7 @@ export class ReportPage implements OnInit {
     if(this.newItem.level && this.newItem.school && this.newItem.aggressor_name && this.newItem.aggressor_gen && this.newItem.aggressor_role && this.newItem.victim_gen && this.newItem.victim_role && this.newItem.incident_time && this.newItem.school_place && this.newItem.description && this.newItem.denuncied && this.newItem.proceed && this.newItem.type_vio){
       if(this.newItem.denuncied=='yes'){
         if(this.newItem.actions && this.newItem.help){
-          this.showAlert('Reporte enviado', 'Envío exitoso');
+          //this.showAlert('Reporte enviado', 'Envío exitoso');
 
           //Aquí comienza el envío de datos
           //Este alert permite visualizar los datos que fueron ingresados en el formulario
@@ -178,20 +172,51 @@ export class ReportPage implements OnInit {
           const data = this.newItem;
           const enlace = 'Reports';
           this.firestore.createDo(data,enlace);
-          this.showAlert('Datos registrados', 'Estos datos seran parte de la estadistica estatal.\n Si se le dara seguimiento a tu denuncia, espera a que nuestro equipo se ponga en contacto contigo.');
+          //this.showAlert('Datos registrados', 'Estos datos seran parte de la estadistica estatal.\n Si se le dara seguimiento a tu denuncia, espera a que nuestro equipo se ponga en contacto contigo.');
           this.formReports.reset()
           //termina el envío de datos
 
+          //mensaje de alerta de la libreria sweetAlert2
+          Swal.fire({
+            icon: 'success',
+            title: 'Datos registrados',
+            text: 'Estos datos seran parte de la estadistica estatal.\nEspera a que nuestro equipo se ponga en contacto contigo.',
+            heightAuto: false
+          });
         }else{
           this.visualValidationForm(this.formReports);
-          this.showAlert('Campos obligatorios', 'Ingresa los datos faltantes');
+          //this.showAlert('Campos obligatorios', 'Ingresa los datos faltantes');
+      
+          //mensaje de alerta de la libreria sweetAlert2
+          Swal.fire({
+            icon: 'error',
+            title: 'Algo salió mal',
+            text: 'Ingresa o selecciona los campos faltantes',
+            heightAuto: false
+          });
         }
       }else{
-        this.showAlert('Reporte enviado', 'Envío exitoso');
+        //this.showAlert('Reporte enviado', 'Envío exitoso');
+        //mensaje de alerta de la libreria sweetAlert2
+        this.formReports.reset()
+        Swal.fire({
+          icon: 'success',
+          title: 'Datos registrados',
+          text: 'Estos datos seran parte de la estadistica estatal.',
+          heightAuto: false
+        });
       }
     }else{
       this.visualValidationForm(this.formReports);
-      this.showAlert('Campos obligatorios', 'Ingresa los datos faltantes');
+      //this.showAlert('Campos obligatorios', 'Ingresa los datos faltantes');
+      
+      //mensaje de alerta de la libreria sweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Algo salió mal',
+        text: 'Ingresa o selecciona los campos faltantes',
+        heightAuto: false
+      });
     }
   }
 }
