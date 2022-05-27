@@ -38,7 +38,7 @@ interface reportesadmin{
   styleUrls: ['./panel-admin.page.scss'],
 })
 
- 
+
 export class PanelAdminPage implements OnInit {
   nombre = new FormControl('');
   tipoviol = new FormControl('');
@@ -48,17 +48,17 @@ export class PanelAdminPage implements OnInit {
   todocolection: AngularFirestoreCollection<reportesadmin>;
   todo:Observable<reportesadmin[]>;
 
-  
+
   constructor(
     private userService: UserService,
     private router: Router,
     private dataApi: DataApiService,
     private db: AngularFirestore,
     private authService: UserService
-    
+
   ) { }
 
-  
+
   public reports = [];
   public report = '';
   public MaleAggressors = 0;
@@ -103,7 +103,9 @@ export class PanelAdminPage implements OnInit {
 
   ngOnInit() {
 
-    this.db.collection('Reports').valueChanges().subscribe(val=>console.log(val));
+    this.db.collection('Reports').valueChanges().subscribe(
+      //console.log(val)
+      );
 
     this.dataApi.getAggressors().subscribe(gender => {
       gender.forEach(m => {
@@ -124,11 +126,6 @@ export class PanelAdminPage implements OnInit {
       })
     });
 
-   
-
-    //Aqui empieza el llenado del array para los nombres de las escuelas superiores
-    
-
     this.dataApi.getViolenceType().subscribe(violence => {
       violence.forEach(type => {
         if (type.violence.type_vio.endsWith('Económica')) { this.vio_Econo++; }
@@ -137,7 +134,7 @@ export class PanelAdminPage implements OnInit {
         else if (type.violence.type_vio.endsWith('Psicológica')) { this.vio_Psico++; }
       })
     });
-    
+
     this.dataApi.getSuperiorNames().subscribe(School=>{
       this.Superior.splice(0);
       School.forEach(SchoolDetail=>{
@@ -214,16 +211,15 @@ export class PanelAdminPage implements OnInit {
       this.tipoviol.setValue('Igual numero de incidencias')
     }
 
-    this.hombres.setValue((this.MaleAggressors * 100) / this.totalAgresores+'%');
-    this.mujeres.setValue((this.FemaleAggressors * 100) / this.totalAgresores+'%');
-    
+    this.hombres.setValue(((this.MaleAggressors * 100) / this.totalAgresores).toFixed(1)+'%');
+    this.mujeres.setValue(((this.FemaleAggressors * 100) / this.totalAgresores).toFixed(1)+'%');
+
   }
   pdfreport(){
-    this.db.collection('Reports').valueChanges().subscribe(val=>this.denun.setValue(val));
-
+    console.log(this.db.collection('Reports').valueChanges().subscribe(val=>this.denun.setValue(val)));
   }
 
-  pdf() {
+  pdfEstadisticas() {
     if (this.SuperiorSchool > this.middleSchools) {
       this.escuelasMayor = 'Nivel Superior'
     } else {
@@ -243,7 +239,8 @@ export class PanelAdminPage implements OnInit {
 
     let docDefinition = {
       pageMargins: [40, 60, 40, 60] as Margins,
-      /**header - encabezado con una función para retornar todo el diseño
+      /**
+       * header - encabezado con una función para retornar todo el diseño
        * @function function: contiene una función anónima para crear el encabezado del PDF
        */
       header: function () {
@@ -285,10 +282,18 @@ export class PanelAdminPage implements OnInit {
                 { text: 'Parámetro', style: { alignment: 'center' as Alignment, bold: true } },
                 { text: 'Resultados en porcentaje', style: { alignment: 'center' as Alignment, bold: true } }
               ],
-              ['Agresores hombres en todas las instituciones', { text: MalePercentage + '%', style: { alignment: 'center' as Alignment } }],
-              ['Agresores mujeres en todas las instituciones', { text: FemalePercentage + '%', style: { alignment: 'center' as Alignment } }],
-              ['Nivel educativo con mayor incidencia de violencia:', { text: this.escuelasMayor, style: { alignment: 'center' as Alignment } }],
-              ['Violencia de mayor incidencia', { text: this.topViol1, style: { alignment: 'center' as Alignment } }]
+              [
+                'Agresores hombres en todas las instituciones', { text: MalePercentage.toFixed(1) + '%', style: { alignment: 'center' as Alignment } }
+              ],
+              [
+                'Agresores mujeres en todas las instituciones', { text: FemalePercentage.toFixed(1) + '%', style: { alignment: 'center' as Alignment } }
+              ],
+              [
+                'Nivel educativo con mayor incidencia de violencia:', { text: this.escuelasMayor, style: { alignment: 'center' as Alignment } }
+              ],
+              [
+                'Violencia de mayor incidencia', { text: this.topViol1, style: { alignment: 'center' as Alignment } }
+              ]
             ]
           } as Table,
           margin: [0, 20, 0, 0] as Margins// fin de la tabla
