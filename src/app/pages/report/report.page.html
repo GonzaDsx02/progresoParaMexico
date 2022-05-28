@@ -57,7 +57,7 @@
           <div id="school">
             <ion-item class="item" >
               <ion-label>Institución donde sucedió</ion-label>
-              <ion-select placeholder="Seleccionar" interface="popover" formControlName="school_form" [(ngModel)] = "newItem.school" name="school">
+              <ion-select placeholder="Seleccionar" interface="action-sheet" formControlName="school_form" [(ngModel)] = "newItem.school" name="school">
                 <ion-select-option value="itt">ITT</ion-select-option>
                 <ion-select-option value="uan">UAN</ion-select-option>
                 <ion-select-option value="ut">UT</ion-select-option>
@@ -294,7 +294,7 @@
           </ng-container>
         </div>
 
-        <ion-item *ngIf="newItem.proceed == 'Si'">
+        <ion-item *ngIf="newItem.proceed == 'yes'">
           <ion-label position="floating">Contacto</ion-label>
           <ion-input formControlName="cont" [(ngModel)] = "newItem.contact" name="contact" placeholder="Opcional"></ion-input>
         </ion-item>

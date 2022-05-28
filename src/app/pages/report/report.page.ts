@@ -83,7 +83,7 @@ export class ReportPage implements OnInit {
    * @variable school_form: Escuela en donde ocurrió la agresión
    * @variable sc_place_form: Lugar de la escuela en donde ocurrió la agresión
    */
-  constructor(private fb: FormBuilder, private firestore: DatabaseService,) {
+  constructor(private fb: FormBuilder, private firestore: DatabaseService) {
     this.formReports = this.fb.group({
       level: ['', Validators.required],
       school_form: ['', Validators.required],
@@ -207,6 +207,9 @@ export class ReportPage implements OnInit {
         }
       }else{
         //this.showAlert('Reporte enviado', 'Envío exitoso');
+        const data = this.newItem;
+        const enlace = 'Reports';
+        this.firestore.createDo(data,enlace);
         //mensaje de alerta de la libreria sweetAlert2
         this.formReports.reset()
         Swal.fire({
