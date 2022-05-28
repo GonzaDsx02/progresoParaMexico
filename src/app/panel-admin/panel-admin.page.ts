@@ -11,11 +11,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Auth } from '@angular/fire/auth';
-
-import { resolve } from 'dns';
-import { rejects } from 'assert';
 
 interface reportesadmin{
   date: string;
@@ -161,7 +156,7 @@ export class PanelAdminPage implements OnInit {
         })
     });
 
-  }// final del ngOninit
+  };// final del ngOninit
 
   /**
    * SignOut Metodo para cerrar sesion
@@ -175,14 +170,14 @@ export class PanelAdminPage implements OnInit {
         this.router.navigate(['/login']);
       })
       .catch(error => console.log(error));
-  }
+  };
 
   onAddUser(){
       this.authService.registerUser(this.email, this.password)
       .then ((res )=>{
         this.router.navigate(['admin/list-books']);
       }).catch(err => console.log('err', err.message));
-  }
+  };
 
   /**
    * pdf() - Método de creación de reportes de violencia

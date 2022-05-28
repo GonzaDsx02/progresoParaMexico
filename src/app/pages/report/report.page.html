@@ -53,13 +53,12 @@
               </ng-container>
             </div>
           </div>
+          <!-- Item para las escuelas superiores -->
           <div id="school">
-            <ion-item class="item">
+            <ion-item class="item" *ngIf="newItem.level == 'Superior'" >
               <ion-label>Institución donde sucedió</ion-label>
               <ion-select placeholder="Seleccionar" interface="popover" formControlName="school_form" [(ngModel)]="newItem.school">
-                <ion-select-option value="ITT">ITT</ion-select-option>
-                <ion-select-option value="UAN">UAN</ion-select-option>
-                <ion-select-option value="UT">UT</ion-select-option>
+                <ion-select-option *ngFor="let escuela of AllEscuelas" [value]="escuela.Nombre">{{escuela.Nombre}}</ion-select-option>
               </ion-select>
             </ion-item>
             <div class="form_error">
@@ -72,6 +71,25 @@
               </ng-container>
             </div>
           </div>
+          <!-- Item para las escuelas medias superiores  -->
+          <div id="school">
+            <ion-item class="item" *ngIf="newItem.level == 'Medio Superior'" >
+              <ion-label>Institución donde sucedió</ion-label>
+              <ion-select placeholder="Seleccionar" interface="popover" formControlName="school_form" [(ngModel)]="newItem.school">
+                <ion-select-option *ngFor="let escuela of AllEscuelasMedias" [value]="escuela.Nombre">{{escuela.Nombre}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <div class="form_error">
+              <ng-container *ngFor="let val of validationMessages['school_form']">
+                <div
+                  *ngIf="formReports.get('school_form').hasError(val.type) && (formReports.get('school_form').dirty || formReports.get('school_form').touched)"
+                >
+                  {{val.message}}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
         </div>
 
         <ion-item class="item">
