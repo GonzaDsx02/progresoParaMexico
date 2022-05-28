@@ -126,7 +126,7 @@ export class DataApiService {
   };//fin del metodo de los profes
 
   /**
-   *
+   *getSuperiorNames()- Método que retorna el municipio y el nombre de las instituciones de nivel superior
    */
   getSuperiorNames(){
     return this.itemCollectionS.snapshotChanges().pipe(
@@ -139,7 +139,7 @@ export class DataApiService {
   }// fin de la recuperacion de nombres
 
   /**
-   *
+   *getMiddleNames()- Método que retorna el municipio y el nombre de las instituciones de nivel medio superior
    */
 
   getMiddleNames(){

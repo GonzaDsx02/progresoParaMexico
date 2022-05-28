@@ -13,10 +13,10 @@
 </ion-header>
 
 <ion-content>
-  
-  
+
+
   <ion-card class="estadisticas">
-    <ion-card-header>      
+    <ion-card-header>
       <ion-card-title>Estadisticas</ion-card-title>
     </ion-card-header>
     <ion-card-content>
@@ -26,7 +26,7 @@
           <ion-label></ion-label>
           <ion-input [formControl]="nombre">Nivel educativo con mayor incidencía de
             violencia:</ion-input>
-          
+
         </ion-item>
         <ion-item>
           <ion-label></ion-label>
@@ -40,41 +40,45 @@
           <ion-label></ion-label>
           <ion-input [formControl]="mujeres">Porcentaje de agresores mujeres en todas las instituciones: </ion-input>
         </ion-item>
-        
+
       </ion-list>
-      <div class = "reports-buttons">
+      <div class = "botonreport">
+
         <div>
           <ion-button type="button" id="statistics" (click)="estadisticaescuela()">
               Mostrar estadisticas
           </ion-button>
-          <ion-button type="button" id="download-stats" (click)="pdf()">
+          <ion-button type="button" id="download-stats" (click)="pdfEstadisticas()">
             Descargar estadisticas
         </ion-button>
         </div>
       </div>
     </ion-card-content>
-    
-  
-    
+
+
+
   </ion-card>
   <ion-card class="reportes">
-    <ion-card-header>      
+    <ion-card-header>
       <ion-card-title>Reportes</ion-card-title>
     </ion-card-header>
-    
+
     <ion-card-content>
       Aqui se pueden visualizar las denuncias realizadas por los usuarios.
+
       <ion-grid>
         <ion-row>
           <ion-col col-1>
             <ion-label >Fecha del Reporte</ion-label>
             <ion-list>
-              <ion-item *ngFor="let item of todo| async">
+              <ion-item *ngFor="let item of todo | async">
                 {{ item.date }}
               </ion-item>
-              
+
             </ion-list>
           </ion-col>
+
+
 
           <ion-col col-1>
             <ion-list>
@@ -82,7 +86,7 @@
               <ion-item *ngFor="let item of todo| async">
                 {{ item.school }}
               </ion-item>
-              
+
             </ion-list>
           </ion-col>
 
@@ -92,9 +96,10 @@
               <ion-item *ngFor="let item of todo| async">
                 {{ item.aggressor_name }}
               </ion-item>
-              
+
             </ion-list>
           </ion-col>
+
 
           <ion-col col-1>
             <ion-list>
@@ -102,6 +107,7 @@
               <ion-item *ngFor="let item of todo| async">
                 {{ item.type_vio }}
               </ion-item>
+
             </ion-list>
           </ion-col>
 
@@ -111,6 +117,7 @@
               <ion-item *ngFor="let item of todo| async">
                 {{ item.proceed }}
               </ion-item>
+
             </ion-list>
           </ion-col>
 
@@ -120,6 +127,7 @@
               <ion-item *ngFor="let item of todo| async">
                 {{ item.contact }}
               </ion-item>
+
             </ion-list>
           </ion-col>
         </ion-row>
@@ -129,9 +137,9 @@
     </ion-button>
     </ion-card-content>
   </ion-card>
-  
+
   <ion-card class="usuario">
-    <ion-card-header>      
+    <ion-card-header>
       <ion-card-title>Agregar usuario</ion-card-title>
     </ion-card-header>
     
@@ -140,7 +148,7 @@
         <ion-label position="floating">Correo Electrónico</ion-label>
         <ion-input type="email" name="email" class="email" placeholder="Ingresa correo electrónico"
         [(ngModel)]="email" required minlenght="8"></ion-input>
-      </ion-item>     
+      </ion-item>
       <ion-item>
         <ion-label position="floating">Contraseña</ion-label>
         <ion-input type="password" name="password" class="password" placeholder="Ingresa contraseña"
@@ -156,12 +164,14 @@
     <div class="footer">
       <div class="footer-content">
         <div class="contact">
-          <h4 class="green-title" style="color: white;">Copyright © ProgresoMexico 2022</h4>      
-          <ion-item lines="none" class="footer-item">                     
-          </ion-item>        
+          <h4 class="green-title" style="color: white;">Copyright © ProgresoMexico 2022</h4>
+          <ion-item lines="none" class="footer-item">
+          </ion-item>
+
         </div>
-      </div>      
-    </div>    
+
+      </div>
+    </div>
   </ion-footer>
 </ion-content>
 

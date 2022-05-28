@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Item } from './report.module';
 import Swal from 'sweetalert2';
+import { Escuela } from 'src/app/models/models';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-report',
@@ -65,7 +67,15 @@ export class ReportPage implements OnInit {
     date: this.actualDate,
     contact: "",
     type_vio: "",
-  }
+  };
+
+  /** 
+   * AllEscuelas: Variable que guarda la informacion de las escuelas recuperadas
+   * @variable Nombre: Nombre de la escuela
+   * @variable Municipio: Municipio al cual la escuela pertenece 
+   */
+  AllEscuelas:Escuela[] = []
+  AllEscuelasMedias:Escuela[] = []
 
   //----------------------------------------------------------
 
@@ -83,7 +93,7 @@ export class ReportPage implements OnInit {
    * @variable school_form: Escuela en donde ocurrió la agresión
    * @variable sc_place_form: Lugar de la escuela en donde ocurrió la agresión
    */
-  constructor(private fb: FormBuilder, private firestore: DatabaseService) {
+  constructor(private fb: FormBuilder, private firestore: DatabaseService, private database:AngularFirestore) {
     this.formReports = this.fb.group({
       level: ['', Validators.required],
       school_form: ['', Validators.required],
@@ -122,10 +132,12 @@ export class ReportPage implements OnInit {
       date_val:[{type: 'required', message: "Obligatorio!"}],
       type_vio:[{type: 'required', message: "Obligatorio!"}]
     }
-  }
+  };
 
   ngOnInit() {
-  }
+    this.getSuperiorNames();
+    this.getMiddleNames();
+  };
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
   //Funciones utilizadas para la seleccion y el formato de fechas seleccionadas.
@@ -137,15 +149,14 @@ export class ReportPage implements OnInit {
    */
   private getActualDate(){
     return (new Date().getMonth()+1)<10 ? new Date().getFullYear() + '-0' + (new Date().getMonth()+1) + '-' + new Date().getDate() : new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + new Date().getDate();
-  }
-
+  };
 
   /**
    * getDate(): Guarda la fecha seleccionada dentro de la variable {actualDate}. Esta variable es la que se debe utilizar para las operaciones en la BD.
   */
   getDate(){
     return format(parseISO(this.getActualDate()), 'd MMM, yyyy'); //El formato puede ser modificado a criterio del desarrollador.
-  }
+  };
 
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -232,5 +243,20 @@ export class ReportPage implements OnInit {
       });
     }
   }
-}
 
+  // ------------------------- funciones para el llenado de los nombres de las escuelas
+  getSuperiorNames(){
+    const path = 'EscuelasSuperior'
+    this.database.collection<Escuela>(path).valueChanges().subscribe(res =>{
+      this.AllEscuelas = res;
+      //console.log(this.AllEscuelas);
+    });
+  };// fin del método para las esucelas de nivel superior
+
+  getMiddleNames(){
+    this.database.collection<Escuela>('EscuelasMediaSuperior').valueChanges().subscribe(res=>{
+      this.AllEscuelasMedias = res;
+    });
+  };
+
+}; // fin del codigo del archivo ts

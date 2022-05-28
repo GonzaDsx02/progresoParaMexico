@@ -40,8 +40,8 @@
             <ion-item class="item" lines="none">
               <ion-label>Nivel</ion-label>
               <ion-select placeholder="Seleccionar" interface="popover"  formControlName="level" [(ngModel)] = "newItem.level" name="level">
-                <ion-select-option value="middle">Medio superior</ion-select-option>
-                <ion-select-option value="superior">Superior</ion-select-option>
+                <ion-select-option value="Medio Superior">Medio superior</ion-select-option>
+                <ion-select-option value="Superior">Superior</ion-select-option>
               </ion-select>
             </ion-item>
             <div class="form_error">
@@ -55,12 +55,18 @@
             </div>
           </div>
           <div id="school">
-            <ion-item class="item" >
+            <!-- Item para las escuelas superiores -->
+            <ion-item class="item" *ngIf="newItem.level == 'Superior'" >
               <ion-label>Institución donde sucedió</ion-label>
-              <ion-select placeholder="Seleccionar" interface="action-sheet" formControlName="school_form" [(ngModel)] = "newItem.school" name="school">
-                <ion-select-option value="itt">ITT</ion-select-option>
-                <ion-select-option value="uan">UAN</ion-select-option>
-                <ion-select-option value="ut">UT</ion-select-option>
+              <ion-select placeholder="Seleccionar" interface="action-sheet" formControlName="school_form" [(ngModel)]="newItem.school">
+                <ion-select-option *ngFor="let escuela of AllEscuelas" [value]="escuela.Nombre">{{escuela.Nombre}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <!-- Item para las escuelas medias superiores  -->
+            <ion-item class="item" *ngIf="newItem.level == 'Medio Superior'" >
+              <ion-label>Institución donde sucedió</ion-label>
+              <ion-select placeholder="Seleccionar" interface="action-sheet" formControlName="school_form" [(ngModel)]="newItem.school">
+                <ion-select-option *ngFor="let escuela of AllEscuelasMedias" [value]="escuela.Nombre">{{escuela.Nombre}}</ion-select-option>
               </ion-select>
             </ion-item>
             <div class="form_error">
@@ -78,10 +84,10 @@
         <ion-item class="item">
           <ion-label>Tipo de Violencia</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="type_vio" [(ngModel)] = "newItem.type_vio" name="type_vio">
-            <ion-select-option value="fisic">Física</ion-select-option>
-            <ion-select-option value="sexual">Sexual</ion-select-option>
-            <ion-select-option value="psyc">Psicológica</ion-select-option>
-            <ion-select-option value="financial">Económica</ion-select-option>
+            <ion-select-option value="Física">Física</ion-select-option>
+            <ion-select-option value="Sexual">Sexual</ion-select-option>
+            <ion-select-option value="Psicológica">Psicológica</ion-select-option>
+            <ion-select-option value="Económica">Económica</ion-select-option>
           </ion-select>
         </ion-item>
         <div class="form_error">
@@ -97,9 +103,9 @@
         <ion-item class="item">
           <ion-label>Tu género/Género de la victima</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="vic_gen" [(ngModel)] = "newItem.victim_gen" name="victim_gen">
-            <ion-select-option value="m">Masculino</ion-select-option>
-            <ion-select-option value="f">Femenino</ion-select-option>
-            <ion-select-option value="any">Prefiero no decirlo</ion-select-option>
+            <ion-select-option value="Masculino">Masculino</ion-select-option>
+            <ion-select-option value="Femenino">Femenino</ion-select-option>
+            <ion-select-option value="Reservado">Prefiero no decirlo</ion-select-option>
           </ion-select>
         </ion-item>
         <div class="form_error">
@@ -115,9 +121,9 @@
         <ion-item class="item" lines="none">
           <ion-label>Tu rol/Rol de la victima</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="vic_role" [(ngModel)] = "newItem.victim_role" name="victim_role">
-            <ion-select-option value="worker">Administrativo</ion-select-option>
-            <ion-select-option value="teacher">Maestro/a</ion-select-option>
-            <ion-select-option value="student">Estudiante</ion-select-option>
+            <ion-select-option value="Administrativo">Administrativo</ion-select-option>
+            <ion-select-option value="Docente">Maestro/a</ion-select-option>
+            <ion-select-option value="Estudiante">Estudiante</ion-select-option>
           </ion-select>
         </ion-item>
         <div class="form_error">
@@ -147,9 +153,9 @@
         <ion-item class="item" lines="none">
           <ion-label>Género del agresor</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="ag_gen" [(ngModel)] = "newItem.aggressor_gen" name="aggressor_gen">
-            <ion-select-option value="m">Masculino</ion-select-option>
-            <ion-select-option value="f">Femenino</ion-select-option>
-            <ion-select-option value="any">Prefiero no decirlo</ion-select-option>
+            <ion-select-option value="Masculino">Masculino</ion-select-option>
+            <ion-select-option value="Femenino">Femenino</ion-select-option>
+            <ion-select-option value="Reservado">Prefiero no decirlo</ion-select-option>
           </ion-select>
         </ion-item>
         <div class="form_error">
@@ -165,9 +171,9 @@
         <ion-item class="item" lines="none">
           <ion-label>El rol del agresor</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="ag_role" [(ngModel)] = "newItem.aggressor_role" name="aggressor_role">
-            <ion-select-option value="worker">Administrativo</ion-select-option>
-            <ion-select-option value="teacher">Maestro/a</ion-select-option>
-            <ion-select-option value="student">Estudiante</ion-select-option>
+            <ion-select-option value="Administrativo">Administrativo</ion-select-option>
+            <ion-select-option value="Docente">Maestro/a</ion-select-option>
+            <ion-select-option value="Estudiante">Estudiante</ion-select-option>
           </ion-select>
         </ion-item>
         <div class="form_error">
@@ -183,12 +189,12 @@
         <ion-item class="item" lines="none">
           <ion-label>Tiempo transcurrido del suceso</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover"  formControlName="inc_time" [(ngModel)] = "newItem.incident_time" name="incident_time">
-            <ion-select-option value="week">Menos de una semana</ion-select-option>
-            <ion-select-option value="weeks">Más de dos semanas</ion-select-option>
-            <ion-select-option value="month">Aproximadamente un mes</ion-select-option>
-            <ion-select-option value="months">Aproximadamente meses</ion-select-option>
-            <ion-select-option value="year">Aproximadamente un año</ion-select-option>
-            <ion-select-option value="years">Más de un año</ion-select-option>
+            <ion-select-option value="Menos de una semana">Menos de una semana</ion-select-option>
+            <ion-select-option value="Más de dos semanas">Más de dos semanas</ion-select-option>
+            <ion-select-option value="Aprox. 1 mes">Aproximadamente un mes</ion-select-option>
+            <ion-select-option value="Aprox. 6 meses">Aproximadamente meses</ion-select-option>
+            <ion-select-option value="Aprox. 1 año">Aproximadamente un año</ion-select-option>
+            <ion-select-option value="Más de un año">Más de un año</ion-select-option>
           </ion-select>
         </ion-item>
         <div class="form_error">
@@ -232,8 +238,8 @@
         <ion-item class="item" lines="none">
           <ion-label>¿Denunciaste el suceso a tu institución?</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="denuncied" [(ngModel)] = "newItem.denuncied" name = "denuncied">
-            <ion-select-option value="yes">Si</ion-select-option>
-            <ion-select-option value="no">No</ion-select-option>
+            <ion-select-option value="Si">Si</ion-select-option>
+            <ion-select-option value="No">No</ion-select-option>
           </ion-select>
         </ion-item>
         <div class="form_error">
@@ -246,7 +252,7 @@
           </ng-container>
         </div>
 
-        <ion-item *ngIf="newItem.denuncied == 'yes'" lines="none">
+        <ion-item *ngIf="newItem.denuncied == 'Si'" lines="none">
           <ion-label position="floating">¿Qué acciones tomó la institución?</ion-label>
           <ion-textarea  formControlName="actions" [(ngModel)] = "newItem.actions" name="actions"></ion-textarea>
         </ion-item>
@@ -260,11 +266,11 @@
           </ng-container>
         </div>
 
-        <ion-item *ngIf="newItem.denuncied == 'yes'" lines="none">
+        <ion-item *ngIf="newItem.denuncied == 'Si'" lines="none">
           <ion-label position="floating">¿Qué apoyo recibiste despues de la denuncia?</ion-label>
           <ion-textarea  formControlName="help" [(ngModel)] = "newItem.help" name="help"></ion-textarea>
         </ion-item>
-        <div class="form_error" *ngIf="newItem.denuncied == 'yes'">
+        <div class="form_error" *ngIf="newItem.denuncied == 'Si'">
           <ng-container *ngFor="let val of validationMessages['help']">
             <div
               *ngIf="formReports.get('help').hasError(val.type) && (formReports.get('help').dirty || formReports.get('help').touched)"
@@ -277,8 +283,8 @@
         <ion-item class="item" lines="none">
           <ion-label>Proceder denuncia</ion-label>
           <ion-select placeholder="Seleccionar" interface="popover" formControlName="proc" [(ngModel)] = "newItem.proceed" name="proceed">
-            <ion-select-option value="yes">Si</ion-select-option>
-            <ion-select-option value="no">No</ion-select-option>
+            <ion-select-option value="Si">Si</ion-select-option>
+            <ion-select-option value="No">No</ion-select-option>
           </ion-select>
         </ion-item>
         <small>Con esto permites que se te dé asesoría para proceder con tu
@@ -294,7 +300,7 @@
           </ng-container>
         </div>
 
-        <ion-item *ngIf="newItem.proceed == 'yes'">
+        <ion-item *ngIf="newItem.proceed == 'Si'">
           <ion-label position="floating">Contacto</ion-label>
           <ion-input formControlName="cont" [(ngModel)] = "newItem.contact" name="contact" placeholder="Opcional"></ion-input>
         </ion-item>
