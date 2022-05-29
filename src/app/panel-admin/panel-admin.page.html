@@ -92,9 +92,9 @@
 
           <ion-col col-5>
             <ion-list>
-              <ion-label >Nombre del Agresor</ion-label>
+              <ion-label >Genero del Agresor</ion-label>
               <ion-item *ngFor="let item of todo| async">
-                {{ item.aggressor_name }}
+                {{ item.aggressor_gen }}
               </ion-item>
 
             </ion-list>
@@ -135,6 +135,49 @@
       <ion-button type="button" class="button" (click)="pdfreport()">
         Descargar reportes
     </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="tendedero">
+    <ion-card-header>
+      <ion-card-title>Tendedero Virtual</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Aqui se pueden visualizar los nombres de los agresores.
+
+      <ion-grid>
+        <ion-row> 
+          <ion-col col-5>
+            <ion-list>
+              <ion-label >Nombre del Agresor</ion-label>
+              <ion-item *ngFor="let item of todo| async">
+                {{ item.aggressor_name }}
+              </ion-item>
+
+            </ion-list>
+          </ion-col>
+
+          <ion-col col-1>
+            <ion-list>
+              <ion-label >Escuela</ion-label>
+              <ion-item *ngFor="let item of todo| async">
+                {{ item.school }}
+              </ion-item>
+
+            </ion-list>
+          </ion-col>
+          <ion-col col-1>
+            <ion-list>
+              <ion-label >Descripción</ion-label>
+              <ion-item *ngFor="let item of todo| async">
+                {{ item.description }}
+              </ion-item>
+
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>      
     </ion-card-content>
   </ion-card>
 

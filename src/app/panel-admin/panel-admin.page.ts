@@ -167,15 +167,14 @@ export class PanelAdminPage implements OnInit {
   signOut() {
     this.userService.logout()
       .then(() => {
-        this.router.navigate(['/login']);
+        window.location.assign('/login');  
       })
       .catch(error => console.log(error));
   };
 
   onAddUser(){
       this.authService.registerUser(this.email, this.password)
-      .then ((res )=>{
-        this.router.navigate(['admin/list-books']);
+      .then ((res )=>{                  
       }).catch(err => console.log('err', err.message));
   };
 
@@ -200,9 +199,13 @@ export class PanelAdminPage implements OnInit {
 
   estadisticaescuela(){
     if (this.SuperiorSchool > this.middleSchools) {
-      this.nombre.setValue('Nivel Superior')
+      this.nombre.setValue('Nivel Superior');
     } else {
-      this.nombre.setValue('Nivel Medio Superior')
+      this.nombre.setValue('Nivel Medio Superior');
+    }if(this.SuperiorSchool == this.middleSchools){
+      this.nombre.setValue('Igual número de incidencias');
+    }if(this.SuperiorSchool==0 && this.middleSchools==0){
+      this.nombre.setValue('No se tienen registros que mostrar');
     }
 
     if ((this.vio_Econo > this.vio_Fisico) && (this.vio_Econo > this.vio_Psico) && (this.vio_Econo > this.vio_Sex)) { this.tipoviol.setValue('Económica') }
@@ -210,8 +213,8 @@ export class PanelAdminPage implements OnInit {
     else if ((this.vio_Psico > this.vio_Econo) && (this.vio_Psico > this.vio_Fisico) && (this.vio_Psico > this.vio_Sex)) { this.tipoviol.setValue('Psicológica'); }
     else if ((this.vio_Sex > this.vio_Econo) && (this.vio_Sex > this.vio_Psico) && (this.vio_Sex > this.vio_Fisico)) { this.tipoviol.setValue('Sexual') }
     else {
-      this.tipoviol.setValue('Igual numero de incidencias')
-    }
+      this.tipoviol.setValue('Igual número de incidencias');
+    } if(this.vio_Econo==0 && this.vio_Fisico==0 && this.vio_Psico == 0 && this.vio_Sex == 0){this.tipoviol.setValue('No se tienen registros que mostrar')}
 
     this.hombres.setValue(((this.MaleAggressors * 100) / this.totalAgresores).toFixed(1)+'%');
     this.mujeres.setValue(((this.FemaleAggressors * 100) / this.totalAgresores).toFixed(1)+'%');
