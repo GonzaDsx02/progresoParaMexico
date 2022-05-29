@@ -5,19 +5,15 @@
     </ion-buttons>    
     <ion-buttons slot="end" class="menu-container">
       <button class="menu-items current" [routerLink]="['/home']">
-        <!-- <ion-icon slot="icon-only" name="person-circle"></ion-icon> -->
         Inicio
       </button>
       <button class="menu-items" [routerLink]="['/report']">
-        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
         Denunciar
       </button>
       <button class="menu-items" [routerLink]="['/about']">
-        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
         ¿Quienes somos?
       </button>    
       <button class="menu-items" [routerLink]="['/login']">
-        <!-- <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon> -->
         Ingresar
       </button>
     </ion-buttons>
@@ -27,136 +23,91 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+  <section class="title-violence">
+    <h3 align="center" class="title-violence-text">Violencia Familiar</h3>
+  </section>
 
-  <article class="title-violence">
-    <section>
-      <h3 align="center" class="title-violence-text">Violencia Familiar</h3>
-    </section>
-  </article>
+  <section class="introduction light-bg">
+    <h3 align="center" class="title"><b> ¿Violencia Familiar?</b></h3>
+    <p align="center">Cuando se habla de violencia familiar el término no sólo se refiere a la violencia de tipo física, sino además a la violencia de tipo psicológica, sexual, económica o patrimonial. Esta violencia causa en sus víctimas daños psicológicos que lesionan su autoestima, su integridad física, psicológica, sexual o moral.</p>
+  </section>
 
+  <section class="report">
+    <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
+    <ion-button id="report-btn" [routerLink]="['/report']">
+      Realizar una denuncia
+    </ion-button>
+  </section>
 
-  <article class="introduction centralized light-bg">
-    
+  <section class="introduction">
+    <h3 align="center" class="title"><b> ¿Cuándo puede ocurrir la violencia
+        Familiar?</b></h3>
+    <p align="center">La violencia familiar puede adoptar muchas formas, pero involucra el uso de la intimidación y amenazas o conductas violentas para ejercer poder y control sobre otra persona. En general, la persona abusiva es de sexo masculino y las mujeres a menudo son las víctimas; sin embargo, la violencia familiar también se produce contra los hombres. El maltrato infantil, de personas mayores y de hermanos también se considera violencia familiar.</p>
+  </section>
 
-    <section>
-      <h3 align="center" class="title"><b> ¿Violencia Familiar?</b></h3>
-      <p align="center">Cuando se habla de violencia familiar el término no sólo se refiere a la violencia de tipo física, sino además a la violencia de tipo psicológica, sexual, económica o patrimonial. Esta violencia causa en sus víctimas daños psicológicos que lesionan su autoestima, su integridad física, psicológica, sexual o moral.</p>
-    </section>
+  <section class="message-violence">
+    <h3 align="center" class="message-violence-text">!NO TE CALLES¡</h3>
+    <h3 align="center" class="message-violence-text">RECUERDA QUE DENUNCIAR NO TIENE NINGUN COSTO</h3>
+  </section>
 
-
-    <section class="report">
-      <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
-      <ion-button id="report-btn" [routerLink]="['/report']">
-        Realizar una denuncia
-      </ion-button>
-    </section>
-
-
-    <section>
-      <h3 align="center" class="title"><b> ¿Cuándo puede ocurrir la violencia
-          Familiar?</b></h3>
-      <p align="center">La violencia familiar puede adoptar muchas formas, pero involucra el uso de la intimidación y amenazas o conductas violentas para ejercer poder y control sobre otra persona. En general, la persona abusiva es de sexo masculino y las mujeres a menudo son las víctimas; sin embargo, la violencia familiar también se produce contra los hombres. El maltrato infantil, de personas mayores y de hermanos también se considera violencia familiar.</p>
-    </section>
-   
-  </article>
-
-  <article class="message-violence">
-    <section>
-      <h3 align="center" class="message-violence-text">!NO TE CALLES¡</h3>
-      <h3 align="center" class="message-violence-text">RECUERDA QUE DENUNCIAR NO TIENE NINGUN COSTO</h3>
-    </section>
-  </article>
-
-
-
-  
-
-
-  <br><br><br><br>
-  <article id="v-types" class="centralized">
-    <h2 align="center" class="title"><b><br>Casos en los que puedes acudir
+  <article id="v-types">    
+    <div class="v-content">
+      <h2 align="center" class="title"><b><br>Casos en los que puedes acudir
         a denunciar si eres víctima de algún
         tipo de violencia familiar</b></h2>
-    <div class="v-content">
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-           <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">1.</h1>
             <p>Se refiere a palizas o golpes que causan lesiones físicas que pueden incluir moretones, fractura de huesos, sangrado interno e incluso la muerte. A menudo, el maltrato comienza con contactos leves y con el tiempo empeora para convertirse en acciones más violentas.</p>
           </div>
         </div>
       </div>
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!-- <ion-avatar>
-              <img src="../assets/img/v-sexual.png">
-            </ion-avatar>      -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!-- <h1 class="subtitle">Si</h1> -->
+            <h1 class="subtitle">2.</h1>
             <p>Suele acompañar o seguir el maltrato físico, y tiene como consecuencia una violación u otra actividad sexual forzada. </p>
           </div>
         </div>
       </div>
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--   <ion-avatar>
-              <img src="../assets/img/v-psico.png">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-           <!--  <h1 class="subtitle">Si..</h1> -->
+            <h1 class="subtitle">3.</h1>
             <p>Si te has enterado a destiempo que ya perdiste la patria potestad de tus hijos/as,
               la custodia o que estás divorciada sin haber recibido ninguna notificación.</p>
           </div>
         </div>
       </div>
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!-- <ion-avatar>
-              <img src="../assets/img/v-economica.png">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!-- <h1 class="subtitle">Si..</h1> -->
+            <h1 class="subtitle">4.</h1>
             <p>Una persona que maltrata a menudo lo hace mentalmente o emocionalmente con palabras, amenazas, hostigamiento, posesión extrema, aislamiento forzado y destrucción de pertenencias. El aislamiento a menudo se produce cuando la persona que maltrata intenta controlar el tiempo, las actividades y el contacto con otras personas de la víctima. Las personas que maltratan pueden lograr esto al interferir con las relaciones de apoyo de la víctima, crear barreras para las actividades normales, como sustraer las llaves del coche o encerrar a la víctima en la casa, y mentir y distorsionar la realidad para obtener el control psicológico.</p>
           </div>
         </div>
       </div>
       <div class="v-item">
-        <div class="v-title md">
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-           <!--  <h1 class="subtitle">Si..</h1> -->
+            <h1 class="subtitle">5.</h1>
             <p>Esto se da cuando la persona que maltrata controla el acceso a todos los recursos de la víctima, como el tiempo, el transporte, el alimento, la vestimenta,el refugio, el seguro y el dinero. Por ejemplo, puede interferir con la capacidad de la víctima de autoabastecerse e insistir en controlar todas las finanzas de la víctima. Cuando la víctima abandona la relación violenta, el perpetrador puede recurrir al aspecto económico como una manera de mantener el control u obligar a la víctima a regresar.</p>
           </div>
         </div>
       </div>
-
-
     </div>
   </article>
 
 
-  <article class="introductionbg">
+  <article class="phone-numbers">
     <section>
       <h3 align="center" class="title"><b> ¿Dónde denunciar?</b></h3>
-
       
       <p align="center"><b>CESSA TEPIC      CENTRO DE SALUD Y DE SERVICIOS AMPLIADOS JUAN ESCUTIA</b></p>
       <p align="center">Av.Juan Escutia Col. Centro  63195 Tepic, Nay.</p>
       <p align="center">311-216-39-43</p>
-
       
       <p align="center"><b>DIF ESTATAL</b></p>
       <p align="center">Blvrd Luis Donaldo Colosio #93, Ciudad Industrial 63173, Tepic, Nay.</p>
@@ -170,7 +121,6 @@
       <p align="center">Blvrd Luis Donaldo Colosio #93, Ciudad Industrial 63173, Tepic, Nay.</p>
       <p align="center">311-129-51-00</p>
 
-
       <p align="center"><b>ATENCION TEMPRANA FISCALIA DEL ESTADO</b></p>
       <p align="center">Tecnológico No. 3200 Oriente, Ciudad Industrial, 63195 Tepic, Nay.</p>
       <p align="center">311-129-60-00 </p>
@@ -183,93 +133,67 @@
       <p align="center">Rayón #86 Col. Acayapan Tepic, Nay.</p>
       <p align="center">311-212-07-21</p>
 
-      
-      
       <p align="center"><b>COMISION DE DEFENSA DE LOS DERECHOS HUMANOS DEL ESTADO DE NAYARIT</b></p>
       <p align="center">Encino 18, Col. San juan Esq. Jacarandas Tepic, Nay.</p>
       <p align="center">311-378-99-43 </p>
-      
     </section>
-  
   </article>  
 
-  <article id="index-container">
-      <ion-slide>
-        <ion-avatar class="carousel">
-          <img src="../assets/img/repro.jpg" alt="img2" class="img-carousel">
-        </ion-avatar>
-      </ion-slide>
-    </article>  
+  <section id="img-container">
+    <ion-avatar class="banner">
+      <img src="../assets/img/repro.jpg" alt="Violencia familiar" class="img-banner" loading="lazy">
+    </ion-avatar>
+  </section>  
 
+  <section class="cards">
+    <ion-card class="card"  routerLink="/violence-type/institucional">
+      <img src="../assets/img/institucional.jpg" width="100%" alt="Violencia Institucional" loading="lazy"/>
+      <ion-card-content>
+        <ion-card-title>
+          Violencia Institucional
+        </ion-card-title>
+        <p>
+          Son los actos u omisiones de las personas con calidad de servidor público.
+        </p>
+      </ion-card-content>
+    </ion-card>
 
-    <article class="introductionbg">
-      <section>
-        <h3 align="center" class="title"><b> Recuerda que denunciar es completamente !GRATIS¡</b></h3>
-        <p align="center">Recuerde que existe ayuda disponible y que usted tiene derecho a vivir sin miedo y sin violencia. Sin ayuda, el maltrato continuará y la pondrá en riesgo de resultar gravemente herido.</p>
-      </section>
-    </article>
-  <article>
+    <ion-card class="card" routerLink="/violence-type/sexual">
+      <img src="../assets/img/sexual.jpg" width="100%" alt="Violencia sexual" loading="lazy"/>
+      <ion-card-content>
+        <ion-card-title>
+          Violencia Sexual
+        </ion-card-title>
+        <p>
+          Cuando se manipula a realizar una actividad sexual no deseada.
+        </p>
+      </ion-card-content>
+    </ion-card>
 
-  <ion-card class="botom"  routerLink="/violence-type/institucional">
-    <img src="../assets/img/institucional.jpg" />
-    <ion-card-content>
-      <ion-card-title>
-        Violencia Institucional
-      </ion-card-title>
-      <p>
-        Son los actos u omisiones de las personas con calidad de servidor público.
-      </p>
-    </ion-card-content>
-  </ion-card>
+    <ion-card class="card" routerLink="/violence-type/laboral">
+      <img src="../assets/img/laboral.jpg" width="100%" alt="Violencia laboral" loading="lazy"/>
+      <ion-card-content>
+        <ion-card-title>
+          Violencia Laboral
+        </ion-card-title>
+        <p>
+          No temas denunciar, aún si quien te acosa es tu superior jerárquico.
+        </p>
+      </ion-card-content>
+    </ion-card>
 
-  <ion-card class="botom" routerLink="/violence-type/sexual">
-    <img src="../assets/img/sexual.jpg" />
-    <ion-card-content>
-      <ion-card-title>
-        Violencia Sexual
-      </ion-card-title>
-      <p>
-        Cuando se manipula a realizar una actividad sexual no deseada.
-      </p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="botom" routerLink="/violence-type/laboral">
-    <img src="../assets/img/laboral.jpg" />
-    <ion-card-content>
-      <ion-card-title>
-        Violencia Laboral
-      </ion-card-title>
-      <p>
-        No temas denunciar, aún si quien te acosa es tu superior jerárquico.
-      </p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="botom" routerLink="/violence-type/feminicidio">
-    <img src="../assets/img/feminicidio.jpg" />
-    <ion-card-content>
-      <ion-card-title>
-        Feminicidio
-      </ion-card-title>
-      <p>
-        Las autoridades deben respetar la dignidad de las víctimas.
-      </p>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card class="botom" routerLink="/violence-type/familiar">
-    <img src="../assets/img/repro.jpg" />
-    <ion-card-content>
-      <ion-card-title>
-        Violencia familiar.
-      </ion-card-title>
-      <p>
-        Los integrantes de la familia están obligados a evitar conductas que generen violencia familiar.
-      </p>
-    </ion-card-content>
-  </ion-card>
-</article>
+    <ion-card class="card" routerLink="/violence-type/feminicidio">
+      <img src="../assets/img/feminicidio.jpg" width="100%" alt="Feminicidio" loading="lazy"/>
+      <ion-card-content>
+        <ion-card-title>
+          Feminicidio
+        </ion-card-title>
+        <p>
+          Las autoridades deben respetar la dignidad de las víctimas.
+        </p>
+      </ion-card-content>
+    </ion-card>
+</section>
 
 <ion-footer>
   <div class="footer">

@@ -5,19 +5,15 @@
     </ion-buttons>    
     <ion-buttons slot="end" class="menu-container">
       <button class="menu-items current" [routerLink]="['/home']">
-        <!-- <ion-icon slot="icon-only" name="person-circle"></ion-icon> -->
         Inicio
       </button>
       <button class="menu-items" [routerLink]="['/report']">
-        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
         Denunciar
       </button>
       <button class="menu-items" [routerLink]="['/about']">
-        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
         ¿Quienes somos?
       </button>    
       <button class="menu-items" [routerLink]="['/login']">
-        <!-- <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon> -->
         Ingresar
       </button>
     </ion-buttons>
@@ -27,207 +23,137 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+  <section class="title-violence">
+    <h3 align="center" class="title-violence-text">Feminicidio </h3>
+  </section>
 
-  <article class="title-violence">
-    <section>
-      <h3 align="center" class="title-violence-text">Feminicidio </h3>
-    </section>
-  </article>
+  <section class="introduction light-bg">
+    <h3 align="center" class="title"><b> ¿Feminicidio?</b></h3>
+    <p align="center">El asesinato de mujeres por razones de género, es decir, motivados por odio, poder, desprecio,
+      placer o sentido de propiedad de las mujeres.
+      <br>La muerte violenta de las mujeres por razones de género, tipificada en nuestro sistema penal como
+      feminicidio, es la forma más extrema de violencia contra la mujer y una de las manifestaciones más graves de la
+      discriminación hacia ellas.
+    </p>
+  </section>
 
+  <section class="report">
+    <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
+    <ion-button id="report-btn" [routerLink]="['/report']">
+      Realizar una denuncia
+    </ion-button>
+  </section>
 
-  <article class="introduction centralized light-bg">
+  <section class="introduction">
+    <h3 align="center" class="title"><b>Una mujer fue víctima de femicidio si se le privó de la vida por una razón de
+        género.</b></h3>
+    <p align="center">La violencia contra las mujeres tiene su origen en la desigualdad de género, es decir, en la posición de subordinación, marginalidad y riesgo en el cual éstas se  encuentran respecto de los hombres.
+      <br>El asesinato de mujeres por razones de género es la violencia más grave y extrema contra una mujer, este tipo
+          de violencia afecta a niñas y mujeres de todas las edades,
+          sin distinción de ubicación económica, social o cultural.
+    </p>
+  </section>
 
+  <section class="message-violence">
+    <h3 align="center" class="message-violence-text">!NO TE CALLES¡</h3>
+    <h3 align="subtitle" class="message-violence-text">RECUERDA QUE DENUNCIAR NO TIENE NINGUN COSTO</h3>
+  </section>
 
-    <section>
-      <h3 align="center" class="title"><b> ¿Feminicidio?</b></h3>
-      <p align="center">El asesinato de mujeres por razones de género, es decir, motivados por odio, poder, desprecio,
-        placer o sentido de propiedad de las mujeres.
-        <br>La muerte violenta de las mujeres por razones de género, tipificada en nuestro sistema penal como
-        feminicidio, es la forma más extrema de violencia contra la mujer y una de las manifestaciones más graves de la
-        discriminación hacia ellas.
-      </p>
-    </section>
-
-
-    <section class="report">
-      <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
-      <ion-button id="report-btn" [routerLink]="['/report']">
-        Realizar una denuncia
-      </ion-button>
-    </section>
-
-
-    <section>
-      <h3 align="center" class="title"><b>Una mujer fue víctima de femicidio si se le privó de la vida por una razón de
-          género.</b></h3>
-      <p align="center">La violencia contra las mujeres tiene su origen en la desigualdad de género, es decir, en la posición de subordinación, marginalidad y riesgo en el cual éstas se  encuentran respecto de los hombres.
-        <br>El asesinato de mujeres por razones de género es la violencia más grave y extrema contra una mujer, este tipo
-de violencia afecta a niñas y mujeres de todas las edades,
-sin distinción de ubicación económica, social o cultural.
-
-      </p>
-    </section>
-
-  </article>
-
-  <article class="message-violence">
-    <section>
-      <h3 align="center" class="message-violence-text">!NO TE CALLES¡</h3>
-      <h3 align="subtitle" class="message-violence-text">RECUERDA QUE DENUNCIAR NO TIENE NINGUN COSTO</h3>
-    </section>
-  </article>
-
-
-
-
-
-
-  <br><br><br><br>
-  <article id="v-types" class="centralized">
-    <h2 align="center" class="title"><b><br>Una mujer fue víctima de femicidio si se le privó de la vida por una razón de
-      género.<br> Se considera que existen razones de género cuando concurra alguna de las siguientes
-      circunstancias:</b></h2>
+  <article id="v-types">    
     <div class="v-content">
+      <h2 align="center" class="title"><b><br>Una mujer fue víctima de femicidio si se le privó de la vida por una razón de
+        género.<br> Se considera que existen razones de género cuando concurra alguna de las siguientes
+        circunstancias:</b></h2>
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">1.</h1>
             <p>Violencia Sexual</p>
           </div>
         </div>
       </div>
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">2.</h1>
             <p>A la víctima se le hayan infligido lesiones o mutilaciones infamantes o degradantes, previas o posteriores a la privación de la vida o actos de necrofilia.</p>
           </div>
         </div>
       </div>
 
-
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">3.</h1>
             <p>Antecedentes de amenazas y acosos.</p>
           </div>
         </div>
       </div>
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">4.</h1>
             <p>Relación de parentesco, matrimonio o amistad.</p>
           </div>
         </div>
       </div>
 
-
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">5.</h1>
             <p>La victima haya sido incomunicada, cualquiera que sea el tiempo previo a la privación de la vida.</p>
           </div>
         </div>
       </div>
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">6.</h1>
             <p>Si el cuerpo fue expuesto o exhibido en un lugar público.</p>
           </div>
         </div>
       </div>
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">7.</h1>
             <p>Si la víctima se haya encontrado en un estado de indefensión, entendiéndose éste como la situación de desprotección real o incapacidad que imposibilite su defensa.</p>
           </div>
         </div>
       </div>
-
-
-      
-      
-
     </div>
   </article>
 
-<br><br>
-<br><br>
-<br><br>
-  <article class="introductionbg">
+  <article class="phone-numbers">
     <section>
       <h3 align="center" class="title"><b> ¿Dónde denunciar?</b></h3>
 
-   
       <p align="center"><b>FISCALIA DEL ESTADO</b></p>
       <p align="center">Tecnológico No. 3200 Oriente, Ciudad Industrial, 63195 Tepic, Nay.</p>
       <p align="center">311-129-60-00 / 911</p>
 
-          <h3 align="center" class="title"><b> ¿Dónde denunciar?</b></h3>
-          <p align="center"><b>ATENCION TEMPRANA FISCALIA DEL ESTADO</b></p>
-          <p align="center">Tecnológico No. 3200 Oriente, Ciudad Industrial, 63195 Tepic, Nay.</p>
-          <p align="center">311-129-60-00 </p>
-    
-          <p align="center"><b>COMISION MUNICIPAL DE LOS DERECHOS HUMANOS DE TEPIC</b></p>
-          <p align="center">Membrillo Col. Comerciantes Tepic, Nay.</p>
-          <p align="center">311-378-99-43 </p>
-    
-          
-          <p align="center"><b>COMISION DE DEFENSA DE LOS DERECHOS HUMANOS DEL ESTADO DE NAYARIT</b></p>
-          <p align="center">Encino 18, Col. San juan Esq. Jacarandas Tepic, Nay.</p>
-          <p align="center">311-378-99-43 </p>
-          
+      <h3 align="center" class="title"><b> ¿Dónde denunciar?</b></h3>
+      <p align="center"><b>ATENCION TEMPRANA FISCALIA DEL ESTADO</b></p>
+      <p align="center">Tecnológico No. 3200 Oriente, Ciudad Industrial, 63195 Tepic, Nay.</p>
+      <p align="center">311-129-60-00 </p>
 
+      <p align="center"><b>COMISION MUNICIPAL DE LOS DERECHOS HUMANOS DE TEPIC</b></p>
+      <p align="center">Membrillo Col. Comerciantes Tepic, Nay.</p>
+      <p align="center">311-378-99-43 </p>
+
+      <p align="center"><b>COMISION DE DEFENSA DE LOS DERECHOS HUMANOS DEL ESTADO DE NAYARIT</b></p>
+      <p align="center">Encino 18, Col. San juan Esq. Jacarandas Tepic, Nay.</p>
+      <p align="center">311-378-99-43 </p>
 
       <p align="center"><b>CESSA TEPIC CENTRO DE SALUD Y DE SERVICIOS AMPLIADOS JUAN ESCUTIA</b></p>
       <p align="center">Av.Juan Escutia Col. Centro 63195 Tepic, Nay.</p>
       <p align="center">311-216-39-43</p>
-
 
       <p align="center"><b>DIF ESTATAL</b></p>
       <p align="center">Blvrd Luis Donaldo Colosio #93, Ciudad Industrial 63173, Tepic, Nay.</p>
@@ -241,7 +167,6 @@ sin distinción de ubicación económica, social o cultural.
       <p align="center">Blvrd Luis Donaldo Colosio #93, Ciudad Industrial 63173, Tepic, Nay.</p>
       <p align="center">311-129-51-00</p>
 
-
       <p align="center"><b>ATENCION TEMPRANA FISCALIA DEL ESTADO</b></p>
       <p align="center">Tecnológico No. 3200 Oriente, Ciudad Industrial, 63195 Tepic, Nay.</p>
       <p align="center">311-129-60-00 </p>
@@ -254,7 +179,6 @@ sin distinción de ubicación económica, social o cultural.
       <p align="center">Rayón #86 Col. Acayapan Tepic, Nay.</p>
       <p align="center">311-212-07-21</p>
 
-
       <p align="center"><b>COMISION DE DEFENSA DE LOS DERECHOS HUMANOS DEL ESTADO DE NAYARIT</b></p>
       <p align="center">Encino 18, Col. San juan Esq. Jacarandas Tepic, Nay.</p>
       <p align="center">311-378-99-43 </p>
@@ -262,37 +186,18 @@ sin distinción de ubicación económica, social o cultural.
       <p align="center"><b>INMUNAY INSTITUTO PARA LA MUJER NAYARITA</b></p>
       <p align="center">Av. México No 191 sur entre insurgentes y miñón, Tepic, Nay.</p>
       <p align="center">311-217-03-77</p>
-
-    </section>
-
-  </article>
-
-  <article id="index-container">
-
-    <ion-slide>
-      <ion-avatar class="carousel">
-        <img src="../assets/img/feminicidio.jpg" alt="img2" class="img-carousel">
-      </ion-avatar>
-    </ion-slide>
-  </article>
-
-
-  <article class="introductionbg">
-    <section>
-      <h3 align="center" class="title"><b> Recuerda que denunciar es completamente !GRATIS¡</b></h3>
-      <p align="center"><b>"Rompe el silencio. Cuando seas testigo de la violencia contra las mujeres no te quedes de brazos cruzados. Actúa"</b>. Ban Ki-moon, exsecretario general de la ONU, nos invita a reaccionar cuando veamos una agresión a una mujer.</p>
     </section>
   </article>
 
-  <br>
-  <br>
-  <br>
-  <br>
+  <section id="img-container">
+    <ion-avatar class="banner">
+      <img src="../assets/img/feminicidio.jpg" alt="Feminicidiooo" class="img-banner" loading="lazy">
+    </ion-avatar>
+  </section>  
 
-  <article>
-
-    <ion-card class="botom" routerLink="/violence-type/institucional">
-      <img src="../assets/img/institucional.jpg" />
+  <section class="cards">
+    <ion-card class="card" routerLink="/violence-type/institucional">
+      <img src="../assets/img/institucional.jpg" width="100%" alt="Violencia Institucional" loading="lazy"/>
       <ion-card-content>
         <ion-card-title>
           Violencia Institucional
@@ -303,8 +208,8 @@ sin distinción de ubicación económica, social o cultural.
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/violence-type/sexual">
-      <img src="../assets/img/sexual.jpg" />
+    <ion-card class="card" routerLink="/violence-type/sexual">
+      <img src="../assets/img/sexual.jpg" width="100%" alt="Violencia sexual" loading="lazy"/>
       <ion-card-content>
         <ion-card-title>
           Violencia Sexual
@@ -315,8 +220,8 @@ sin distinción de ubicación económica, social o cultural.
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/violence-type/laboral">
-      <img src="../assets/img/laboral.jpg" />
+    <ion-card class="card" routerLink="/violence-type/laboral">
+      <img src="../assets/img/laboral.jpg" width="100%" alt="Violencia laboral" loading="lazy"/>
       <ion-card-content>
         <ion-card-title>
           Violencia Laboral
@@ -327,20 +232,8 @@ sin distinción de ubicación económica, social o cultural.
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/violence-type/feminicidio">
-      <img src="../assets/img/feminicidio.jpg" />
-      <ion-card-content>
-        <ion-card-title>
-          Feminicidio
-        </ion-card-title>
-        <p>
-          Las autoridades deben respetar la dignidad de las víctimas.
-        </p>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card class="botom" routerLink="/violence-type/familiar">
-      <img src="../assets/img/repro.jpg" />
+    <ion-card class="card" routerLink="/violence-type/familiar">
+      <img src="../assets/img/repro.jpg" width="100%" alt="Violencia familiar" loading="lazy"/>
       <ion-card-content>
         <ion-card-title>
           Violencia familiar.
@@ -350,7 +243,7 @@ sin distinción de ubicación económica, social o cultural.
         </p>
       </ion-card-content>
     </ion-card>
-  </article>
+  </section>
 
   <ion-footer>
     <div class="footer">

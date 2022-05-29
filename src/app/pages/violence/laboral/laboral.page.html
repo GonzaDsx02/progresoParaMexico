@@ -5,19 +5,15 @@
     </ion-buttons>    
     <ion-buttons slot="end" class="menu-container">
       <button class="menu-items current" [routerLink]="['/home']">
-        <!-- <ion-icon slot="icon-only" name="person-circle"></ion-icon> -->
         Inicio
       </button>
       <button class="menu-items" [routerLink]="['/report']">
-        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
         Denunciar
       </button>
       <button class="menu-items" [routerLink]="['/about']">
-        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
         ¿Quienes somos?
       </button>    
       <button class="menu-items" [routerLink]="['/login']">
-        <!-- <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon> -->
         Ingresar
       </button>
     </ion-buttons>
@@ -27,237 +23,149 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
+  <section class="title-violence">
+    <h3 align="center" class="title-violence-text">Violencia Laboral </h3>
+  </section>
+  
+  <section class="introduction light-bg">
+    <h3 align="center" class="title"><b> ¿Violencia Laboral?</b></h3>
+    <p align="center">La violencia laboral es una forma de abuso de poder cuya finalidad es excluir, aislar o someter
+      al otro. Se manifiesta como agresión física o verbal, acoso sexual, hostigamiento laboral o violencia
+      psicológica. Se presenta tanto en sentido vertical, como entre pares.
+    </p>
+  </section>
 
-  <article class="title-violence">
-    <section>
-      <h3 align="center" class="title-violence-text">Violencia Laboral </h3>
-    </section>
-  </article>
+  <section class="report">
+    <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
+    <ion-button id="report-btn" [routerLink]="['/report']">
+      Realizar una denuncia
+    </ion-button>
+  </section>
 
+  <section class="introduction">
+    <h3 align="center" class="title"><b>¿Sabes como identificar la Violencia Laboral?</b></h3>
+    <p align="center">La violencia laboral es una forma de
+      abuso de poder cuya finalidad es
+      excluir, aislar o someter al otro.<br>
+      La violencia puede ser
+      de mujeres hacia
+      mujeres, de mujeres
+      hacia hombres, de
+      hombres hacia
+      hombres y de hombres
+      hacia mujeres. <br>Se manifiesta como agresión
+      física o verbal, acoso sexual,
+      hostigamiento laboral o
+      violencia psicológica.<br>La edad,
+      preferencia sexual,
+      raza o el género
+      pueden ser el
+      motivo</p>
+  </section>
 
-  <article class="introduction centralized light-bg">
+  <section class="message-violence">
+    <h3 align="center" class="message-violence-text">!NO TE CALLES¡</h3>
+    <h3 align="center" class="message-violence-text">RECUERDA QUE DENUNCIAR NO TIENE NINGUN COSTO</h3>
+  </section>
 
-
-    <section>
-      <h3 align="center" class="title"><b> ¿Violencia Laboral?</b></h3>
-      <p align="center">La violencia laboral es una forma de abuso de poder cuya finalidad es excluir, aislar o someter
-        al otro. Se manifiesta como agresión física o verbal, acoso sexual, hostigamiento laboral o violencia
-        psicológica. Se presenta tanto en sentido vertical, como entre pares.
-
-      </p>
-    </section>
-
-
-    <section class="report">
-      <p align="center"><b>¡Todas las denuncias son anónimas!</b></p>
-      <ion-button id="report-btn" [routerLink]="['/report']">
-        Realizar una denuncia
-      </ion-button>
-    </section>
-
-
-    <section>
-      <h3 align="center" class="title"><b>¿Sabes como identificar la Violencia Laboral?</b></h3>
-      <p align="center">La violencia laboral es una forma de
-        abuso de poder cuya finalidad es
-        excluir, aislar o someter al otro.<br>
-        La violencia puede ser
-        de mujeres hacia
-        mujeres, de mujeres
-        hacia hombres, de
-        hombres hacia
-        hombres y de hombres
-        hacia mujeres. <br>Se manifiesta como agresión
-        física o verbal, acoso sexual,
-        hostigamiento laboral o
-        violencia psicológica.<br>La edad,
-        preferencia sexual,
-        raza o el género
-        pueden ser el
-        motivo
-
-
-      </p>
-    </section>
-
-  </article>
-
-  <article class="message-violence">
-    <section>
-      <h3 align="center" class="message-violence-text">!NO TE CALLES¡</h3>
-      <h3 align="center" class="message-violence-text">RECUERDA QUE DENUNCIAR NO TIENE NINGUN COSTO</h3>
-    </section>
-  </article>
-
-
-
-
-
-
-  <br><br><br><br>
-  <article id="v-types" class="centralized">
-    <h2 align="center" class="title"><b><br>La violencia laboral incluye pero no se limita a lo siguiente:</b></h2>
+  <article id="v-types">
     <div class="v-content">
+      <h2 align="center" class="title"><b><br>La violencia laboral incluye pero no se limita a lo siguiente:</b></h2>
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">1.</h1>
             <p>Te gritan en frente de otras personas o en privado.</p>
           </div>
         </div>
       </div>
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">2.</h1>
             <p>Te asignan proyectos con plazos imposibles de cumplir.</p>
           </div>
         </div>
       </div>
 
-
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">3.</h1>
             <p>Te sobrecargan de trabajo, más que lo que hacen otras compañeras o compañeros de tu equipo de trabajo.</p>
           </div>
         </div>
       </div>
 
-
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
-            <p>
-              Te amenazan con despedirte.</p>
+            <h1 class="subtitle">3.</h1>
+            <p>Te amenazan con despedirte.</p>
           </div>
         </div>
       </div>
 
-
-      
-
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
-            <p>
-              Te ridiculizan o estigmatizan frente a otras personas</p>
+            <h1 class="subtitle">4.</h1>
+            <p>Te ridiculizan o estigmatizan frente a otras personas</p>
           </div>
         </div>
       </div>
-     
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">5.</h1>
             <p>Te hacen insinuaciones sexuales, hay contacto físico forzado o invitaciones inconvenientes, que se convierten en condiciones para obtener un ascenso, para mantener el empleo o reconocimiento.</p>
           </div>
         </div>
       </div>
 
-
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">6.</h1>
             <p>Te niegan la contratación por ser mujer.</p>
           </div>
         </div>
       </div>
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">7.</h1>
             <p>Descalificar tu trabajo por ser mujer.</p>
           </div>
         </div>
       </div>
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">8.</h1>
             <p>Discriminarte por estar embarazada o negarte alguna de tus prestaciones.</p>
           </div>
         </div>
       </div>
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">9.</h1>
             <p>Percibir un sueldo más bajo que alguno de tus compañeros por realizar la misma actividad.</p>
           </div>
         </div>
       </div>
 
-
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
         <div class="v-text md">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">10.</h1>
             <p>Recibir amenazas, intimidaciones o humillaciones por parte de tus compañeros de trabajo o superiores.
             </p>
           </div>
@@ -265,37 +173,20 @@
       </div>
 
       <div class="v-item first-row">
-        <div class="v-title md">
-          <!--  <ion-avatar>
-             <img src="">
-            </ion-avatar> -->
-        </div>
-        <div class="v-text md">
+        <div class="v-text">
           <div>
-            <!--  <h1 class="subtitle">Si...</h1> -->
+            <h1 class="subtitle">11.</h1>
             <p>Solicitarte una prueba de embarazo como requisito de contratación.
             </p>
           </div>
         </div>
       </div>
-
-
-      
-
-
-
-
-
     </div>
   </article>
 
-  <br><br>
-  <br><br>
-  <br><br>
-  <article class="introductionbg">
+  <article class="phone-numbers">
     <section>
       <h3 align="center" class="title"><b> ¿Dónde denunciar?</b></h3>
-
 
       <p align="center"><b>FISCALIA DEL ESTADO</b></p>
       <p align="center">Tecnológico No. 3200 Oriente, Ciudad Industrial, 63195 Tepic, Nay.</p>
@@ -310,17 +201,13 @@
       <p align="center">Membrillo Col. Comerciantes Tepic, Nay.</p>
       <p align="center">311-378-99-43 </p>
 
-
       <p align="center"><b>COMISION DE DEFENSA DE LOS DERECHOS HUMANOS DEL ESTADO DE NAYARIT</b></p>
       <p align="center">Encino 18, Col. San juan Esq. Jacarandas Tepic, Nay.</p>
       <p align="center">311-378-99-43 </p>
 
-
-
       <p align="center"><b>CESSA TEPIC CENTRO DE SALUD Y DE SERVICIOS AMPLIADOS JUAN ESCUTIA</b></p>
       <p align="center">Av.Juan Escutia Col. Centro 63195 Tepic, Nay.</p>
       <p align="center">311-216-39-43</p>
-
 
       <p align="center"><b>ATENCION TEMPRANA FISCALIA DEL ESTADO</b></p>
       <p align="center">Tecnológico No. 3200 Oriente, Ciudad Industrial, 63195 Tepic, Nay.</p>
@@ -330,7 +217,6 @@
       <p align="center">Av.Rey Nayar #199 63190 Tepic, Nay.</p>
       <p align="center">311-129-50-00</p>
 
-
       <p align="center"><b>COMISION DE DEFENSA DE LOS DERECHOS HUMANOS DEL ESTADO DE NAYARIT</b></p>
       <p align="center">Encino 18, Col. San juan Esq. Jacarandas Tepic, Nay.</p>
       <p align="center">311-378-99-43 </p>
@@ -338,38 +224,18 @@
       <p align="center"><b>INMUNAY INSTITUTO PARA LA MUJER NAYARITA</b></p>
       <p align="center">Av. México No 191 sur entre insurgentes y miñón, Tepic, Nay.</p>
       <p align="center">311-217-03-77</p>
-
-    </section>
-
-  </article>
-
-  <article id="index-container">
-
-    <ion-slide>
-      <ion-avatar class="carousel">
-        <img src="../assets/img/laboral.jpg" alt="img2" class="img-carousel">
-      </ion-avatar>
-    </ion-slide>
-  </article>
-
-
-  <article class="introductionbg">
-    <section>
-      <h3 align="center" class="title"><b> Recuerda que denunciar es completamente !GRATIS¡</b></h3>
-      <p align="center">
-        Intenta frenar el acoso. Pon límites y expresa tu sentir contra la persona que está violentándote para dejarle en claro que no vas a permitir tratos denigrantes posteriormente pudes realizar tu denuncia.</p>
     </section>
   </article>
 
-  <br>
-  <br>
-  <br>
-  <br>
+  <section id="img-container">
+    <ion-avatar class="banner">
+      <img src="../assets/img/laboral.jpg" alt="Violencia laboral" class="img-banner" loading="lazy">
+    </ion-avatar>
+  </section>  
 
-  <article>
-
-    <ion-card class="botom" routerLink="/violence-type/institucional">
-      <img src="../assets/img/institucional.jpg" />
+  <section class="cards">
+    <ion-card class="card" routerLink="/violence-type/institucional">
+      <img src="../assets/img/institucional.jpg" width="100%" alt="Violencia Institucional" loading="lazy"/>
       <ion-card-content>
         <ion-card-title>
           Violencia Institucional
@@ -380,8 +246,8 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/violence-type/sexual">
-      <img src="../assets/img/sexual.jpg" />
+    <ion-card class="card" routerLink="/violence-type/sexual">
+      <img src="../assets/img/sexual.jpg" width="100%" alt="Violencia sexual" loading="lazy"/>
       <ion-card-content>
         <ion-card-title>
           Violencia Sexual
@@ -392,20 +258,8 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/violence-type/laboral">
-      <img src="../assets/img/laboral.jpg" />
-      <ion-card-content>
-        <ion-card-title>
-          Violencia Laboral
-        </ion-card-title>
-        <p>
-          No temas denunciar, aún si quien te acosa es tu superior jerárquico.
-        </p>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card class="botom" routerLink="/violence-type/feminicidio">
-      <img src="../assets/img/feminicidio.jpg" />
+    <ion-card class="card" routerLink="/violence-type/feminicidio">
+      <img src="../assets/img/feminicidio.jpg" width="100%" alt="feminicidio" loading="lazy"/>
       <ion-card-content>
         <ion-card-title>
           Feminicidio
@@ -416,8 +270,8 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card class="botom" routerLink="/violence-type/familiar">
-      <img src="../assets/img/repro.jpg" />
+    <ion-card class="card" routerLink="/violence-type/familiar">
+      <img src="../assets/img/repro.jpg" width="100%" alt="Violencia familiar" loading="lazy"/>
       <ion-card-content>
         <ion-card-title>
           Violencia familiar.
@@ -427,7 +281,7 @@
         </p>
       </ion-card-content>
     </ion-card>
-  </article>
+  </section>
 
   <ion-footer>
     <div class="footer">
