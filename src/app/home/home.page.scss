@@ -67,15 +67,15 @@ ion-title{
   height:200px;        
 }
 
-.carousel{    
-  transition-duration: 0.3s;
-  width:100%; 
-  height:300px;   
-  --border-radius:0px !important;
+.swiper-slide{
+  background-position: center;
+  background-size: cover;
 }
 
 .img-carousel{ 
-  width:100%;
+  object-fit: cover !important;
+  width: 100% !important;
+  max-width: none !important;
 }
 
 .report{
@@ -296,7 +296,8 @@ ion-item.footer-item > ion-icon{
   .slides{
     transition-duration: 0.3s;
     width:100%;
-    height:50%;            
+    height:50%;       
+    
   }
 
   .report{

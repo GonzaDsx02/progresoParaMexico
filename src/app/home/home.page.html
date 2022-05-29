@@ -27,33 +27,28 @@
 <ion-content>
 
   <article id="index-container">
-    <ion-slides pager="true" class="slides">
-      <ion-slide>  
-        <ion-avatar class="carousel">          
-          <img class="img-carousel" src="../assets/img/carousel.png" alt="Violencia física" loading="lazy">
-        </ion-avatar>
-      </ion-slide>    
-      <ion-slide>
-        <ion-avatar class="carousel">
+    <swiper 
+      [autoplay]="{delay: 3000, disableOnInteraction: false}" 
+      [config]="{ loop: true}" 
+      [pagination]="{ dynamicBullets: true }" 
+      [navigation]="true" 
+      class="slides">
+      <ng-template swiperSlide>
+        <img class="img-carousel" src="../assets/img/carousel.png" alt="Violencia física" loading="lazy">
+      </ng-template>
+      <ng-template swiperSlide>
           <img class="img-carousel" src="../assets/img/brazo.png" alt="Violencia sexual" loading="lazy">    
-        </ion-avatar>
-      </ion-slide>    
-      <ion-slide>
-        <ion-avatar class="carousel">
+      </ng-template>
+      <ng-template swiperSlide>
           <img class="img-carousel" src="../assets/img/freedom.png" alt="Libertad" loading="lazy">    
-        </ion-avatar>
-      </ion-slide>    
-      <ion-slide>
-        <ion-avatar class="carousel">
-          <img class="img-carousel" src="../assets/img/friends.png" alt="Amistad" loading="lazy">    
-        </ion-avatar>
-      </ion-slide>   
-      <ion-slide>
-        <ion-avatar class="carousel">
+      </ng-template>
+      <ng-template swiperSlide>
+          <img class="img-carousel" src="../assets/img/friends.png" alt="Amistad" loading="lazy">            
+      </ng-template>
+      <ng-template swiperSlide>
           <img class="img-carousel" src="../assets/img/team.png" alt="Equipo" loading="lazy">    
-        </ion-avatar>
-      </ion-slide>         
-    </ion-slides>
+      </ng-template>
+    </swiper>
 
     <section class="report">      
       <p align="center" class="title"><b>¡Todas las denuncias son anónimas!</b></p>

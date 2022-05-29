@@ -6,6 +6,10 @@
     --background: #fff;    
 }
 
+.bg{
+    background: #39b54a;    
+}
+
 .menu-bar{
     padding:10px;
 }   
@@ -115,44 +119,39 @@ ion-item.footer-item > ion-icon{
 
 .slides-container{
     height:310px;
-    background: #39b54a;
+    background: #fff;
     margin-top:5%;
+    padding: 0 0 400px 0;
 }
 
 .slider{
     width:100%;
-    height:300px;
-}
-
-.slide{    
-    width:100%; 
-    height:300px;   
-    --border-radius:0px !important;
-    position: relative;
-    display: inline-block;
-    text-align: center;
-}
-
-.img-slide{ 
-    width:100%;
-    height:90%;
+    height:400px;
 }
 
 .above-text{
     position: absolute;
-    padding: 0px 10px;
-    top: 10px;
-    left: 8%;
-    background:rgba(51, 24, 50, 0.7)
+    height:95%;
+    top: 0px;
+    left: 10%;
+    right:10%;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    background:#fff
 }
 
-.above-center-text{
-    position: absolute;
-    width:80%;
-    top: 50%;
-    transform: translate(10%, -50%);
-    background: rgba(255, 255, 255, 0.7);
+.above-text p{
+    padding: 20px;
+}
+
+.above-text h3{
     color: #331832;
+}
+
+
+.above-text img{
+    width: 100px !important;
+    max-width: 100px !important;
 }
 
 .footer{    

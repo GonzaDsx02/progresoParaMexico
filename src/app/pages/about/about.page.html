@@ -40,54 +40,44 @@
 
   <article>
     <div class="slides-container">
-      <h1 class="light">¿Qué hacemos?</h1>
-      <ion-slides pager="true" class="slider">
-        <ion-slide>
-          <ion-avatar class="slide">          
-            <img class="img-slide" src="../assets/img/proyects.jpg" alt="Proyectos" loading="lazy">
-            <div class="above-text">
-              <h3 class="light">Proyectos</h3>
-            </div>
-            <div class="above-center-text">
-              <p align="justify">Desarrollamos programas y proyectos acordes a las necesidades de las instituciones; desde la planeación, ejecución y seguimiento; creando estrategias para medir su impacto y resultados obtenidos.</p>
-            </div>
-          </ion-avatar>
-        </ion-slide>
-        <ion-slide>
-          <ion-avatar class="slide">          
-            <img class="img-slide" src="../assets/img/investigation.jpg" alt="Investigación" loading="lazy">
-            <div class="above-text">
-              <h3 class="light">Investigación:</h3>
-            </div>
-            <div class="above-center-text">
-              <p align="justify">Servicios de consultoría estratégica, asistencia técnica, investigación social especializada en políticas y programas públicos de actuación. Logrando incluir los sectores involucrados para la búsqueda de soluciones.</p>
-            </div>
-          </ion-avatar>
-        </ion-slide>
-        <ion-slide>
-          <ion-avatar class="slide">          
-            <img class="img-slide" src="../assets/img/management.jpg" alt="Gestión" loading="lazy">
-            <div class="above-text">
-              <h3 class="light">Gestión:</h3>
-            </div>
-            <div class="above-center-text">
-              <p align="justify">Asesoría en procuración de fondos y gestión de diversos tipos de proyectos; cabildeo y construcción de alianzas participativas, brindando acompañamiento y propuestas para alcanzarlo.</p>
-            </div>
-          </ion-avatar>
-        </ion-slide>
-        <ion-slide>
-          <ion-avatar class="slide">          
-            <img class="img-slide" src="../assets/img/capacitation.jpg" alt="Capacitación" loading="lazy">
-            <div class="above-text">
-              <h3 class="light">Capacitación:</h3>
-            </div>
-            <div class="above-center-text">
-              <p align="justify">Diseño e impartición de talleres acorde a la problemática, población objetivo y necesidades; con indicadores que permiten evaluar alcances; cuantificar logros y propuestas para su actualización constante.</p>    
-            </div>
-          </ion-avatar>
-        </ion-slide>
-      </ion-slides>
-    </div>    
+      <h1 class="light bg">¿Qué hacemos?</h1>
+
+      <swiper 
+        [navigation]="true"
+        [config]="config" 
+        class="slider"
+        id="Swiper"
+      >
+        <ng-template swiperSlide >
+          <div class="above-text">
+            <img src="../assets/icon/proyects.png" alt="Proyectos" loading="lazy">
+            <h3>Proyectos</h3>
+            <p align="justify">Desarrollamos programas y proyectos acordes a las necesidades de las instituciones; desde la planeación, ejecución y seguimiento; creando estrategias para medir su impacto y resultados obtenidos.</p>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="above-text">
+            <img src="../assets/icon/investigation.png" alt="Proyectos" loading="lazy">
+            <h3>Investigación</h3>
+            <p align="justify">Servicios de consultoría estratégica, asistencia técnica, investigación social especializada en políticas y programas públicos de actuación. Logrando incluir los sectores involucrados para la búsqueda de soluciones.</p>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="above-text">
+            <img src="../assets/icon/gestion.png" alt="Proyectos" loading="lazy">
+            <h3>Gestión</h3>
+            <p align="justify">Asesoría en procuración de fondos y gestión de diversos tipos de proyectos; cabildeo y construcción de alianzas participativas, brindando acompañamiento y propuestas para alcanzarlo.</p>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="above-text">
+            <img src="../assets/icon/capacitation.png" alt="Proyectos" loading="lazy">
+            <h3>Capacitación</h3>
+            <p align="justify">Diseño e impartición de talleres acorde a la problemática, población objetivo y necesidades; con indicadores que permiten evaluar alcances; cuantificar logros y propuestas para su actualización constante.</p>    
+          </div>
+        </ng-template>
+      </swiper>
+    </div>
   </article>
 
   <article>
