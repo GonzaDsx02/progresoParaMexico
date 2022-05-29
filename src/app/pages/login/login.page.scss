@@ -25,6 +25,11 @@ ion-title{
     width:90%;
 } 
 
+.title-text{
+    transition-duration: 0.3s;
+    display: none;
+}
+
 ion-item.footer-item > p, 
 ion-item.footer-item > ion-icon{
     color: #fff; 
@@ -240,5 +245,14 @@ div#container > h1{
         width: 50%;
         vertical-align: middle;
         margin-top:0px;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .title-text, #logo{
+        transition-duration: 0.3s;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0px 5px;
     }
 }

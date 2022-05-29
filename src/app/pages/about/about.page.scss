@@ -25,6 +25,11 @@ ion-title{
     width:90%;
 }
 
+.title-text{
+    transition-duration: 0.3s;
+    display: none;
+}
+
 .intro{
     transition-duration:0.3s;
     width: 80%;
@@ -313,9 +318,16 @@ ion-item.footer-item > ion-icon{
         vertical-align: middle;
         margin-top:0px;
     }
-}
+} 
 
 @media screen and (min-width:1200px){    
+
+    .title-text, #logo{
+        transition-duration: 0.3s;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0px 5px;
+    }
 
     div.cards > div.card-obj:nth-child(even){                
         margin-left: 0%;                
