@@ -13,18 +13,18 @@ export class AboutPage implements AfterContentChecked {
   @ViewChild('swiper') swiper: SwiperComponent;
   config: SwiperOptions = {
     freeMode: true,
-    loop: true,
     breakpoints: {
-      // when window width is <= 499px
+      // when window width is <= 672px
       672: {
           slidesPerView: 1,
           spaceBetween: 30
       },
-      // when window width is <= 999px
+      // when window width is <= 720px
       720: {
           slidesPerView: 2,
           spaceBetween: 30
       },
+      // when window width is <= 1120px
       1120: {
         slidesPerView: 3,
         spaceBetween: 30
