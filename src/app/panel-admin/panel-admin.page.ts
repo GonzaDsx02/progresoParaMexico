@@ -177,7 +177,8 @@ export class PanelAdminPage implements OnInit {
     if(this.email && this.password){
       if(this.password.length >= 5){
         this.authService.registerUser(this.email, this.password)
-        .then ((res )=>{                  
+        .then ((res )=>{        
+          window.location.assign('/panel-admin');            
         }).catch(err => console.log('err', err.message));
         Swal.fire({
           icon: 'success',
