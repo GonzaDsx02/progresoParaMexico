@@ -6,3 +6,4 @@ export interface Escuela{
 }
 
 // comentario para ver si subve los cambios
+//ayuda no sirve mi push
