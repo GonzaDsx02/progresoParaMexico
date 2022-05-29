@@ -40,8 +40,18 @@
   #logo{
     transition-duration: 0.3s;
     width:100px;
-    margin-left: 35%;
-  }      
+    display:block;
+    margin:auto;
+}          
+
+  ion-title{
+    width:90%;
+  }
+
+  .title-text{
+    transition-duration: 0.3s;
+    display: none;
+  }
 
   .form_error{
     text-align: left; 
@@ -242,6 +252,13 @@
   }
 
   @media screen and (min-width: 960px){
+    .title-text, #logo{
+      transition-duration: 0.3s;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0px 5px;
+    }
+    
     #level{
       transition-duration: 0.3s;
       width:40%;

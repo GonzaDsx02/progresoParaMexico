@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import { IonicSlides } from '@ionic/angular';
 
+SwiperCore.use([Autoplay, Pagination, Navigation, IonicSlides]);
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -8,15 +11,6 @@ import { Component, OnInit } from '@angular/core';
 export class HomePage implements OnInit {
   
   constructor() {}
-  ngOnInit(): void {
-    var slides = document.querySelector('ion-slides');
-
-    // Optional parameters to pass to the swiper instance.
-    // See https://swiperjs.com/swiper-api for valid options.
-    slides.options = {
-      initialSlide: 0,
-      speed: 400,
-      autoplay: true
-    }    
-  }      
+  
+  ngOnInit() {}      
 }
