@@ -4,3 +4,5 @@ export interface Escuela{
     clave: string;
     nivel: string;
 }
+
+// comentario para ver si subve los cambios
