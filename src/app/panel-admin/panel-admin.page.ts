@@ -6,7 +6,7 @@ import { UserService } from '../services/user.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { DataApiService } from '../services/data-api.service';
-import { Alignment, Margins, Table } from 'pdfmake/interfaces';
+import { Alignment, Margins, PageOrientation, Table } from 'pdfmake/interfaces';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 import { FormControl } from '@angular/forms';
@@ -167,15 +167,14 @@ export class PanelAdminPage implements OnInit {
   signOut() {
     this.userService.logout()
       .then(() => {
-        this.router.navigate(['/login']);
+        window.location.assign('/login');  
       })
       .catch(error => console.log(error));
   };
 
   onAddUser(){
       this.authService.registerUser(this.email, this.password)
-      .then ((res )=>{
-        this.router.navigate(['admin/list-books']);
+      .then ((res )=>{                  
       }).catch(err => console.log('err', err.message));
   };
 
@@ -200,9 +199,13 @@ export class PanelAdminPage implements OnInit {
 
   estadisticaescuela(){
     if (this.SuperiorSchool > this.middleSchools) {
-      this.nombre.setValue('Nivel Superior')
+      this.nombre.setValue('Nivel Superior');
     } else {
-      this.nombre.setValue('Nivel Medio Superior')
+      this.nombre.setValue('Nivel Medio Superior');
+    }if(this.SuperiorSchool == this.middleSchools){
+      this.nombre.setValue('Igual número de incidencias');
+    }if(this.SuperiorSchool==0 && this.middleSchools==0){
+      this.nombre.setValue('No se tienen registros que mostrar');
     }
 
     if ((this.vio_Econo > this.vio_Fisico) && (this.vio_Econo > this.vio_Psico) && (this.vio_Econo > this.vio_Sex)) { this.tipoviol.setValue('Económica') }
@@ -210,8 +213,8 @@ export class PanelAdminPage implements OnInit {
     else if ((this.vio_Psico > this.vio_Econo) && (this.vio_Psico > this.vio_Fisico) && (this.vio_Psico > this.vio_Sex)) { this.tipoviol.setValue('Psicológica'); }
     else if ((this.vio_Sex > this.vio_Econo) && (this.vio_Sex > this.vio_Psico) && (this.vio_Sex > this.vio_Fisico)) { this.tipoviol.setValue('Sexual') }
     else {
-      this.tipoviol.setValue('Igual numero de incidencias')
-    }
+      this.tipoviol.setValue('Igual número de incidencias');
+    } if(this.vio_Econo==0 && this.vio_Fisico==0 && this.vio_Psico == 0 && this.vio_Sex == 0){this.tipoviol.setValue('No se tienen registros que mostrar')}
 
     this.hombres.setValue(((this.MaleAggressors * 100) / this.totalAgresores).toFixed(1)+'%');
     this.mujeres.setValue(((this.FemaleAggressors * 100) / this.totalAgresores).toFixed(1)+'%');
@@ -221,6 +224,7 @@ export class PanelAdminPage implements OnInit {
   pdfreport(){
     console.log(this.db.collection('Reports').valueChanges().subscribe(val=>this.denun.setValue(val)));
     let docDefinition= {
+      pageOrientation:'landscape' as PageOrientation,
       pageMargins: [40, 60, 40, 60] as Margins,
       /**
        * header - encabezado con una función para retornar todo el diseño
@@ -248,8 +252,22 @@ export class PanelAdminPage implements OnInit {
               ]
         } // fin del returnb
       }, //fin del header
-      content:[
-
+      content: [
+        {
+       
+          table: {
+            // headers are automatically repeated if the table spans over multiple pages
+            // you can declare how many rows should be treated as headers
+            headerRows: 1,
+            widths: [ 80, 'auto', 100, 100,100,100],
+    
+            body: [
+              [ { text: 'Fecha de reporte', bold: true }, { text: 'Escuela', bold: true }, { text: 'Nombre del agresor', bold: true }, { text: 'Tipo de violencia', bold: true },{ text: 'Denuncia formal', bold: true }, { text: 'Contacto', bold: true }],
+              [ 'Value 1', 'Value 2', 'Value 3', 'Value 4', "Tipo de violencia", "Tipo de violencia"],
+              [ { text: 'Bold value', bold: true }, 'Val 2', 'Val 3', 'Val 4', "Tipo de violencia" , "Tipo de violencia"]
+            ]
+          }
+        }
       ],// fin del content
       /**
              * images: Diccionario de imagenes en formato URI para la renderizacion yu vizualizacion de las mismas, al momento de llamar al metodo

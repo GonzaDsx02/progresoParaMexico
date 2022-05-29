@@ -4,16 +4,18 @@
 
 export const environment = {
   firebase: {
-    apiKey: "AIzaSyBNidqsgvOJouy0_eHCvnsVbxuWUoBI3x4",
-    authDomain: "progresomex-gps.firebaseapp.com",
-    projectId: "progresomex-gps",
-    storageBucket: "progresomex-gps.appspot.com",
-    messagingSenderId: "19383712365",
-    appId: "1:19383712365:web:229928bb6f56d292dfdd64",
-    measurementId: "G-LF08RKM7L2"
+    apiKey: "AIzaSyBoDpT3VsBi2OOJjHxbAhBpd3upMfbmmaQ",
+  authDomain: "progresoparamx-36ff1.firebaseapp.com",
+  projectId: "progresoparamx-36ff1",
+  storageBucket: "progresoparamx-36ff1.appspot.com",
+  messagingSenderId: "340064772497",
+  appId: "1:340064772497:web:7be8f8ee517bcd1605fa30",
+  measurementId: "G-ZMH1KBN52T"
   },
   production: false
 };
+
+//ESTA VERSION TIENE CAMBIADA LAS LICENCIAS DE FIREBASE POR BLOQUEO
 
 /*
  * For easier debugging in development mode, you can import the following file
