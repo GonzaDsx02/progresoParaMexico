@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { Alert } from 'selenium-webdriver';
-import { AlertController, LoadingController } from '@ionic/angular';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -30,15 +29,7 @@ export class LoginPage implements OnInit {
    * @param validationMessages para crear el mensaje de validacion (Para requerir el campo de usuario y contraseña)
    */
 
-  constructor(
-    private fb: FormBuilder,
-    private userService: UserService,
-    private router: Router,
-    // agregando campos para la alerta "personalizada"
-    private loadinController: LoadingController,
-    private alertController: AlertController
-  ) {
-
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router,){
     this.formLogin = this.fb.group({
       us_name: ['', Validators.required],
       pass: ['', Validators.required]
@@ -60,6 +51,16 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  //método para validar los campos que están vacíos en el formulario
+  private visualValidationForm(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      if (control.controls) {
+        this.visualValidationForm(control);
+      }
+    });
+  }
+
   /**
    * login() - Funcion para inicio de sesion
    * @method loginUser(usuario, contraseña) - método encargado de haer el login del usuario en en la pagina
@@ -68,28 +69,36 @@ export class LoginPage implements OnInit {
    * @return showAlert(titulo, mensaje) - regresa un metodo de alerta al cual se le pasan
    * @return navigate() - Usa métodos del router para redirigir hacia el panel de administración
   */
-  login() {
+  login(form: NgForm) {
+    //Aqui va todo el guateque
+    if(form.invalid){
+      this.visualValidationForm(this.formLogin);
+      //this.showAlert('Error', '¡Usuario y contraseña requeridos!');
+
+      //mensaje de alerta de la libreria sweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Algo salió mal',
+        text: 'Usuario y contraseña requeridos',
+        heightAuto: false
+      });
+      return;
+    }
     this.userService.loginUser(this.username, this.password)
       .then(response => {
         //console.log(response);
         this.router.navigate(['/panel-admin']);
       })
       .catch(error => {
-        //console.log(error);
-        this.showAlert('Datos Erroneos', 'Favor de verificar sus datos');
+        //this.showAlert('Datos Erroneos', 'Favor de verificar sus datos');
+
+        //mensaje de alerta de la libreria sweetAlert2
+        Swal.fire({
+          icon: 'error',
+          title: 'Datos erroneos',
+          text: 'Verifica tu email o contraseña',
+          heightAuto: false
+        });
       }); // fin del catch
-  };
-
-  /**
-   * showAlert(titulo, mensaje) - Desplega una ventana informativa
-   * @param header - Titulo de la ventana informativa
-   * @param message - Mensaje de la ventana informativa
-   */
-  async showAlert(header, message) {
-    const alert = await this.alertController.create({
-      header, message, buttons: ["ok"]
-    });
-    await alert.present();
-  }// end of the show alert method
-
-} // fin del on init
+  }
+} // fin LoginPage
