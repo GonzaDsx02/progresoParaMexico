@@ -7,6 +7,17 @@
     --color: #331832;  
   }
   
+  #logo{
+    transition-duration: 0.3s;
+    width:100px;
+    display:block;
+    margin:auto;
+  }          
+
+  ion-title{
+    width:90%;
+  }
+
   ion-item.footer-item > p, 
     ion-item.footer-item > ion-icon{
       color: #fff; 

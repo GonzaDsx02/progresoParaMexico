@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomePage implements OnInit {
   
   constructor() {}
-  ngOnInit(): void {
+  
+  ngOnInit() {
     var slides = document.querySelector('ion-slides');
 
     // Optional parameters to pass to the swiper instance.

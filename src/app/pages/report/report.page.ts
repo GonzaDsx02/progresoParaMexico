@@ -183,17 +183,12 @@ export class ReportPage implements OnInit {
 
     //validación del formulario
     if(this.newItem.level && this.newItem.school && this.newItem.aggressor_name && this.newItem.aggressor_gen && this.newItem.aggressor_role && this.newItem.victim_gen && this.newItem.victim_role && this.newItem.incident_time && this.newItem.school_place && this.newItem.description && this.newItem.denuncied && this.newItem.proceed && this.newItem.type_vio){
-      if(this.newItem.denuncied=='yes'){
-        if(this.newItem.actions && this.newItem.help){
-          //this.showAlert('Reporte enviado', 'Envío exitoso');
-
+      if(this.newItem.denuncied=='Si'){
+        if(this.newItem.actions && this.newItem.help && this.newItem.actions != "" && this.newItem.help != ""){
           //Aquí comienza el envío de datos
-          //Este alert permite visualizar los datos que fueron ingresados en el formulario
-          //console.log('Esto vamos a guardar->', this.newItem)
           const data = this.newItem;
           const enlace = 'Reports';
           this.firestore.createDo(data,enlace);
-          //this.showAlert('Datos registrados', 'Estos datos seran parte de la estadistica estatal.\n Si se le dara seguimiento a tu denuncia, espera a que nuestro equipo se ponga en contacto contigo.');
           this.formReports.reset()
           //termina el envío de datos
 
@@ -206,8 +201,6 @@ export class ReportPage implements OnInit {
           });
         }else{
           this.visualValidationForm(this.formReports);
-          //this.showAlert('Campos obligatorios', 'Ingresa los datos faltantes');
-      
           //mensaje de alerta de la libreria sweetAlert2
           Swal.fire({
             icon: 'error',
@@ -217,10 +210,10 @@ export class ReportPage implements OnInit {
           });
         }
       }else{
-        //this.showAlert('Reporte enviado', 'Envío exitoso');
         const data = this.newItem;
         const enlace = 'Reports';
         this.firestore.createDo(data,enlace);
+
         //mensaje de alerta de la libreria sweetAlert2
         this.formReports.reset()
         Swal.fire({
@@ -232,8 +225,6 @@ export class ReportPage implements OnInit {
       }
     }else{
       this.visualValidationForm(this.formReports);
-      //this.showAlert('Campos obligatorios', 'Ingresa los datos faltantes');
-      
       //mensaje de alerta de la libreria sweetAlert2
       Swal.fire({
         icon: 'error',

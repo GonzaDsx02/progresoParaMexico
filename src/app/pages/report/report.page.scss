@@ -40,8 +40,13 @@
   #logo{
     transition-duration: 0.3s;
     width:100px;
-    margin-left: 35%;
-  }      
+    display:block;
+    margin:auto;
+}          
+
+  ion-title{
+      width:90%;
+  }
 
   .form_error{
     text-align: left; 

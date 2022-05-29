@@ -12,6 +12,17 @@
       color: #fff; 
     }    
   
+  #logo{
+    transition-duration: 0.3s;
+    width:100px;
+    display:block;
+    margin:auto;
+  }          
+  
+  ion-title{
+    width:90%;
+  }
+
   #index-container{
     width: 100%;  
     height: 100%;  
