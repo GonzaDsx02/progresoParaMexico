@@ -11,6 +11,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 interface reportesadmin{
   date: string;
@@ -173,9 +174,32 @@ export class PanelAdminPage implements OnInit {
   };
 
   onAddUser(){
-      this.authService.registerUser(this.email, this.password)
-      .then ((res )=>{                  
-      }).catch(err => console.log('err', err.message));
+    if(this.email && this.password){
+      if(this.password.length >= 5){
+        this.authService.registerUser(this.email, this.password)
+        .then ((res )=>{                  
+        }).catch(err => console.log('err', err.message));
+        Swal.fire({
+          icon: 'success',
+          title: 'Registro exitoso',
+          heightAuto: false
+        });
+      }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Algo salió mal',
+          text: 'La contraseña debe tener al menos 5 caracteres',
+          heightAuto: false
+        });
+      }
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Algo salió mal',
+        text: 'Usuario y contraseña requeridos',
+        heightAuto: false
+      });
+    }
   };
 
   /**
