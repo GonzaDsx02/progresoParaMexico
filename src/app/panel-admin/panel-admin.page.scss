@@ -3,6 +3,11 @@ ion-item.footer-item > p,
     color: #fff; 
   }    
 
+ion-toolbar{
+  --background: #331832;
+  --color: #fff;
+}
+
   .footer{    
     position:relative;
     transition-duration: 0.3s;
@@ -40,11 +45,38 @@ ion-item.footer-item > p,
     --background: none;
   }
 
-  .botonreport{
-    text-align: center;
-    width:100px;  
+  .reports-buttons{
+    //text-align: center;
+    width:100%;  
+  }
+
+  #statistics,
+  #download-stats{
+    width: 210px;
+    display: inline-block;
+    --border-radius: 50px;      
+    --background: #fff;
+    border: 2px solid #331832;
+    --color: #331832;
+    border-radius: 50px;
+    --background-activated: #fff;
+    --color-activated: #39b54a;
+    transition-duration: 0.5s;
+  }
+
+  #statistics:hover, #download-stats:hover{
+    transition-duration: 0.3s;
+    border: 2px solid #39b54a;
+    --color: #39b54a;
   }
   
+  #statistics:active, #download-stats:active{
+    --background-activated: #fff;
+    --background-focused: #fff;
+    border: 2px solid #39b54a;
+    --color: #39b54a;
+  }
+
   .footer-item-links{
     font-size: 1.2rem; 
     color: #fff;
@@ -61,28 +93,25 @@ ion-item.footer-item > p,
     height:250px;
   }
 
-  #submit-button{
-    width:100px;      
+  .button{
+    width: 200px;
     --border-radius: 50px;      
     --background: #fff;
     border: 2px solid #331832;
     --color: #331832;
     border-radius: 50px;
-    margin-top: 50px;
     --background-activated: #fff;
     --color-activated: #39b54a;
     transition-duration: 0.5s;
-    align-items: right;
-    text-align: right;
   }
 
-  #submit-button:hover{
+  .button:hover{
     transition-duration: 0.3s;
     border: 2px solid #39b54a;
     --color: #39b54a;
   }
 
-  #submit-button:active{
+  .button:active{
     --background-activated: #fff;
     --background-focused: #fff;
     border: 2px solid #39b54a;

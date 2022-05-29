@@ -1,13 +1,22 @@
-  ion-badge.empty{
-    --background: #331832;
-  }
-  ion-badge.choosed{
+    ion-badge.choosed{
     --background: #39b54a;
   }
 
   *{
     font-family: 'Roboto', sans-serif;
   }  
+
+  #form-items > ion-item,
+  #level > ion-item, 
+  #school > ion-item{
+    --border-width: 1px;
+    --border-style: outset;
+    --border-radius: 5px;
+  }
+
+  small{
+    color: #da1c5c;
+  }
 
   div#container > h1{
     color: #262262;
@@ -73,6 +82,10 @@
   .item{
     padding:5px;
   }    
+
+  .item#final{
+    margin-top:20px;
+  }
 
   #level{
     transition-duration: 0.3s;
