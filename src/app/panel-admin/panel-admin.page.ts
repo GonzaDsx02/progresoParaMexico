@@ -111,53 +111,53 @@ export class PanelAdminPage implements OnInit {
 
     this.db.collection('Reports').valueChanges().subscribe();
 
-    // this.dataApi.getAggressors().subscribe(gender => {
-    //   gender.forEach(m => {
-    //     if (m.boe.endsWith("Masculino")) {
-    //       this.MaleAggressors++;
-    //     } else { this.FemaleAggressors++ }
-    //   })// fin del foreach
-    //   this.totalAgresores = gender.length
-    // });
+    this.dataApi.getAggressors().subscribe(gender => {
+      gender.forEach(m => {
+        if (m.boe.endsWith("Masculino")) {
+          this.MaleAggressors++;
+        } else { this.FemaleAggressors++ }
+      })// fin del foreach
+      this.totalAgresores = gender.length
+    });
 
-    // this.dataApi.getEscuelas().subscribe(school => {
-    //   school.forEach(level => {
-    //     if (level.schol.endsWith('Medio Superior')) {
-    //       this.middleSchools++;
-    //     } else {
-    //       this.SuperiorSchool++;
-    //     }
-    //   })
-    // });
+    this.dataApi.getEscuelas().subscribe(school => {
+      school.forEach(level => {
+        if (level.schol.endsWith('Medio Superior')) {
+          this.middleSchools++;
+        } else {
+          this.SuperiorSchool++;
+        }
+      })
+    });
 
-    // this.dataApi.getViolenceType().subscribe(violence => {
-    //   violence.forEach(type => {
-    //     if (type.violence.type_vio.endsWith('Económica')) { this.vio_Econo++; }
-    //     else if (type.violence.type_vio.endsWith('Física')) { this.vio_Fisico++; }
-    //     else if (type.violence.type_vio.endsWith('Sexual')) { this.vio_Sex++; }
-    //     else if (type.violence.type_vio.endsWith('Psicológica')) { this.vio_Psico++; }
-    //   })
-    // });
+    this.dataApi.getViolenceType().subscribe(violence => {
+      violence.forEach(type => {
+        if (type.violence.type_vio.endsWith('Económica')) { this.vio_Econo++; }
+        else if (type.violence.type_vio.endsWith('Física')) { this.vio_Fisico++; }
+        else if (type.violence.type_vio.endsWith('Sexual')) { this.vio_Sex++; }
+        else if (type.violence.type_vio.endsWith('Psicológica')) { this.vio_Psico++; }
+      })
+    });
 
-    // this.dataApi.getSuperiorNames().subscribe(School=>{
-    //   this.Superior.splice(0);
-    //   School.forEach(SchoolDetail=>{
-    //     if(SchoolDetail.municipio == 'Tepic'){
-    //       const nombreSchool = SchoolDetail.schoolName;
-    //       this.Superior.push(nombreSchool);
-    //     }
-    //   })//fin del for
-    // });//fin del subscribe
+    this.dataApi.getSuperiorNames().subscribe(School=>{
+      this.Superior.splice(0);
+      School.forEach(SchoolDetail=>{
+        if(SchoolDetail.municipio == 'Tepic'){
+          const nombreSchool = SchoolDetail.schoolName;
+          this.Superior.push(nombreSchool);
+        }
+      })//fin del for
+    });//fin del subscribe
 
-    // this.dataApi.getMiddleNames().subscribe(School =>{
-    //   this.MediaSuperior.splice(0);
-    //   School.forEach(SchoolDetail =>{
-    //     if(SchoolDetail.municipio == 'Tepic'){
-    //       const schoolMName = SchoolDetail.middleSName;
-    //       this.MediaSuperior.push(schoolMName);
-    //     }
-    //   })
-    // });// fin del metodo para las escuelas de media superior
+    this.dataApi.getMiddleNames().subscribe(School =>{
+      this.MediaSuperior.splice(0);
+      School.forEach(SchoolDetail =>{
+        if(SchoolDetail.municipio == 'Tepic'){
+          const schoolMName = SchoolDetail.middleSName;
+          this.MediaSuperior.push(schoolMName);
+        }
+      })
+    });// fin del metodo para las escuelas de media superior
     this.dataApi.getAll2().subscribe(
       column=>{
         column.forEach(dataRow=>{
@@ -310,13 +310,13 @@ export class PanelAdminPage implements OnInit {
               margin: [10, 10, 0, 0] as Margins
             },
             {
-              text: 'Reporte de estadisticas generales de las denuncias\nProgreso para México',
+              text: 'Reporte general de denuncias\nProgreso para México',
               style: 'header',
               alignment: 'center' as Alignment,
               margin: [-90, 10, 0, 0] as Margins
             }
           ]
-        } // fin del returnb
+        } // fin del return
       }, //fin del header
       content: [
         {
@@ -382,13 +382,20 @@ export class PanelAdminPage implements OnInit {
       this.escuelasMayor = 'Nivel Medio Superior'
     }
 
+    if (this.SuperiorSchool == 0 && this.middleSchools == 0){
+      this.escuelasMayor = 'No se encuentran registros'
+    }
+    if(this.SuperiorSchool == this.middleSchools){
+      this.nombre.setValue('Igual número de incidencias');
+    }
+
     if ((this.vio_Econo > this.vio_Fisico) && (this.vio_Econo > this.vio_Psico) && (this.vio_Econo > this.vio_Sex)) { this.topViol1 = 'Economica'; }
     else if ((this.vio_Fisico > this.vio_Econo) && (this.vio_Fisico > this.vio_Psico) && (this.vio_Fisico > this.vio_Sex)) { this.topViol1 = 'Fisica'; }
     else if ((this.vio_Psico > this.vio_Econo) && (this.vio_Psico > this.vio_Fisico) && (this.vio_Psico > this.vio_Sex)) { this.topViol1 = 'Psocologica'; }
     else if ((this.vio_Sex > this.vio_Econo) && (this.vio_Sex > this.vio_Psico) && (this.vio_Sex > this.vio_Fisico)) { this.topViol1 = 'Sexual'; }
     else {
-      this.topViol1 = 'Todos son iguales';
-    }
+      this.topViol1 = ('Igual número de incidencias');
+    } if(this.vio_Econo==0 && this.vio_Fisico==0 && this.vio_Psico == 0 && this.vio_Sex == 0){this.topViol1 =('No se tienen registros que mostrar')}
 
     let MalePercentage = (this.MaleAggressors * 100) / this.totalAgresores;
     let FemalePercentage = (this.FemaleAggressors * 100) / this.totalAgresores;
