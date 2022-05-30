@@ -110,6 +110,10 @@
   width:90%;          
 }
 
+.card:hover{
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+}
+
 ion-item.footer-item > p, 
 ion-item.footer-item > ion-icon{
   color: #fff; 
