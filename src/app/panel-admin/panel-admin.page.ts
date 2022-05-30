@@ -6,7 +6,7 @@ import { UserService } from '../services/user.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { DataApiService } from '../services/data-api.service';
-import { Alignment, Margins, PageOrientation, Table } from 'pdfmake/interfaces';
+import { Alignment, Margins, PageOrientation, Table, TableCell } from 'pdfmake/interfaces';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 import { FormControl } from '@angular/forms';
@@ -73,6 +73,16 @@ export class PanelAdminPage implements OnInit {
   public password: string = '';
   public Superior =Array();
   public MediaSuperior = Array();
+  //arreglos para la información de la sección de los reportes para el pdf
+  public arrSchool = Array<string>();
+  public arrDescription = Array<string>();  
+  public arrAggressor = Array<string>();
+  public arrDate = Array<string>();  
+  public arrViolence = Array<string>();
+  public arrProceds = Array<string>();  
+  public arrContact = Array<string>();
+
+
 
 
   ionViewDidEnter(){
@@ -99,63 +109,68 @@ export class PanelAdminPage implements OnInit {
 
   ngOnInit() {
 
-    this.db.collection('Reports').valueChanges().subscribe(
-      //console.log(val)
-      );
+    this.db.collection('Reports').valueChanges().subscribe();
 
-    this.dataApi.getAggressors().subscribe(gender => {
-      gender.forEach(m => {
-        if (m.boe.endsWith("Masculino")) {
-          this.MaleAggressors++;
-        } else { this.FemaleAggressors++ }
-      })// fin del foreach
-      this.totalAgresores = gender.length
-    });
+    // this.dataApi.getAggressors().subscribe(gender => {
+    //   gender.forEach(m => {
+    //     if (m.boe.endsWith("Masculino")) {
+    //       this.MaleAggressors++;
+    //     } else { this.FemaleAggressors++ }
+    //   })// fin del foreach
+    //   this.totalAgresores = gender.length
+    // });
 
-    this.dataApi.getEscuelas().subscribe(school => {
-      school.forEach(level => {
-        if (level.schol.endsWith('Medio Superior')) {
-          this.middleSchools++;
-        } else {
-          this.SuperiorSchool++;
-        }
-      })
-    });
+    // this.dataApi.getEscuelas().subscribe(school => {
+    //   school.forEach(level => {
+    //     if (level.schol.endsWith('Medio Superior')) {
+    //       this.middleSchools++;
+    //     } else {
+    //       this.SuperiorSchool++;
+    //     }
+    //   })
+    // });
 
-    this.dataApi.getViolenceType().subscribe(violence => {
-      violence.forEach(type => {
-        if (type.violence.type_vio.endsWith('Económica')) { this.vio_Econo++; }
-        else if (type.violence.type_vio.endsWith('Física')) { this.vio_Fisico++; }
-        else if (type.violence.type_vio.endsWith('Sexual')) { this.vio_Sex++; }
-        else if (type.violence.type_vio.endsWith('Psicológica')) { this.vio_Psico++; }
-      })
-    });
+    // this.dataApi.getViolenceType().subscribe(violence => {
+    //   violence.forEach(type => {
+    //     if (type.violence.type_vio.endsWith('Económica')) { this.vio_Econo++; }
+    //     else if (type.violence.type_vio.endsWith('Física')) { this.vio_Fisico++; }
+    //     else if (type.violence.type_vio.endsWith('Sexual')) { this.vio_Sex++; }
+    //     else if (type.violence.type_vio.endsWith('Psicológica')) { this.vio_Psico++; }
+    //   })
+    // });
 
-    this.dataApi.getSuperiorNames().subscribe(School=>{
-      this.Superior.splice(0);
-      School.forEach(SchoolDetail=>{
-        if(SchoolDetail.municipio == 'Tepic'){
-          const nombreSchool = SchoolDetail.schoolName;
-          this.Superior.push(nombreSchool);
-        }
-      })//fin del for
-    });//fin del subscribe
+    // this.dataApi.getSuperiorNames().subscribe(School=>{
+    //   this.Superior.splice(0);
+    //   School.forEach(SchoolDetail=>{
+    //     if(SchoolDetail.municipio == 'Tepic'){
+    //       const nombreSchool = SchoolDetail.schoolName;
+    //       this.Superior.push(nombreSchool);
+    //     }
+    //   })//fin del for
+    // });//fin del subscribe
 
-    this.dataApi.getMiddleNames().subscribe(School =>{
-      this.MediaSuperior.splice(0);
-      School.forEach(SchoolDetail =>{
-        if(SchoolDetail.municipio == 'Tepic'){
-          const schoolMName = SchoolDetail.middleSName;
-          this.MediaSuperior.push(schoolMName);
-        }
-      })
-    });// fin del metodo para las escuelas de media superior
-
-    this.dataApi.getAll2().subscribe(realdata =>{
-        realdata.forEach(data => {
-          console.log(data.contact);
+    // this.dataApi.getMiddleNames().subscribe(School =>{
+    //   this.MediaSuperior.splice(0);
+    //   School.forEach(SchoolDetail =>{
+    //     if(SchoolDetail.municipio == 'Tepic'){
+    //       const schoolMName = SchoolDetail.middleSName;
+    //       this.MediaSuperior.push(schoolMName);
+    //     }
+    //   })
+    // });// fin del metodo para las escuelas de media superior
+    this.dataApi.getAll2().subscribe(
+      column=>{
+        column.forEach(dataRow=>{
+          this.arrSchool.push(dataRow.school)
+          this.arrDescription.push(dataRow.description)
+          this.arrAggressor.push(dataRow.aggressor_name)
+          this.arrDate.push(dataRow.date)
+          this.arrViolence.push(dataRow.type_vio)
+          this.arrProceds.push(dataRow.proceed)
+          this.arrContact.push(dataRow.contact)
         })
-    });
+      }
+    );
 
   };// final del ngOninit
 
@@ -177,7 +192,8 @@ export class PanelAdminPage implements OnInit {
     if(this.email && this.password){
       if(this.password.length >= 5){
         this.authService.registerUser(this.email, this.password)
-        .then ((res )=>{                  
+        .then ((res )=>{        
+          window.location.assign('/panel-admin');            
         }).catch(err => console.log('err', err.message));
         Swal.fire({
           icon: 'success',
@@ -246,10 +262,36 @@ export class PanelAdminPage implements OnInit {
   };
 
   pdfreport(){
-    console.log(this.db.collection('Reports').valueChanges().subscribe(val=>this.denun.setValue(val)));
-    let docDefinition= {
+    let arrSchool = this.arrSchool;
+    let arrDescription = this.arrDescription;  
+    let arrAggressor = this.arrAggressor;
+    let arrDate = this.arrDate;  
+    let arrViolence = this.arrViolence;
+    let arrProceds = this.arrProceds;  
+    let arrContact = this.arrContact;
+
+    let long = arrAggressor.length;
+    
+    function tableColumns(){
+      let tableData = []
+      for(let it = 0; it<long;it++){
+          tableData.push([
+            {text: arrDate[it]},
+            {text: arrSchool[it]},
+            {text: arrAggressor[it]},
+            {text: arrViolence[it]},
+            {text: arrProceds[it]},
+            {text: arrContact[it]}
+          ]);//fin del push para la tabla de datos en la columna
+      };
+      return tableData
+    };
+
+    let columns = tableColumns()
+
+    let docDefinition = {
       pageOrientation:'landscape' as PageOrientation,
-      pageMargins: [40, 60, 40, 60] as Margins,
+      pageMargins: [40, 155, 40, 55] as Margins,
       /**
        * header - encabezado con una función para retornar todo el diseño
        * @function function: contiene una función anónima para crear el encabezado del PDF
@@ -262,23 +304,22 @@ export class PanelAdminPage implements OnInit {
               width: 40,
               margin: [540, 10, 0, 0] as Margins
             },
-                {
-          image: 'logoProgreso',
-            width: 60,
+            {
+              image: 'logoProgreso',
+              width: 60,
               margin: [10, 10, 0, 0] as Margins
-        },
-        {
-          text: 'Reporte de estadisticas generales de las denuncias\nProgreso para México',
-            style: 'header',
+            },
+            {
+              text: 'Reporte de estadisticas generales de las denuncias\nProgreso para México',
+              style: 'header',
               alignment: 'center' as Alignment,
-                margin: [-90, 10, 0, 0] as Margins
-        }
-              ]
+              margin: [-90, 10, 0, 0] as Margins
+            }
+          ]
         } // fin del returnb
       }, //fin del header
       content: [
         {
-       
           table: {
             // headers are automatically repeated if the table spans over multiple pages
             // you can declare how many rows should be treated as headers
@@ -286,11 +327,17 @@ export class PanelAdminPage implements OnInit {
             widths: [ 80, 'auto', 100, 100,100,100],
     
             body: [
-              [ { text: 'Fecha de reporte', bold: true }, { text: 'Escuela', bold: true }, { text: 'Nombre del agresor', bold: true }, { text: 'Tipo de violencia', bold: true },{ text: 'Denuncia formal', bold: true }, { text: 'Contacto', bold: true }],
-              [ 'Value 1', 'Value 2', 'Value 3', 'Value 4', "Tipo de violencia", "Tipo de violencia"],
-              [ { text: 'Bold value', bold: true }, 'Val 2', 'Val 3', 'Val 4', "Tipo de violencia" , "Tipo de violencia"]
-            ]
-          }
+              [
+                { text: 'Fecha de reporte', bold: true }, { text: 'Escuela', bold: true }, { text: 'Nombre del agresor', bold: true }, { text: 'Tipo de violencia', bold: true }, { text: 'Denuncia formal', bold: true }, { text: 'Contacto', bold: true }
+              ],
+              // [
+              //   {text: arrDate[0]},{text: arrSchool[0]},{text:arrAggressor[0]},{text: arrViolence[0]},{text: arrProceds[0]},{text: arrContact[0]}
+              // ]
+              ...columns
+            ]// fin del body de la tabla
+
+          },
+          layout:'ligthHorizontalLines'
         }
       ],// fin del content
       /**
@@ -325,8 +372,7 @@ export class PanelAdminPage implements OnInit {
         }
       }// fin de la seccion para los estilos varios
     } // fin del docDefinition
-    const now = new Date();
-    pdfMake.createPdf(docDefinition).open(null, window.open("Reportes"+now.toLocaleDateString()))
+    pdfMake.createPdf(docDefinition).open()
   };
 
   pdfEstadisticas() {

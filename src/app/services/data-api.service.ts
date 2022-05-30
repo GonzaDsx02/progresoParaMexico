@@ -24,7 +24,6 @@ export class DataApiService {
     this.item = this.itemCollection.valueChanges();
     this.itemS = this.itemCollectionS.valueChanges();
    }
-
   private itemCollection: AngularFirestoreCollection<Item>;
   private itemCollectionS:AngularFirestoreCollection;
   private itemCollectionMS: AngularFirestoreCollection;
@@ -51,8 +50,7 @@ export class DataApiService {
    */
   getAggressors(){
     return this.itemCollection.snapshotChanges().pipe(
-      map(
-        actions => actions.map(
+      map(actions => actions.map(
           gender =>{
             const boe = gender.payload.doc.data().aggressor_gen
             return {boe};
@@ -136,7 +134,7 @@ export class DataApiService {
         return {schoolName, municipio}
       }))// fin del map para recuperar los nombres
     )//fin del pipe
-  }// fin de la recuperacion de nombres
+  };// fin de la recuperacion de nombres
 
   /**
    *getMiddleNames()- Método que retorna el municipio y el nombre de las instituciones de nivel medio superior
@@ -150,6 +148,6 @@ export class DataApiService {
         return {middleSName, municipio}
       }))
     )
-  }
+  };
 
 }// fin de la clase
