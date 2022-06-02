@@ -148,7 +148,21 @@ export class ReportPage implements OnInit {
    * @returns - la fecha actual
    */
   private getActualDate(){
-    return (new Date().getMonth()+1)<10 ? new Date().getFullYear() + '-0' + (new Date().getMonth()+1) + '-' + new Date().getDate() : new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + new Date().getDate();
+    var date = new Date().getFullYear() + '-'
+    if((new Date().getMonth()+1) < 10){
+      date += '0' + (new Date().getMonth() + 1) + '-';
+    }else{
+      date += (new Date().getMonth() + 1) + '-';
+    }
+
+    if(new Date().getDate()<10){
+      date += '0' + (new Date().getDate());
+    }else{
+      date += (new Date().getDate());
+    }
+
+    return date;
+    //return (new Date().getMonth()+1)<10 ? new Date().getFullYear() + '-0' + (new Date().getMonth()+1) + '-' + new Date().getDate() : new Date().getFullYear() + '-' + (new Date().getMonth()+1) + '-' + new Date().getDate();
   };
 
   /**
