@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ppm-ui:
+    build: .
+    #image: ppm-ui:1.0
+    ports:
+      - 80:80
+    networks:
+      - ppm_network
+
+networks:
+  ppm_network:
+    driver: bridge
