@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ppm-ui
+  labels:
+    app: ppm-ui-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ppm-ui
+  template:
+    metadata:
+      labels:
+        app: ppm-ui
+    spec:
+      containers:
+      - name: ppm-ui
+        image: gonzalodsx/ppm_ui:1.0
