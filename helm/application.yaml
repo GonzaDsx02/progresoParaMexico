@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ppm-ui
+  namespace: ppm
+spec:
+  destination:
+    namespace: ppm-ui
+    server: https://kubernetes.default.svc
+  project: progresoParaMexico
+  source:
+    path: helm/
+    repoURL: https://github.com/GonzaDsx02/progresoParaMexico.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
